@@ -22,6 +22,8 @@ WEBHOOK_PASSPHRASE=<strong sealed secret>
 
 In the web service, generate a public domain and verify `/health`, `/ready`, `/shadow/status`, and `/dashboard/`. The dashboard is read-only and refreshes its status data every minute. In the cron service, set its Railway config-file path to `/railway.cron.json`, then set the cron schedule. Railway schedules use UTC. To run at 4:30 PM New York throughout daylight-saving changes, create separate seasonal schedules or accept a one-hour seasonal shift; `30 20 * * 1-5` corresponds to 4:30 PM EDT and `30 21 * * 1-5` to 4:30 PM EST.
 
+The cron config uses Railway watch patterns, so changes limited to TradingView, dashboard, API-only code or documentation do not redeploy and start `market-refresh`. Changes to refresh scripts, database code, model/evaluation code, artifacts, dependencies, the Dockerfile or the cron configuration still deploy it.
+
 The first cron run bootstraps 15-minute and hourly candles from 2022-01-01 and daily candles from 2018-01-01. Later runs use overlapping incremental windows and upsert by symbol, timeframe and timestamp. A cron run exits after refresh and evaluation; overlapping Railway executions are therefore avoided. No persistent volume is required.
 
 Keep `EXECUTION_MODE=paper`. Before selecting `signalstack`, configure and verify the current TTP program/rule version/date/limits, account-generated webhook, official payload and all live flags. The present implementation intentionally keeps outbound transport disabled and cannot be promoted to live transmission. Run `python scripts/validate_signalstack_config.py` and confirm daily risk reconciliation first.
