@@ -44,9 +44,11 @@ float rsi = ta.rsi(close, 14)
 [macdLine, signalLine, macdHistogram] = ta.macd(close, 12, 26, 9)
 float chartVwap = ta.vwap(hlc3)
 float previousClose = close[1]
-bool dailyBullish = request.security(syminfo.tickerid, "1D", close > ta.ema(close, 50), lookahead = barmerge.lookahead_off)
-bool fourHourBullish = request.security(syminfo.tickerid, "240", ta.ema(close, 20) > ta.ema(close, 50), lookahead = barmerge.lookahead_off)
-bool fifteenMinuteBullish = request.security(syminfo.tickerid, "15", ta.ema(close, 20) > ta.ema(close, 50), lookahead = barmerge.lookahead_off)
+// Use only completed context bars. The one-bar offset plus lookahead_on is the
+// stable higher/lower-timeframe request pattern for historical and realtime bars.
+bool dailyBullish = request.security(syminfo.tickerid, "1D", close[1] > ta.ema(close, 50)[1], lookahead = barmerge.lookahead_on)
+bool fourHourBullish = request.security(syminfo.tickerid, "240", ta.ema(close, 20)[1] > ta.ema(close, 50)[1], lookahead = barmerge.lookahead_on)
+bool fifteenMinuteBullish = request.security(syminfo.tickerid, "15", ta.ema(close, 20)[1] > ta.ema(close, 50)[1], lookahead = barmerge.lookahead_on)
 
 bool rawBreakout = close > priorHigh and relativeVolume >= relativeVolumeMinimum and adx >= adxMinimum and atrPercent >= frozenAtrCutoff
 var int lastAlertBar = na
