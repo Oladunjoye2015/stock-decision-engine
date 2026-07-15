@@ -18,6 +18,7 @@ from app.execution.signalstack_transport import SignalStackTestTransport
 from app.analysis.breakout_demo_gate import evaluate as evaluate_breakout_demo
 from app.schemas.signals import SignalIn
 from app.ai.external_reviewer import OpenAITradeReviewer
+from app.analysis.decision_scorecard import build as build_scorecard
 from app.market_data.volume_validation import validate_previous_minute_volume
 
 
@@ -114,7 +115,7 @@ def test_external_ai_reviewer_is_veto_only_and_fails_closed():
     assert disabled["passed"] and not disabled["enabled"]
     missing=OpenAITradeReviewer(Settings(external_ai_review_enabled=True)).review({})
     assert not missing["passed"] and missing["fail_closed"]
-    output={"viable":True,"confidence":.8,"veto":False,"reason":"aligned","primary_risks":[],"context_alignment":"supportive"}
+    output={"decision":"allow","viability_score":82,"confidence":.8,"reason":"aligned","reasons":["market supportive"],"primary_risks":[],"context_alignment":"supportive"}
     def handler(request):
         body=request.read().decode(); assert "trade_viability_review" in body
         return httpx.Response(200,json={"output":[{"content":[{"type":"output_text","text":__import__("json").dumps(output)}]}]})
@@ -122,3 +123,13 @@ def test_external_ai_reviewer_is_veto_only_and_fails_closed():
     with httpx.Client(transport=httpx.MockTransport(handler)) as client:
         result=OpenAITradeReviewer(settings,client).review({"technical":"passed"})
     assert result["passed"] and result["confidence"]==.8
+
+
+def test_decision_scorecard_is_weighted_but_cannot_override_hard_failures():
+    passed={"passed":True}; context={"complete":True,"benchmarks_available":True,"benchmark_support":True}
+    score=build_scorecard(breakout={"applicable":True,"passed":True},technical={"passed":True,"score":80},market_context=context,
+        timeframe=passed,regime=passed,news=passed,noise=passed,risk=passed,compliance=passed)
+    assert score["score"]==97 and not score["hard_failures"] and score["advisory_only"]
+    blocked=build_scorecard(breakout={"applicable":True,"passed":True},technical={"passed":True,"score":100},market_context=context,
+        timeframe=passed,regime=passed,news={"passed":False},noise=passed,risk=passed,compliance=passed)
+    assert "news" in blocked["hard_failures"] and blocked["score"]==90

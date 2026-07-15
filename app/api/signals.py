@@ -10,6 +10,7 @@ from app.ai.external_reviewer import OpenAITradeReviewer
 from app.analysis import breakout_demo_gate, market_regime, news_filter, noise_filter, technical_gate, timeframe_alignment
 from app.analysis.feature_engineering import build_features
 from app.analysis.server_market_context import build_server_context
+from app.analysis.decision_scorecard import build as build_scorecard
 from app.compliance.audit import record
 from app.compliance.trade_the_pool_rules import evaluate as evaluate_ttp_rules
 from app.config import Settings, get_settings
@@ -150,10 +151,14 @@ def process_signal(signal: SignalIn, db: Session, settings: Settings):
     details["ai_review"] = review; _event(db, AIReview, signal.signal_id, "ai_review", review); db.commit()
     if not review["approved"]: return _response(_blocked(db, signal, settings, "AI review blocked proposal", details))
     if not compliance["passed"]: return _response(_blocked(db, signal, settings, compliance["reason"], details))
+    scorecard=build_scorecard(breakout=breakout_demo,technical=tech,market_context=server_context,timeframe=align,
+        regime=regime,news=news,noise=noise,risk=details["risk"],compliance=compliance)
+    details["decision_scorecard"]=scorecard
     external_evidence={"signal":{"id":signal.signal_id,"symbol":signal.symbol,"strategy":signal.strategy,"time":signal.signal_time_utc.isoformat()},
         "breakout":breakout_demo,"server_market_context":server_context,"technical_gate":tech,"market_regime":regime,
         "timeframe_alignment":align,"news_filter":news,"noise_filter":noise,"risk":details["risk"],
-        "prices":details["prices"],"model_research_context":prediction,"trade_the_pool_compliance":compliance}
+        "prices":details["prices"],"model_research_context":prediction,"trade_the_pool_compliance":compliance,
+        "deterministic_scorecard":scorecard}
     external_review=OpenAITradeReviewer(settings).review(external_evidence); details["external_ai_review"]=external_review
     _event(db,AIReview,signal.signal_id,"external_ai_veto_review",external_review); db.commit()
     if not external_review["passed"]: return _response(_blocked(db,signal,settings,"external AI viability review blocked proposal",details))
