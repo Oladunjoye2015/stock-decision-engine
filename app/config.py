@@ -119,7 +119,8 @@ class Settings(BaseSettings):
     @field_validator("ttp_daily_pause_threshold_usd", "ttp_maximum_loss_limit_usd", "ttp_rule_last_verified_at", mode="before")
     @classmethod
     def empty_optional_values_are_unset(cls, value):
-        return None if value is None or str(value).strip() == "" else value
+        text = "" if value is None else str(value).strip()
+        return None if not text or (text.startswith("<") and text.endswith(">")) else value
 
     @property
     def allowed_symbol_set(self) -> set[str]:

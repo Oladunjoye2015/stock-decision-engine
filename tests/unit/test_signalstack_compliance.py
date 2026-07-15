@@ -60,6 +60,12 @@ def test_approval_revocation_and_policy_staleness_are_configurable():
     assert policy_state(stale)["stale"]
 
 
+def test_placeholder_policy_timestamp_fails_closed_without_crashing_settings():
+    settings=Settings(ttp_rule_last_verified_at="<current ISO timestamp>")
+    assert settings.ttp_rule_last_verified_at is None
+    assert "rule_last_verified_at" in policy_state(settings)["missing"]
+
+
 def test_retry_is_bounded_and_never_rapid():
     assert retry_delay(0, True, 2, 1) == 30
     assert retry_delay(1, True, 2, 1) == 60
