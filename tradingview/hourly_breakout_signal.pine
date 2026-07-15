@@ -1,0 +1,68 @@
+//@version=6
+indicator("SDE Hourly Breakout — SignalStack Test", overlay = true, max_labels_count = 200)
+
+// Frozen breakout-shadow inputs. Keep these unchanged during forward evaluation.
+int lookbackBars = input.int(20, "Breakout lookback", minval = 2)
+int volumeBars = input.int(20, "Relative-volume lookback", minval = 2)
+float relativeVolumeMinimum = input.float(1.2, "Minimum relative volume", minval = 0.1, step = 0.1)
+int adxLength = input.int(14, "ADX length", minval = 2)
+int adxSmoothing = input.int(14, "ADX smoothing", minval = 2)
+float adxMinimum = input.float(20.0, "Minimum ADX", minval = 0, step = 0.5)
+int atrLength = input.int(14, "ATR length", minval = 2)
+int quantity = input.int(1, "Test quantity", minval = 1, maxval = 10)
+int cooldownBars = input.int(16, "Alert cooldown bars", minval = 1)
+string regularSession = input.session("0930-1600", "Entry session (New York)")
+bool enableTestAlerts = input.bool(false, "ENABLE SIGNALSTACK TEST ALERTS")
+
+float frozenAtrCutoff = switch syminfo.ticker
+    "AAPL" => 0.00613449
+    "AMD"  => 0.01226962
+    "AMZN" => 0.00762186
+    "AVGO" => 0.00871582
+    "BABA" => 0.00789124
+    "GOOG" => 0.00707455
+    "META" => 0.00808966
+    "MSFT" => 0.00581686
+    "NVDA" => 0.01087266
+    "QQQ"  => 0.00464406
+    "SPY"  => 0.00342031
+    "TSLA" => 0.01305073
+    => na
+
+bool isHourly = timeframe.isintraday and timeframe.multiplier == 60
+bool supportedSymbol = not na(frozenAtrCutoff)
+bool inRegularSession = not na(time(timeframe.period, regularSession, "America/New_York"))
+float priorHigh = ta.highest(high[1], lookbackBars)
+float relativeVolume = volume / ta.sma(volume, volumeBars)
+[plusDI, minusDI, adx] = ta.dmi(adxLength, adxSmoothing)
+float atr = ta.atr(atrLength)
+float atrPercent = atr / close
+
+bool rawBreakout = close > priorHigh and relativeVolume >= relativeVolumeMinimum and adx >= adxMinimum and atrPercent >= frozenAtrCutoff
+var int lastAlertBar = na
+bool cooldownPassed = na(lastAlertBar) or bar_index - lastAlertBar >= cooldownBars
+bool confirmedSignal = isHourly and supportedSymbol and inRegularSession and barstate.isconfirmed and rawBreakout and cooldownPassed
+
+if confirmedSignal
+    lastAlertBar := bar_index
+    label.new(bar_index, high, "BREAKOUT\nTEST BUY", style = label.style_label_down, color = color.new(color.lime, 0), textcolor = color.black)
+    if enableTestAlerts
+        string payload = "{\"symbol\":\"" + syminfo.ticker + "\",\"quantity\":" + str.tostring(quantity) + ",\"action\":\"buy\"}"
+        alert(payload, alert.freq_once_per_bar_close)
+
+plot(priorHigh, "Prior 20-bar high", color = color.new(color.orange, 15), linewidth = 2)
+plotshape(confirmedSignal, title = "Confirmed hourly breakout", style = shape.triangleup, location = location.belowbar, color = color.lime, size = size.small)
+bgcolor(not isHourly ? color.new(color.red, 88) : not supportedSymbol ? color.new(color.orange, 88) : na, title = "Invalid chart warning")
+
+var table status = table.new(position.top_right, 2, 5, border_width = 1)
+if barstate.islast
+    table.cell(status, 0, 0, "SDE breakout", bgcolor = color.new(color.black, 0), text_color = color.white)
+    table.cell(status, 1, 0, enableTestAlerts ? "TEST ON" : "ALERTS OFF", bgcolor = enableTestAlerts ? color.new(color.orange, 0) : color.new(color.gray, 20), text_color = color.white)
+    table.cell(status, 0, 1, "Chart")
+    table.cell(status, 1, 1, isHourly ? "1 hour" : "USE 1 HOUR", text_color = isHourly ? color.green : color.red)
+    table.cell(status, 0, 2, "Symbol")
+    table.cell(status, 1, 2, supportedSymbol ? syminfo.ticker : "UNSUPPORTED", text_color = supportedSymbol ? color.green : color.red)
+    table.cell(status, 0, 3, "Rel volume")
+    table.cell(status, 1, 3, str.tostring(relativeVolume, "#.00"))
+    table.cell(status, 0, 4, "ADX / ATR%")
+    table.cell(status, 1, 4, str.tostring(adx, "#.0") + " / " + str.tostring(atrPercent * 100, "#.00") + "%")
