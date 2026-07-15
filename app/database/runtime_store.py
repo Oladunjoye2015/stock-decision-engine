@@ -50,6 +50,20 @@ def load_candles(timeframe: str) -> pd.DataFrame:
     )
 
 
+def load_recent_candles(timeframe: str, symbol: str, limit: int = 250) -> pd.DataFrame:
+    init_database()
+    statement = (select(MarketCandle).where(MarketCandle.timeframe == timeframe, MarketCandle.symbol == symbol)
+                 .order_by(MarketCandle.timestamp_utc.desc()).limit(limit))
+    with SessionLocal() as db:
+        rows = list(reversed(db.execute(statement).scalars().all()))
+    return pd.DataFrame(
+        [{"timestamp": row.timestamp_utc, "symbol": row.symbol, "data_provider": row.data_provider,
+          "open": row.open, "high": row.high, "low": row.low, "close": row.close, "volume": row.volume}
+         for row in rows],
+        columns=["timestamp", "symbol", "data_provider", "open", "high", "low", "close", "volume"],
+    )
+
+
 def upsert_candles(frame: pd.DataFrame, timeframe: str, chunk_size: int = 5000) -> int:
     if frame.empty:
         return 0

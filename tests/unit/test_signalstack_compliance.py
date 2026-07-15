@@ -17,6 +17,7 @@ from app.execution.signalstack_schemas import SignalStackWebhookPayload, format_
 from app.execution.signalstack_transport import SignalStackTestTransport
 from app.analysis.breakout_demo_gate import evaluate as evaluate_breakout_demo
 from app.schemas.signals import SignalIn
+from app.ai.external_reviewer import OpenAITradeReviewer
 from app.market_data.volume_validation import validate_previous_minute_volume
 
 
@@ -106,3 +107,18 @@ def test_frozen_breakout_demo_gate_is_explicit_and_fail_closed(fresh_signal):
     assert evaluate_breakout_demo(signal,True)["passed"]
     assert not evaluate_breakout_demo(signal,False)["passed"]
     assert not evaluate_breakout_demo(signal.model_copy(update={"close":99}),True)["passed"]
+
+
+def test_external_ai_reviewer_is_veto_only_and_fails_closed():
+    disabled=OpenAITradeReviewer(Settings()).review({})
+    assert disabled["passed"] and not disabled["enabled"]
+    missing=OpenAITradeReviewer(Settings(external_ai_review_enabled=True)).review({})
+    assert not missing["passed"] and missing["fail_closed"]
+    output={"viable":True,"confidence":.8,"veto":False,"reason":"aligned","primary_risks":[],"context_alignment":"supportive"}
+    def handler(request):
+        body=request.read().decode(); assert "trade_viability_review" in body
+        return httpx.Response(200,json={"output":[{"content":[{"type":"output_text","text":__import__("json").dumps(output)}]}]})
+    settings=Settings(external_ai_review_enabled=True,openai_api_key="test-key")
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        result=OpenAITradeReviewer(settings,client).review({"technical":"passed"})
+    assert result["passed"] and result["confidence"]==.8

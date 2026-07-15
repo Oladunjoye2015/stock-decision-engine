@@ -13,7 +13,9 @@
 7. Create an alert with condition `SDE Hourly Breakout — Railway Demo` → `Any alert() function call`, and select once per bar close.
 8. Use `https://stock-decision-engine-production.up.railway.app/tradingview/signals` as the Webhook URL. The script generates the structured JSON automatically.
 
-The payload contains the confirmed hourly bar, technical indicators, completed higher-timeframe direction and the dedicated token. Railway rechecks authentication, freshness, the frozen breakout definition, Finnhub news/noise, timeframe alignment, risk and daily reconciliation. It stores every signal and decision. Only a fully approved breakout can be transformed into the exact SignalStack test payload.
+The payload contains the confirmed hourly bar, technical indicators, completed higher-timeframe direction and the dedicated token. Railway then downloads current hourly market-data-only candles for the symbol, SPY and QQQ, upserts them to PostgreSQL, appends the confirmed TradingView bar, and rebuilds technical indicators server-side. It checks candle and benchmark freshness, the frozen breakout definition, Finnhub news/noise, timeframe alignment, risk and daily reconciliation. It stores every signal and decision. Only a fully approved breakout can be transformed into the exact SignalStack test payload.
+
+An optional OpenAI structured-output review is the final veto after every deterministic and risk check. Enable it with `EXTERNAL_AI_REVIEW_ENABLED=true`, a sealed `OPENAI_API_KEY`, and an approved `OPENAI_REVIEW_MODEL`. The reviewer receives only structured evidence, has no order tools, cannot change quantity/prices, and fails closed on timeout, invalid output, low confidence, or disagreement. The SignalStack send occurs only after `passed=true` at the configured minimum confidence.
 
 ## Important architecture boundary
 

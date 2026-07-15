@@ -30,6 +30,8 @@ For the Trade The Pool demo test webhook only, keep `EXECUTION_MODE=paper` and `
 
 To route frozen TradingView breakouts through all Railway filters before the SignalStack test webhook, also set `DETERMINISTIC_BREAKOUT_DEMO_ENABLED=true`, `DEMO_SIGNALSTACK_ROUTING_ENABLED=true`, and a sealed random `TRADINGVIEW_WEBHOOK_TOKEN`. The TradingView webhook destination is `/tradingview/signals`. This remains paper/demo routing and never enables a production SignalStack webhook.
 
+For the optional final AI veto, set `EXTERNAL_AI_REVIEW_ENABLED=true`, add a sealed `OPENAI_API_KEY`, and set `OPENAI_REVIEW_MODEL=gpt-5.4-mini` (or another explicitly evaluated structured-output model). Missing credentials, API errors, invalid schemas, confidence below `OPENAI_REVIEW_MIN_CONFIDENCE`, and model vetoes all block the signal. The AI is never given a tool or endpoint that can transmit an order.
+
 Use real values in Railway rather than copying angle-bracket placeholders. For example, `TTP_RULE_LAST_VERIFIED_AT=2026-07-15T00:00:00Z`. If this value is absent or a placeholder, the application starts but the TTP policy check remains incomplete and blocks SignalStack execution.
 
 ## CLI status

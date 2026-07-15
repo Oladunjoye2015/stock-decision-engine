@@ -6,8 +6,10 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.ai.reviewer import StructuredAIReviewer
+from app.ai.external_reviewer import OpenAITradeReviewer
 from app.analysis import breakout_demo_gate, market_regime, news_filter, noise_filter, technical_gate, timeframe_alignment
 from app.analysis.feature_engineering import build_features
+from app.analysis.server_market_context import build_server_context
 from app.compliance.audit import record
 from app.compliance.trade_the_pool_rules import evaluate as evaluate_ttp_rules
 from app.config import Settings, get_settings
@@ -73,13 +75,22 @@ def process_signal(signal: SignalIn, db: Session, settings: Settings):
     try: db.commit()
     except IntegrityError: db.rollback(); return {"idempotent": True, "signal_id": signal.signal_id}
     details = {}
-    breakout_demo = breakout_demo_gate.evaluate(signal, settings.deterministic_breakout_demo_enabled); details["breakout_demo_gate"] = breakout_demo
-    if signal.strategy == "breakout-medium-high-vol-shadow-v1" and not breakout_demo["passed"]:
-        return _response(_blocked(db, signal, settings, breakout_demo["reason"], details))
     if settings.allowed_symbol_set and signal.symbol not in settings.allowed_symbol_set: return _response(_blocked(db, signal, settings, "symbol is not allowed", details))
     if signal.timeframe != settings.primary_signal_timeframe or not settings.allow_60min_signals: return _response(_blocked(db, signal, settings, "only 60Min signals may create decisions", details))
     fresh = freshness_check(signal.signal_time_utc, settings.signal_max_age_seconds); details["freshness"] = fresh
     if not fresh["passed"]: return _response(_blocked(db, signal, settings, fresh["reason"], details))
+    server_context={"complete":False,"reason":"not required for this strategy"}
+    if signal.strategy == "breakout-medium-high-vol-shadow-v1":
+        try: server_context=build_server_context(signal,settings)
+        except Exception as exc: server_context={"complete":False,"reason":f"server market context unavailable: {type(exc).__name__}"}
+        details["server_market_context"]=server_context
+        if not server_context.get("complete") or not server_context.get("benchmarks_available") or not server_context.get("benchmark_support"):
+            return _response(_blocked(db,signal,settings,"server candle or benchmark context did not support the setup",details))
+        primary=server_context["symbols"][signal.symbol]
+        signal=signal.model_copy(update={"indicators":{**signal.indicators,**{key:primary[key] for key in ("prior_high20","vol_ratio","adx","atr","atr_pct","rsi","ema20","ema50","ema200","macd_hist")}}})
+    breakout_demo = breakout_demo_gate.evaluate(signal, settings.deterministic_breakout_demo_enabled); details["breakout_demo_gate"] = breakout_demo
+    if signal.strategy == "breakout-medium-high-vol-shadow-v1" and not breakout_demo["passed"]:
+        return _response(_blocked(db, signal, settings, breakout_demo["reason"], details))
     finnhub = {"provider": "finnhub", "news": None, "quote": None, "bid_ask": None, "available": False}
     if settings.finnhub_api_key and (settings.news_filter_enabled or settings.noise_filter_enabled):
         client = None
@@ -139,6 +150,13 @@ def process_signal(signal: SignalIn, db: Session, settings: Settings):
     details["ai_review"] = review; _event(db, AIReview, signal.signal_id, "ai_review", review); db.commit()
     if not review["approved"]: return _response(_blocked(db, signal, settings, "AI review blocked proposal", details))
     if not compliance["passed"]: return _response(_blocked(db, signal, settings, compliance["reason"], details))
+    external_evidence={"signal":{"id":signal.signal_id,"symbol":signal.symbol,"strategy":signal.strategy,"time":signal.signal_time_utc.isoformat()},
+        "breakout":breakout_demo,"server_market_context":server_context,"technical_gate":tech,"market_regime":regime,
+        "timeframe_alignment":align,"news_filter":news,"noise_filter":noise,"risk":details["risk"],
+        "prices":details["prices"],"model_research_context":prediction,"trade_the_pool_compliance":compliance}
+    external_review=OpenAITradeReviewer(settings).review(external_evidence); details["external_ai_review"]=external_review
+    _event(db,AIReview,signal.signal_id,"external_ai_veto_review",external_review); db.commit()
+    if not external_review["passed"]: return _response(_blocked(db,signal,settings,"external AI viability review blocked proposal",details))
     decision = DecisionRecord(decision_id=str(uuid4()), signal_id=signal.signal_id, symbol=signal.symbol, side=side, strategy=signal.strategy, primary_timeframe=signal.timeframe, final_decision="proposed", execution_mode=settings.execution_mode, reason="all checks passed", details=details)
     db.add(decision); db.commit(); db.refresh(decision)
     ticket = create_ticket(db, decision, settings); record(db, "ticket_created", ticket.ticket_id, {"mode": settings.execution_mode}); NotificationService(settings).send(f"approved_{settings.execution_mode}_proposal", {"ticket_id": ticket.ticket_id})

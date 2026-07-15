@@ -48,6 +48,11 @@ class Settings(BaseSettings):
     market_regime_enabled: bool = True
     timeframe_alignment_enabled: bool = True
     ai_review_enabled: bool = True
+    external_ai_review_enabled: bool = False
+    openai_api_key: str = ""
+    openai_review_model: str = "gpt-5.4-mini"
+    openai_review_timeout_seconds: float = 12
+    openai_review_min_confidence: float = .65
     neutral_higher_timeframe_allowed: bool = True
     execution_quality_check_enabled: bool = False
 
@@ -111,6 +116,10 @@ class Settings(BaseSettings):
     finnhub_news_limit: int = 50
     finnhub_use_bid_ask: bool = False
     finnhub_fail_closed: bool = False
+    alpaca_api_key: str = ""
+    alpaca_api_secret: str = ""
+    alpaca_data_feed: str = "iex"
+    alpaca_data_base_url: str = "https://data.alpaca.markets"
 
     @field_validator("execution_mode")
     @classmethod
