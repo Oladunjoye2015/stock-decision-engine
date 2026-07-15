@@ -2,6 +2,8 @@ from datetime import datetime, timedelta, timezone
 
 
 def test_health_and_compliance(client, headers):
+    home = client.get("/", follow_redirects=False)
+    assert home.status_code == 307 and home.headers["location"] == "/dashboard/"
     assert client.get("/health").status_code == 200
     compliance = client.get("/compliance/status").json()
     assert compliance["alpaca_connectivity"] == "absent"
