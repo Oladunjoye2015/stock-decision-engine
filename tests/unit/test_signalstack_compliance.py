@@ -12,6 +12,7 @@ from app.core.rate_limit import RollingRateLimiter
 from app.core.retry_policy import retry_delay
 from app.database.engine import Base
 from app.execution.signalstack_queue import SignalStackRequestQueue
+from app.execution.signalstack_schemas import SignalStackWebhookPayload, format_signalstack_payload
 from app.market_data.volume_validation import validate_previous_minute_volume
 
 
@@ -62,3 +63,12 @@ def test_retry_is_bounded_and_never_rapid():
     assert retry_delay(1, True, 2, 1) == 60
     assert retry_delay(2, True, 2, 1) is None
 
+
+def test_confirmed_demo_payload_is_exact_and_strict():
+    assert format_signalstack_payload(" aapl ", 1, "buy") == {"symbol": "AAPL", "quantity": 1, "action": "buy"}
+    with pytest.raises(ValueError):
+        SignalStackWebhookPayload(symbol="AAPL", quantity=0, action="buy")
+    with pytest.raises(ValueError):
+        SignalStackWebhookPayload(symbol="AAPL", quantity=1, action="short")
+    with pytest.raises(ValueError):
+        SignalStackWebhookPayload(symbol="AAPL", quantity=1, action="buy", price=100)

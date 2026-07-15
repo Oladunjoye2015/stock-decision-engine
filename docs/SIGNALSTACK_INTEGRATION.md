@@ -8,3 +8,6 @@ This repository therefore does not guess an endpoint, authentication format, Tra
 
 All live flags, current rules, production environment, reconciliation, account state, volume rule, risk state, queue safety and policy freshness must pass. Risk-reducing exits receive queue priority but never bypass the rate limit. A queued or acknowledged request is not a confirmed fill.
 
+## Confirmed demo payload
+
+The Trade The Pool demo displayed the basic request `{"symbol":"AAPL","quantity":1,"action":"buy"}`. The repository models that exact three-field schema: symbols are normalized, quantity must be a positive integer, action is restricted to `buy` or `sell`, and additional fields are refused. Because the example does not define stop, target, short-sale, cancel, or modify semantics, none of those payloads are inferred. Outbound HTTP transport remains disabled until this request succeeds against the SignalStack test webhook and its test log is reviewed.
