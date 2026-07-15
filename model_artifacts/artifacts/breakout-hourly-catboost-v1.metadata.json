@@ -1,0 +1,186 @@
+{
+  "model_id": "breakout-hourly-catboost-v1",
+  "model_type": "calibrated_breakout_confidence_classifier",
+  "model_version": "20260714210508",
+  "artifact": "breakout-hourly-catboost-v1.joblib",
+  "sha256": "8d0c706f12703adceb2208591741ba1db04dd44d46904d146e4b2dcf35383867",
+  "timeframe": "60Min",
+  "supported_symbols": [
+    "AAPL",
+    "AMD",
+    "AMZN",
+    "AVGO",
+    "BABA",
+    "GOOG",
+    "META",
+    "MSFT",
+    "NVDA",
+    "QQQ",
+    "SPY",
+    "TSLA"
+  ],
+  "feature_names": [
+    "breakout_pct",
+    "breakout_atr",
+    "vol_ratio",
+    "volume_acceleration",
+    "adx",
+    "adx_change3",
+    "atr_pct",
+    "atr_percentile",
+    "rsi",
+    "macd_hist_pct",
+    "di_spread",
+    "ret1",
+    "ret3",
+    "ret5",
+    "ret20",
+    "gap_pct",
+    "body_pct",
+    "range_pct",
+    "close_location",
+    "dist_ema20",
+    "dist_ema50",
+    "dist_ema200",
+    "dist_vwap",
+    "bb_width",
+    "hour_sin",
+    "hour_cos",
+    "dow",
+    "spy_ret20",
+    "qqq_ret20",
+    "relative_strength20",
+    "market_breadth",
+    "market_trend_breadth",
+    "symbol_AAPL",
+    "symbol_AMD",
+    "symbol_AMZN",
+    "symbol_AVGO",
+    "symbol_BABA",
+    "symbol_GOOG",
+    "symbol_META",
+    "symbol_MSFT",
+    "symbol_NVDA",
+    "symbol_QQQ",
+    "symbol_SPY",
+    "symbol_TSLA"
+  ],
+  "probability_method": "predict_proba",
+  "class_labels": [
+    0,
+    1
+  ],
+  "dependency_versions": {
+    "scikit-learn": "1.9.0",
+    "catboost": "1.2.10",
+    "xgboost": "3.3.0",
+    "pandas": "2.3.3",
+    "numpy": "2.5.1"
+  },
+  "training_metadata": {
+    "purpose": "confidence gate for deterministic breakout candidates only",
+    "raw_feature_names": [
+      "breakout_pct",
+      "breakout_atr",
+      "vol_ratio",
+      "volume_acceleration",
+      "adx",
+      "adx_change3",
+      "atr_pct",
+      "atr_percentile",
+      "rsi",
+      "macd_hist_pct",
+      "di_spread",
+      "ret1",
+      "ret3",
+      "ret5",
+      "ret20",
+      "gap_pct",
+      "body_pct",
+      "range_pct",
+      "close_location",
+      "dist_ema20",
+      "dist_ema50",
+      "dist_ema200",
+      "dist_vwap",
+      "bb_width",
+      "hour_sin",
+      "hour_cos",
+      "dow",
+      "spy_ret20",
+      "qqq_ret20",
+      "relative_strength20",
+      "market_breadth",
+      "market_trend_breadth"
+    ],
+    "rows": 1574,
+    "train_rows": 1134,
+    "validation_rows": 236,
+    "test_rows": 204,
+    "candidate_features_from_signal_bar_only": true,
+    "entry_at_next_bar_open": true,
+    "validation_models": {
+      "catboost": {
+        "log_loss": 0.7007353775642137,
+        "brier": 0.25375620718759057,
+        "roc_auc": 0.4682459677419355
+      }
+    },
+    "selected_model": "catboost",
+    "validation_threshold_table": {
+      "0.50": {
+        "signals": 85,
+        "mean_net_return": -0.004983016754209936,
+        "win_rate": 0.4235294117647059,
+        "profit_factor": 0.6930049046913438
+      },
+      "0.55": {
+        "signals": 13,
+        "mean_net_return": -0.0129280512616183,
+        "win_rate": 0.38461538461538464,
+        "profit_factor": 0.3667333809207786
+      },
+      "0.60": {
+        "signals": 0,
+        "mean_net_return": null,
+        "win_rate": null,
+        "profit_factor": null
+      },
+      "0.65": {
+        "signals": 0,
+        "mean_net_return": null,
+        "win_rate": null,
+        "profit_factor": null
+      },
+      "0.70": {
+        "signals": 0,
+        "mean_net_return": null,
+        "win_rate": null,
+        "profit_factor": null
+      }
+    },
+    "final_test": {
+      "probability": {
+        "log_loss": 0.6990280040720107,
+        "brier": 0.2529138243657974,
+        "roc_auc": 0.4890384615384616
+      },
+      "all_breakouts": {
+        "signals": 204,
+        "mean_net_return": 0.002654590952942726,
+        "win_rate": 0.49019607843137253,
+        "profit_factor": 1.2478569670131068
+      },
+      "confidence_gated": {
+        "signals": 0,
+        "mean_net_return": null,
+        "win_rate": null,
+        "profit_factor": null
+      },
+      "threshold": 0.6
+    },
+    "production_eligible": false,
+    "test_period_previously_seen_for_strategy_research": true
+  },
+  "enabled": false
+}

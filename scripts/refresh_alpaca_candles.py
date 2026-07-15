@@ -42,7 +42,9 @@ def validate_bars(frame,regular_hours):
 
 
 def merge_bars(existing,new):
-    combined=pd.concat([existing,new],ignore_index=True); combined["timestamp"]=pd.to_datetime(combined.timestamp,utc=True); return combined.drop_duplicates(["symbol","timestamp"],keep="last").sort_values(["timestamp","symbol"]).reset_index(drop=True)
+    frames=[frame for frame in (existing,new) if not frame.empty and not frame.isna().all().all()]
+    if not frames: return existing.copy()
+    combined=pd.concat(frames,ignore_index=True); combined["timestamp"]=pd.to_datetime(combined.timestamp,utc=True); return combined.drop_duplicates(["symbol","timestamp"],keep="last").sort_values(["timestamp","symbol"]).reset_index(drop=True)
 
 
 def fetch_symbol(client,base_url,headers,symbol,timeframe,start,end,feed,adjustment,sleep_seconds):

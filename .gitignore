@@ -10,4 +10,6 @@ logs/
 data/
 model_artifacts/artifacts/*.joblib
 model_artifacts/artifacts/*.metadata.json
+!model_artifacts/artifacts/breakout-hourly-catboost-v1.joblib
+!model_artifacts/artifacts/breakout-hourly-catboost-v1.metadata.json
 .DS_Store
