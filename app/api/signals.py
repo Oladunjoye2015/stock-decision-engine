@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.ai.reviewer import StructuredAIReviewer
-from app.analysis import market_regime, news_filter, noise_filter, technical_gate, timeframe_alignment
+from app.analysis import breakout_demo_gate, market_regime, news_filter, noise_filter, technical_gate, timeframe_alignment
 from app.analysis.feature_engineering import build_features
 from app.compliance.audit import record
 from app.compliance.trade_the_pool_rules import evaluate as evaluate_ttp_rules
@@ -29,6 +29,8 @@ from app.risk.exposure import check as exposure_check
 from app.risk.position_sizing import calculate
 from app.execution.factory import get_adapter
 from app.execution.signalstack_queue import SignalStackRequestQueue
+from app.execution.signalstack_schemas import SignalStackWebhookPayload
+from app.execution.signalstack_transport import send_and_record_test
 from app.schemas.signals import SignalIn
 
 router = APIRouter(prefix="/signals", tags=["signals"])
@@ -58,6 +60,10 @@ def create_ticket(db, decision, settings):
 
 @router.post("", dependencies=[Depends(authenticate_webhook)])
 def receive(signal: SignalIn, db: Session = Depends(get_db), settings: Settings = Depends(get_settings)):
+    return process_signal(signal, db, settings)
+
+
+def process_signal(signal: SignalIn, db: Session, settings: Settings):
     existing = get_by(db, SignalRecord, signal_id=signal.signal_id)
     if existing:
         decision = get_by(db, DecisionRecord, signal_id=signal.signal_id)
@@ -67,6 +73,9 @@ def receive(signal: SignalIn, db: Session = Depends(get_db), settings: Settings 
     try: db.commit()
     except IntegrityError: db.rollback(); return {"idempotent": True, "signal_id": signal.signal_id}
     details = {}
+    breakout_demo = breakout_demo_gate.evaluate(signal, settings.deterministic_breakout_demo_enabled); details["breakout_demo_gate"] = breakout_demo
+    if signal.strategy == "breakout-medium-high-vol-shadow-v1" and not breakout_demo["passed"]:
+        return _response(_blocked(db, signal, settings, breakout_demo["reason"], details))
     if settings.allowed_symbol_set and signal.symbol not in settings.allowed_symbol_set: return _response(_blocked(db, signal, settings, "symbol is not allowed", details))
     if signal.timeframe != settings.primary_signal_timeframe or not settings.allow_60min_signals: return _response(_blocked(db, signal, settings, "only 60Min signals may create decisions", details))
     fresh = freshness_check(signal.signal_time_utc, settings.signal_max_age_seconds); details["freshness"] = fresh
@@ -101,9 +110,15 @@ def receive(signal: SignalIn, db: Session = Depends(get_db), settings: Settings 
         stop = signal.stop_hint or (entry-atr if side == "long" else entry+atr)
         target = signal.take_profit_hint or (entry+atr*settings.min_reward_risk if side == "long" else entry-atr*settings.min_reward_risk)
         rr = abs(target-entry) / abs(entry-stop)
-        entry_model = ModelRegistry(settings).resolve(signal.symbol, signal.timeframe)
-        features = build_features(signal, entry_model["feature_names"])
-        prediction = predict(entry_model, settings, signal.symbol, signal.timeframe, features); details["model"] = prediction; _event(db, ModelPrediction, signal.signal_id, "prediction", prediction)
+        if breakout_demo["passed"]:
+            prediction = {"model_id":"deterministic-breakout-demo","probability":.5,"margin":0,
+                          "research_only":True,"production_model_used":False,
+                          "reason":"Frozen breakout is demo-eligible; disabled ML remains comparison-only."}
+        else:
+            entry_model = ModelRegistry(settings).resolve(signal.symbol, signal.timeframe)
+            features = build_features(signal, entry_model["feature_names"])
+            prediction = predict(entry_model, settings, signal.symbol, signal.timeframe, features)
+        details["model"] = prediction; _event(db, ModelPrediction, signal.signal_id, "prediction", prediction)
         preliminary = calculate(entry, stop, settings.buying_power_usd, settings.account_size_usd, settings.max_risk_per_trade_usd, settings.max_symbol_exposure_pct)
         volume_check = validate_previous_minute_volume(signal.external_metadata.get("previous_one_minute_volume"), signal.external_metadata.get("previous_one_minute_candle_time"), 1, settings.ttp_max_position_volume_pct) if settings.execution_mode == "signalstack" else {"passed": True, "reason": "not required for local execution modes"}
         sizing = calculate(entry, stop, settings.buying_power_usd, settings.account_size_usd, settings.max_risk_per_trade_usd, settings.max_symbol_exposure_pct, volume_cap=volume_check.get("maximum_shares_allowed") if settings.execution_mode == "signalstack" and volume_check.get("passed") else None)
@@ -129,7 +144,14 @@ def receive(signal: SignalIn, db: Session = Depends(get_db), settings: Settings 
     ticket = create_ticket(db, decision, settings); record(db, "ticket_created", ticket.ticket_id, {"mode": settings.execution_mode}); NotificationService(settings).send(f"approved_{settings.execution_mode}_proposal", {"ticket_id": ticket.ticket_id})
     if settings.execution_mode == "signalstack":
         ticket = get_adapter(settings).accept(db, ticket); decision.final_decision = "signalstack_queued"; db.commit(); NotificationService(settings).send("signalstack_order_intent_queued", {"ticket_id": ticket.ticket_id, "request_id": ticket.signalstack_request_id, "status": ticket.status})
-    return {**_response(decision), "ticket_id": ticket.ticket_id, "ticket_status": ticket.status}
+    demo_delivery=None
+    if breakout_demo["passed"] and settings.demo_signalstack_routing_enabled:
+        try:
+            demo_delivery=send_and_record_test(db,settings,SignalStackWebhookPayload(symbol=signal.symbol,quantity=ticket.proposed_quantity,action="buy"))
+            decision.final_decision="demo_test_sent"; ticket.status="signalstack_test_sent"; db.commit()
+        except Exception as exc:
+            demo_delivery={"sent":False,"test_only":True,"error":type(exc).__name__}; record(db,"signalstack_demo_send_failed",ticket.ticket_id,demo_delivery,True)
+    return {**_response(decision), "ticket_id": ticket.ticket_id, "ticket_status": ticket.status, "demo_delivery":demo_delivery}
 
 
 def _response(decision): return {"signal_id": decision.signal_id, "decision_id": decision.decision_id, "final_decision": decision.final_decision, "reason": decision.reason}

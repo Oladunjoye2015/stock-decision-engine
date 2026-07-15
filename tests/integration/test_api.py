@@ -20,6 +20,8 @@ def test_health_and_compliance(client, headers):
 def test_webhook_authentication(client, fresh_signal):
     body = {**fresh_signal, "signal_id": "unauthorized"}
     assert client.post("/signals", json=body).status_code == 401
+    tradingview={**fresh_signal,"webhook_token":"wrong-token-value"}
+    assert client.post("/tradingview/signals",json=tradingview).status_code==401
 
 
 def test_non_primary_timeframes_cannot_trade(client, headers, fresh_signal):

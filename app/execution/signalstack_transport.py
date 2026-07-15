@@ -3,9 +3,13 @@ from __future__ import annotations
 from urllib.parse import urlparse
 
 import httpx
+from uuid import uuid4
 
 from app.core.exceptions import SignalStackNotConfiguredError
 from app.execution.signalstack_schemas import SignalStackWebhookPayload
+from app.execution.signalstack_queue import SignalStackRequestQueue
+from app.database.models import SignalStackRequest, SignalStackResponse
+from app.core.time_utils import utc_now
 
 
 class SignalStackTestTransport:
@@ -42,3 +46,19 @@ class SignalStackTestTransport:
         finally:
             if owns_client:
                 client.close()
+
+
+def send_and_record_test(db, settings, payload: SignalStackWebhookPayload) -> dict:
+    rate = SignalStackRequestQueue(settings).rate_state(db)
+    if not rate["allowed"]:
+        raise SignalStackNotConfiguredError("SignalStack test rate limit blocks this request")
+    result = SignalStackTestTransport(settings).send(payload)
+    request_id = str(uuid4())
+    now = utc_now()
+    db.add(SignalStackRequest(request_id=request_id, idempotency_key=f"test:{request_id}", ticket_id="test-webhook",
+                              request_type="test", priority=0, status="test_sent", attempts=1,
+                              payload=payload.model_dump(), sent_at_utc=now, completed_at_utc=now))
+    db.add(SignalStackResponse(request_id=request_id, status_code=result["status_code"],
+                               response_data={"test_only": True, "response_received": True}))
+    db.commit()
+    return {**result, "request_id": request_id, "rate_limit_before_send": rate}

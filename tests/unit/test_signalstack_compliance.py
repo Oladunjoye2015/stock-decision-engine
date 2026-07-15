@@ -15,6 +15,8 @@ from app.database.engine import Base
 from app.execution.signalstack_queue import SignalStackRequestQueue
 from app.execution.signalstack_schemas import SignalStackWebhookPayload, format_signalstack_payload
 from app.execution.signalstack_transport import SignalStackTestTransport
+from app.analysis.breakout_demo_gate import evaluate as evaluate_breakout_demo
+from app.schemas.signals import SignalIn
 from app.market_data.volume_validation import validate_previous_minute_volume
 
 
@@ -95,3 +97,12 @@ def test_transport_refuses_live_and_sends_only_explicit_test_webhook():
     with httpx.Client(transport=httpx.MockTransport(handler)) as client:
         result=SignalStackTestTransport(settings,client).send(payload)
     assert result["sent"] and result["test_only"] and result["status_code"]==200
+
+
+def test_frozen_breakout_demo_gate_is_explicit_and_fail_closed(fresh_signal):
+    signal=SignalIn.model_validate({**fresh_signal,"strategy":"breakout-medium-high-vol-shadow-v1",
+        "indicators":{**fresh_signal["indicators"],"prior_high20":100,"adx":25,"atr_pct":.01},
+        "external_metadata":{"bar_confirmed":True}})
+    assert evaluate_breakout_demo(signal,True)["passed"]
+    assert not evaluate_breakout_demo(signal,False)["passed"]
+    assert not evaluate_breakout_demo(signal.model_copy(update={"close":99}),True)["passed"]

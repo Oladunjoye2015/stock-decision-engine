@@ -46,3 +46,6 @@ class SignalOut(BaseModel):
     status: str
     created_at_utc: datetime
 
+
+class TradingViewSignalIn(SignalIn):
+    webhook_token: str = Field(min_length=16, max_length=256)

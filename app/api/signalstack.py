@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Body, Depends, HTTPException
-from uuid import uuid4
 from sqlalchemy.orm import Session
 
 from app.compliance.approval_state import validate_live_approval
@@ -7,11 +6,9 @@ from app.config import get_settings
 from app.core.exceptions import SignalStackNotConfiguredError
 from app.core.security import authenticate_webhook
 from app.database.engine import get_db
-from app.database.models import SignalStackRequest, SignalStackResponse
 from app.execution.signalstack_queue import SignalStackRequestQueue
 from app.execution.signalstack_schemas import SignalStackWebhookPayload
-from app.execution.signalstack_transport import SignalStackTestTransport
-from app.core.time_utils import utc_now
+from app.execution.signalstack_transport import SignalStackTestTransport, send_and_record_test
 
 router = APIRouter(prefix="/signalstack", tags=["signalstack"])
 
@@ -45,9 +42,6 @@ def test_configuration(payload: SignalStackWebhookPayload | None = Body(default=
         return {"approval": validate_live_approval(settings), "rate_limit": SignalStackRequestQueue(settings).rate_state(db), "test_transport":state, "outbound_request_made":False}
     rate=SignalStackRequestQueue(settings).rate_state(db)
     if not rate["allowed"]: raise HTTPException(429,"SignalStack rate limit blocks this test request")
-    try: result=transport.send(payload)
+    try: result=send_and_record_test(db,settings,payload)
     except SignalStackNotConfiguredError as exc: raise HTTPException(409,str(exc))
-    request_id=str(uuid4())
-    db.add(SignalStackRequest(request_id=request_id,idempotency_key=f"test:{request_id}",ticket_id="test-webhook",request_type="test",priority=0,status="test_sent",attempts=1,payload=payload.model_dump(),sent_at_utc=utc_now(),completed_at_utc=utc_now()))
-    db.add(SignalStackResponse(request_id=request_id,status_code=result["status_code"],response_data={"test_only":True,"response_received":True})); db.commit()
     return {"approval":validate_live_approval(settings),"rate_limit":rate,"test_transport":state,"outbound_request_made":True,"result":result}

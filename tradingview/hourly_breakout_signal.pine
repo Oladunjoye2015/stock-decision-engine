@@ -1,5 +1,5 @@
 //@version=6
-indicator("SDE Hourly Breakout — SignalStack Test", overlay = true, max_labels_count = 200)
+indicator("SDE Hourly Breakout — Railway Demo", overlay = true, max_labels_count = 200)
 
 // Frozen breakout-shadow inputs. Keep these unchanged during forward evaluation.
 int lookbackBars = input.int(20, "Breakout lookback", minval = 2)
@@ -9,10 +9,10 @@ int adxLength = input.int(14, "ADX length", minval = 2)
 int adxSmoothing = input.int(14, "ADX smoothing", minval = 2)
 float adxMinimum = input.float(20.0, "Minimum ADX", minval = 0, step = 0.5)
 int atrLength = input.int(14, "ATR length", minval = 2)
-int quantity = input.int(1, "Test quantity", minval = 1, maxval = 10)
 int cooldownBars = input.int(16, "Alert cooldown bars", minval = 1)
 string regularSession = input.session("0930-1600", "Entry session (New York)")
-bool enableTestAlerts = input.bool(false, "ENABLE SIGNALSTACK TEST ALERTS")
+string railwayToken = input.string("", "Railway TradingView token")
+bool enableDemoAlerts = input.bool(false, "ENABLE RAILWAY DEMO ALERTS")
 
 float frozenAtrCutoff = switch syminfo.ticker
     "AAPL" => 0.00613449
@@ -37,6 +37,16 @@ float relativeVolume = volume / ta.sma(volume, volumeBars)
 [plusDI, minusDI, adx] = ta.dmi(adxLength, adxSmoothing)
 float atr = ta.atr(atrLength)
 float atrPercent = atr / close
+float ema20 = ta.ema(close, 20)
+float ema50 = ta.ema(close, 50)
+float ema200 = ta.ema(close, 200)
+float rsi = ta.rsi(close, 14)
+[macdLine, signalLine, macdHistogram] = ta.macd(close, 12, 26, 9)
+float chartVwap = ta.vwap(hlc3)
+float previousClose = close[1]
+bool dailyBullish = request.security(syminfo.tickerid, "1D", close > ta.ema(close, 50), lookahead = barmerge.lookahead_off)
+bool fourHourBullish = request.security(syminfo.tickerid, "240", ta.ema(close, 20) > ta.ema(close, 50), lookahead = barmerge.lookahead_off)
+bool fifteenMinuteBullish = request.security(syminfo.tickerid, "15", ta.ema(close, 20) > ta.ema(close, 50), lookahead = barmerge.lookahead_off)
 
 bool rawBreakout = close > priorHigh and relativeVolume >= relativeVolumeMinimum and adx >= adxMinimum and atrPercent >= frozenAtrCutoff
 var int lastAlertBar = na
@@ -45,9 +55,14 @@ bool confirmedSignal = isHourly and supportedSymbol and inRegularSession and bar
 
 if confirmedSignal
     lastAlertBar := bar_index
-    label.new(bar_index, high, "BREAKOUT\nTEST BUY", style = label.style_label_down, color = color.new(color.lime, 0), textcolor = color.black)
-    if enableTestAlerts
-        string payload = "{\"symbol\":\"" + syminfo.ticker + "\",\"quantity\":" + str.tostring(quantity) + ",\"action\":\"buy\"}"
+    label.new(bar_index, high, "BREAKOUT\nRAILWAY", style = label.style_label_down, color = color.new(color.lime, 0), textcolor = color.black)
+    if enableDemoAlerts and str.length(railwayToken) >= 16
+        string stamp = str.format_time(time_close, "yyyy-MM-dd'T'HH:mm:ss'Z'", "UTC")
+        string signalId = "tv-breakout-" + syminfo.ticker + "-" + str.tostring(time_close)
+        string dailyRegime = dailyBullish ? "bullish" : "bearish"
+        string fourHourTrend = fourHourBullish ? "bullish" : "bearish"
+        string fifteenMinuteConfirmation = fifteenMinuteBullish ? "bullish" : "bearish"
+        string payload = "{\"webhook_token\":\"" + railwayToken + "\",\"signal_id\":\"" + signalId + "\",\"symbol\":\"" + syminfo.ticker + "\",\"timeframe\":\"60Min\",\"side_hint\":\"long\",\"strategy\":\"breakout-medium-high-vol-shadow-v1\",\"signal_time_utc\":\"" + stamp + "\",\"current_price\":" + str.tostring(close) + ",\"open\":" + str.tostring(open) + ",\"high\":" + str.tostring(high) + ",\"low\":" + str.tostring(low) + ",\"close\":" + str.tostring(close) + ",\"volume\":" + str.tostring(volume) + ",\"stop_hint\":" + str.tostring(close - atr * 2.0) + ",\"take_profit_hint\":" + str.tostring(close + atr * 4.0) + ",\"indicators\":{\"prior_high20\":" + str.tostring(priorHigh) + ",\"atr\":" + str.tostring(atr) + ",\"atr_pct\":" + str.tostring(atrPercent) + ",\"adx\":" + str.tostring(adx) + ",\"rsi\":" + str.tostring(rsi) + ",\"ema20\":" + str.tostring(ema20) + ",\"ema50\":" + str.tostring(ema50) + ",\"ema200\":" + str.tostring(ema200) + ",\"macd_hist\":" + str.tostring(macdHistogram) + ",\"vwap\":" + str.tostring(chartVwap) + ",\"vol_ratio\":" + str.tostring(relativeVolume) + ",\"previous_close\":" + str.tostring(previousClose) + "},\"higher_timeframe_context\":{\"daily_regime\":\"" + dailyRegime + "\",\"4hour_trend\":\"" + fourHourTrend + "\",\"15min_confirmation\":\"" + fifteenMinuteConfirmation + "\"},\"external_metadata\":{\"bar_confirmed\":true,\"source\":\"tradingview\"},\"recent_ohlcv\":[]}"
         alert(payload, alert.freq_once_per_bar_close)
 
 plot(priorHigh, "Prior 20-bar high", color = color.new(color.orange, 15), linewidth = 2)
@@ -57,7 +72,7 @@ bgcolor(not isHourly ? color.new(color.red, 88) : not supportedSymbol ? color.ne
 var table status = table.new(position.top_right, 2, 5, border_width = 1)
 if barstate.islast
     table.cell(status, 0, 0, "SDE breakout", bgcolor = color.new(color.black, 0), text_color = color.white)
-    table.cell(status, 1, 0, enableTestAlerts ? "TEST ON" : "ALERTS OFF", bgcolor = enableTestAlerts ? color.new(color.orange, 0) : color.new(color.gray, 20), text_color = color.white)
+    table.cell(status, 1, 0, enableDemoAlerts ? "DEMO ON" : "ALERTS OFF", bgcolor = enableDemoAlerts ? color.new(color.orange, 0) : color.new(color.gray, 20), text_color = color.white)
     table.cell(status, 0, 1, "Chart")
     table.cell(status, 1, 1, isHourly ? "1 hour" : "USE 1 HOUR", text_color = isHourly ? color.green : color.red)
     table.cell(status, 0, 2, "Symbol")

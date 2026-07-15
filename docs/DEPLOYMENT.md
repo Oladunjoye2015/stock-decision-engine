@@ -28,6 +28,8 @@ Keep `EXECUTION_MODE=paper`. Before selecting `signalstack`, configure and verif
 
 For the Trade The Pool demo test webhook only, keep `EXECUTION_MODE=paper` and `SIGNALSTACK_LIVE_EXECUTION_ALLOWED=false`, then set `SIGNALSTACK_WEBHOOK_TYPE=test` and `SIGNALSTACK_TEST_TRANSPORT_ENABLED=true`. The authenticated `POST /signalstack/test-configuration` endpoint can then send the confirmed three-field test payload. This does not enable queued or production order transmission.
 
+To route frozen TradingView breakouts through all Railway filters before the SignalStack test webhook, also set `DETERMINISTIC_BREAKOUT_DEMO_ENABLED=true`, `DEMO_SIGNALSTACK_ROUTING_ENABLED=true`, and a sealed random `TRADINGVIEW_WEBHOOK_TOKEN`. The TradingView webhook destination is `/tradingview/signals`. This remains paper/demo routing and never enables a production SignalStack webhook.
+
 Use real values in Railway rather than copying angle-bracket placeholders. For example, `TTP_RULE_LAST_VERIFIED_AT=2026-07-15T00:00:00Z`. If this value is absent or a placeholder, the application starts but the TTP policy check remains incomplete and blocks SignalStack execution.
 
 ## CLI status

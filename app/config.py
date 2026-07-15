@@ -79,6 +79,9 @@ class Settings(BaseSettings):
     signalstack_account_reference: str = ""
     signalstack_webhook_type: Literal["disabled", "test", "production"] = "disabled"
     signalstack_test_transport_enabled: bool = False
+    demo_signalstack_routing_enabled: bool = False
+    deterministic_breakout_demo_enabled: bool = False
+    tradingview_webhook_token: str = ""
 
     ttp_account_program: str = ""
     ttp_account_size_usd: float = 50_000
