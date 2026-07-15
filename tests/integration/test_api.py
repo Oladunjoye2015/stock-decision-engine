@@ -1,14 +1,14 @@
 from datetime import datetime, timedelta, timezone
 
 
-def test_health_and_compliance(client):
+def test_health_and_compliance(client, headers):
     assert client.get("/health").status_code == 200
     compliance = client.get("/compliance/status").json()
     assert compliance["alpaca_connectivity"] == "absent"
     assert compliance["direct_trade_the_pool"] == "prohibited"
     assert client.get("/compliance/approval").json()["conditional_and_revocable"] is True
     assert client.get("/signalstack/status").json()["outbound_transport_enabled"] is False
-    assert client.post("/signalstack/test-configuration").json()["outbound_request_made"] is False
+    assert client.post("/signalstack/test-configuration",headers=headers).json()["outbound_request_made"] is False
     shadow = client.get("/shadow/status").json()
     assert shadow["execution_enabled"] is False and shadow["automatic_promotion_enabled"] is False
     dashboard = client.get("/dashboard/")

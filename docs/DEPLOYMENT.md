@@ -26,6 +26,8 @@ The first cron run bootstraps 15-minute and hourly candles from 2022-01-01 and d
 
 Keep `EXECUTION_MODE=paper`. Before selecting `signalstack`, configure and verify the current TTP program/rule version/date/limits, account-generated webhook, official payload and all live flags. The present implementation intentionally keeps outbound transport disabled and cannot be promoted to live transmission. Run `python scripts/validate_signalstack_config.py` and confirm daily risk reconciliation first.
 
+For the Trade The Pool demo test webhook only, keep `EXECUTION_MODE=paper` and `SIGNALSTACK_LIVE_EXECUTION_ALLOWED=false`, then set `SIGNALSTACK_WEBHOOK_TYPE=test` and `SIGNALSTACK_TEST_TRANSPORT_ENABLED=true`. The authenticated `POST /signalstack/test-configuration` endpoint can then send the confirmed three-field test payload. This does not enable queued or production order transmission.
+
 ## CLI status
 
 This local repository must be linked before deployment:

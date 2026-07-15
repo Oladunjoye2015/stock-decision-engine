@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
 import pytest
+import httpx
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
@@ -13,6 +14,7 @@ from app.core.retry_policy import retry_delay
 from app.database.engine import Base
 from app.execution.signalstack_queue import SignalStackRequestQueue
 from app.execution.signalstack_schemas import SignalStackWebhookPayload, format_signalstack_payload
+from app.execution.signalstack_transport import SignalStackTestTransport
 from app.market_data.volume_validation import validate_previous_minute_volume
 
 
@@ -72,3 +74,18 @@ def test_confirmed_demo_payload_is_exact_and_strict():
         SignalStackWebhookPayload(symbol="AAPL", quantity=1, action="short")
     with pytest.raises(ValueError):
         SignalStackWebhookPayload(symbol="AAPL", quantity=1, action="buy", price=100)
+
+
+def test_transport_refuses_live_and_sends_only_explicit_test_webhook():
+    payload=SignalStackWebhookPayload(symbol="AAPL",quantity=1,action="buy")
+    live=Settings(signalstack_webhook_url="https://example.test/hook",signalstack_webhook_type="production",signalstack_test_transport_enabled=True)
+    with pytest.raises(SignalStackNotConfiguredError): SignalStackTestTransport(live).send(payload)
+
+    def handler(request):
+        assert request.url == "https://example.test/hook"
+        assert request.content == b'{"symbol":"AAPL","quantity":1,"action":"buy"}'
+        return httpx.Response(200,json={"ok":True})
+    settings=Settings(signalstack_webhook_url="https://example.test/hook",signalstack_webhook_type="test",signalstack_test_transport_enabled=True)
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        result=SignalStackTestTransport(settings,client).send(payload)
+    assert result["sent"] and result["test_only"] and result["status_code"]==200

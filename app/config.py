@@ -77,6 +77,8 @@ class Settings(BaseSettings):
     signalstack_api_key: str = ""
     signalstack_webhook_url: str = ""
     signalstack_account_reference: str = ""
+    signalstack_webhook_type: Literal["disabled", "test", "production"] = "disabled"
+    signalstack_test_transport_enabled: bool = False
 
     ttp_account_program: str = ""
     ttp_account_size_usd: float = 50_000
