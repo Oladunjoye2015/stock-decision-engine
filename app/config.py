@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     ai_review_enabled: bool = True
     external_ai_review_enabled: bool = False
     openai_api_key: str = ""
-    openai_review_model: str = "gpt-5.4-mini"
+    openai_review_model: str = "gpt-5.6-sol"
     openai_review_timeout_seconds: float = 12
     openai_review_min_confidence: float = .65
     neutral_higher_timeframe_allowed: bool = True
