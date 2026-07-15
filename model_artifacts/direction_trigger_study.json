@@ -1,0 +1,249 @@
+{
+  "protocol": "separate predeclared long/short trigger selection on train and validation; later period is exploratory because it was inspected by prior studies",
+  "label_configuration": {
+    "stop_atr": 2.5,
+    "reward_risk": 2,
+    "hold_bars": 16,
+    "cost_bps": 10
+  },
+  "train_end": "2025-03-04 17:00:00+00:00",
+  "validation_end": "2025-11-05 16:00:00+00:00",
+  "selected_triggers": {
+    "buy": "long_trend_continuation",
+    "sell": null
+  },
+  "combined_later_seen_period_exploratory": {
+    "rows": 241,
+    "resolved_rows": 170,
+    "timeout_rate": 0.2946058091286307,
+    "win_rate_resolved": 0.3176470588235294,
+    "mean_gross_r": 0.12502980769632624,
+    "mean_net_r": 0.06045026421326127
+  },
+  "triggers": {
+    "long_trend_continuation": {
+      "side": "buy",
+      "train": {
+        "rows": 1106,
+        "resolved_rows": 652,
+        "timeout_rate": 0.4104882459312839,
+        "win_rate_resolved": 0.2684049079754601,
+        "mean_gross_r": 0.07490911595174975,
+        "mean_net_r": 0.006340105515793522
+      },
+      "validation": {
+        "rows": 424,
+        "resolved_rows": 229,
+        "timeout_rate": 0.45990566037735847,
+        "win_rate_resolved": 0.29694323144104806,
+        "mean_gross_r": 0.23274329216971376,
+        "mean_net_r": 0.162456335405945
+      },
+      "selection_eligible": true,
+      "later_seen_period_exploratory": {
+        "rows": 241,
+        "resolved_rows": 170,
+        "timeout_rate": 0.2946058091286307,
+        "win_rate_resolved": 0.3176470588235294,
+        "mean_gross_r": 0.12502980769632624,
+        "mean_net_r": 0.06045026421326127
+      }
+    },
+    "long_breakout": {
+      "side": "buy",
+      "train": {
+        "rows": 572,
+        "resolved_rows": 350,
+        "timeout_rate": 0.3881118881118881,
+        "win_rate_resolved": 0.29428571428571426,
+        "mean_gross_r": 0.10888804081976325,
+        "mean_net_r": 0.030025030831454247
+      },
+      "validation": {
+        "rows": 225,
+        "resolved_rows": 133,
+        "timeout_rate": 0.4088888888888889,
+        "win_rate_resolved": 0.24812030075187969,
+        "mean_gross_r": 0.08030787014142635,
+        "mean_net_r": -0.0017129036182667475
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 89,
+        "resolved_rows": 59,
+        "timeout_rate": 0.33707865168539325,
+        "win_rate_resolved": 0.288135593220339,
+        "mean_gross_r": 0.20950612463799398,
+        "mean_net_r": 0.1295695455435142
+      }
+    },
+    "long_pullback": {
+      "side": "buy",
+      "train": {
+        "rows": 1757,
+        "resolved_rows": 1054,
+        "timeout_rate": 0.40011383039271486,
+        "win_rate_resolved": 0.26280834914611007,
+        "mean_gross_r": 0.057530623300091475,
+        "mean_net_r": -0.010201598643718321
+      },
+      "validation": {
+        "rows": 530,
+        "resolved_rows": 288,
+        "timeout_rate": 0.45660377358490567,
+        "win_rate_resolved": 0.3645833333333333,
+        "mean_gross_r": 0.4202800372418609,
+        "mean_net_r": 0.3522165222706902
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 265,
+        "resolved_rows": 198,
+        "timeout_rate": 0.2528301886792453,
+        "win_rate_resolved": 0.25757575757575757,
+        "mean_gross_r": -0.024547037829161733,
+        "mean_net_r": -0.09621410263860632
+      }
+    },
+    "long_demand_reversal": {
+      "side": "buy",
+      "train": {
+        "rows": 285,
+        "resolved_rows": 129,
+        "timeout_rate": 0.5473684210526316,
+        "win_rate_resolved": 0.31007751937984496,
+        "mean_gross_r": 0.1383656999319568,
+        "mean_net_r": 0.0910931954457873
+      },
+      "validation": {
+        "rows": 62,
+        "resolved_rows": 38,
+        "timeout_rate": 0.3870967741935484,
+        "win_rate_resolved": 0.3157894736842105,
+        "mean_gross_r": 0.20885233060055164,
+        "mean_net_r": 0.1565535161426731
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 44,
+        "resolved_rows": 21,
+        "timeout_rate": 0.5227272727272727,
+        "win_rate_resolved": 0.2857142857142857,
+        "mean_gross_r": 0.0368526637631647,
+        "mean_net_r": -0.004181563278636088
+      }
+    },
+    "short_trend_continuation": {
+      "side": "sell",
+      "train": {
+        "rows": 253,
+        "resolved_rows": 130,
+        "timeout_rate": 0.48616600790513836,
+        "win_rate_resolved": 0.17692307692307693,
+        "mean_gross_r": -0.019646592586825738,
+        "mean_net_r": -0.05394378580445043
+      },
+      "validation": {
+        "rows": 24,
+        "resolved_rows": 9,
+        "timeout_rate": 0.625,
+        "win_rate_resolved": 0.1111111111111111,
+        "mean_gross_r": -0.07499035211676575,
+        "mean_net_r": -0.11000358861405939
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 32,
+        "resolved_rows": 15,
+        "timeout_rate": 0.53125,
+        "win_rate_resolved": 0.2,
+        "mean_gross_r": 0.067793666948013,
+        "mean_net_r": 0.02283031091118149
+      }
+    },
+    "short_breakdown": {
+      "side": "sell",
+      "train": {
+        "rows": 142,
+        "resolved_rows": 86,
+        "timeout_rate": 0.39436619718309857,
+        "win_rate_resolved": 0.20930232558139536,
+        "mean_gross_r": -0.055491701005742015,
+        "mean_net_r": -0.09346492498365726
+      },
+      "validation": {
+        "rows": 12,
+        "resolved_rows": 5,
+        "timeout_rate": 0.5833333333333334,
+        "win_rate_resolved": 0.0,
+        "mean_gross_r": -0.3853848979052405,
+        "mean_net_r": -0.42009374085519885
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 28,
+        "resolved_rows": 16,
+        "timeout_rate": 0.42857142857142855,
+        "win_rate_resolved": 0.125,
+        "mean_gross_r": -0.09943695361703771,
+        "mean_net_r": -0.1459772829624966
+      }
+    },
+    "short_pullback": {
+      "side": "sell",
+      "train": {
+        "rows": 52,
+        "resolved_rows": 38,
+        "timeout_rate": 0.2692307692307692,
+        "win_rate_resolved": 0.15789473684210525,
+        "mean_gross_r": -0.21000375010771177,
+        "mean_net_r": -0.2569938485913784
+      },
+      "validation": {
+        "rows": 5,
+        "resolved_rows": 5,
+        "timeout_rate": 0.0,
+        "win_rate_resolved": 0.0,
+        "mean_gross_r": -1.0,
+        "mean_net_r": -1.0514826338777503
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 12,
+        "resolved_rows": 11,
+        "timeout_rate": 0.08333333333333333,
+        "win_rate_resolved": 0.09090909090909091,
+        "mean_gross_r": -0.6985702352196798,
+        "mean_net_r": -0.7492985050655255
+      }
+    },
+    "short_supply_reversal": {
+      "side": "sell",
+      "train": {
+        "rows": 0,
+        "resolved_rows": 0,
+        "timeout_rate": null,
+        "win_rate_resolved": null,
+        "mean_gross_r": null,
+        "mean_net_r": null
+      },
+      "validation": {
+        "rows": 0,
+        "resolved_rows": 0,
+        "timeout_rate": null,
+        "win_rate_resolved": null,
+        "mean_gross_r": null,
+        "mean_net_r": null
+      },
+      "selection_eligible": false,
+      "later_seen_period_exploratory": {
+        "rows": 0,
+        "resolved_rows": 0,
+        "timeout_rate": null,
+        "win_rate_resolved": null,
+        "mean_gross_r": null,
+        "mean_net_r": null
+      }
+    }
+  }
+}

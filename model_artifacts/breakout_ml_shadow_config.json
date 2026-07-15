@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "candidate_id": "breakout-hourly-catboost-shadow-v1",
+  "model_id": "breakout-hourly-catboost-v1",
+  "accept_signals_after_utc": "2026-07-14T19:00:00Z",
+  "probability_threshold": 0.60,
+  "minimum_fresh_scored_candidates": 100,
+  "comparison_required_against_unfiltered_shadow": true,
+  "research_only": true,
+  "promotion_requires_new_review": true,
+  "execution_enabled": false
+}

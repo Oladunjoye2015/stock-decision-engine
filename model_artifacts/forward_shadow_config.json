@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "candidate_id": "long-trend-continuation-shadow-v1",
+  "frozen_at_utc": "2026-07-14T19:30:00Z",
+  "accept_signals_after_utc": "2026-07-14T15:00:00Z",
+  "side": "buy",
+  "trigger_name": "long_trend_continuation",
+  "stop_atr": 2.5,
+  "reward_risk": 2.0,
+  "hold_bars": 16,
+  "cost_bps": 10.0,
+  "maximum_m15_age_minutes": 15,
+  "maximum_daily_age_days": 4,
+  "minimum_completed_trades": 100,
+  "promotion_requires_new_review": true,
+  "execution_enabled": false
+}

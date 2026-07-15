@@ -1,0 +1,206 @@
+{
+  "selection_rule": "positive 2:1 expected R and >=300 resolved rows in both train and validation; maximize validation expected R",
+  "train_end": "2025-03-07 20:00:00+00:00",
+  "validation_end": "2025-11-10 19:00:00+00:00",
+  "selected_gate": null,
+  "gates": {
+    "regular_session": {
+      "train": {
+        "rows": 22707,
+        "precision": 0.23191086449112608,
+        "expected_r_multiple_before_costs": -0.30426740652662176
+      },
+      "validation": {
+        "rows": 5198,
+        "precision": 0.2752981916121585,
+        "expected_r_multiple_before_costs": -0.17410542516352445
+      },
+      "test": {
+        "rows": 5040,
+        "precision": 0.22738095238095238,
+        "expected_r_multiple_before_costs": -0.31785714285714284
+      },
+      "selection_eligible": false
+    },
+    "h1_direction": {
+      "train": {
+        "rows": 12151,
+        "precision": 0.24039173730557156,
+        "expected_r_multiple_before_costs": -0.27882478808328526
+      },
+      "validation": {
+        "rows": 2198,
+        "precision": 0.2552320291173794,
+        "expected_r_multiple_before_costs": -0.23430391264786177
+      },
+      "test": {
+        "rows": 2701,
+        "precision": 0.2058496853017401,
+        "expected_r_multiple_before_costs": -0.38245094409477964
+      },
+      "selection_eligible": false
+    },
+    "m15_direction": {
+      "train": {
+        "rows": 8854,
+        "precision": 0.23503501242376326,
+        "expected_r_multiple_before_costs": -0.2948949627287102
+      },
+      "validation": {
+        "rows": 1771,
+        "precision": 0.25014116318464147,
+        "expected_r_multiple_before_costs": -0.24957651044607565
+      },
+      "test": {
+        "rows": 1930,
+        "precision": 0.24766839378238342,
+        "expected_r_multiple_before_costs": -0.2569948186528497
+      },
+      "selection_eligible": false
+    },
+    "daily_direction": {
+      "train": {
+        "rows": 11207,
+        "precision": 0.23833318461675737,
+        "expected_r_multiple_before_costs": -0.28500044614972786
+      },
+      "validation": {
+        "rows": 2424,
+        "precision": 0.2466996699669967,
+        "expected_r_multiple_before_costs": -0.2599009900990099
+      },
+      "test": {
+        "rows": 2453,
+        "precision": 0.2323685283326539,
+        "expected_r_multiple_before_costs": -0.3028944150020383
+      },
+      "selection_eligible": false
+    },
+    "h1_m15_direction": {
+      "train": {
+        "rows": 5099,
+        "precision": 0.23337909393998824,
+        "expected_r_multiple_before_costs": -0.2998627181800353
+      },
+      "validation": {
+        "rows": 889,
+        "precision": 0.23959505061867267,
+        "expected_r_multiple_before_costs": -0.281214848143982
+      },
+      "test": {
+        "rows": 1058,
+        "precision": 0.21455576559546313,
+        "expected_r_multiple_before_costs": -0.35633270321361055
+      },
+      "selection_eligible": false
+    },
+    "h1_daily_direction": {
+      "train": {
+        "rows": 5640,
+        "precision": 0.23457446808510637,
+        "expected_r_multiple_before_costs": -0.2962765957446809
+      },
+      "validation": {
+        "rows": 964,
+        "precision": 0.22614107883817428,
+        "expected_r_multiple_before_costs": -0.32157676348547715
+      },
+      "test": {
+        "rows": 1296,
+        "precision": 0.21296296296296297,
+        "expected_r_multiple_before_costs": -0.36111111111111116
+      },
+      "selection_eligible": false
+    },
+    "all_timeframes_direction": {
+      "train": {
+        "rows": 2202,
+        "precision": 0.21435059037238874,
+        "expected_r_multiple_before_costs": -0.35694822888283384
+      },
+      "validation": {
+        "rows": 360,
+        "precision": 0.2222222222222222,
+        "expected_r_multiple_before_costs": -0.33333333333333337
+      },
+      "test": {
+        "rows": 476,
+        "precision": 0.19327731092436976,
+        "expected_r_multiple_before_costs": -0.4201680672268907
+      },
+      "selection_eligible": false
+    },
+    "direction_liquidity": {
+      "train": {
+        "rows": 3603,
+        "precision": 0.24812656119900084,
+        "expected_r_multiple_before_costs": -0.25562031640299754
+      },
+      "validation": {
+        "rows": 679,
+        "precision": 0.24300441826215022,
+        "expected_r_multiple_before_costs": -0.2709867452135494
+      },
+      "test": {
+        "rows": 797,
+        "precision": 0.20702634880803011,
+        "expected_r_multiple_before_costs": -0.3789209535759097
+      },
+      "selection_eligible": false
+    },
+    "direction_no_opposing_zone": {
+      "train": {
+        "rows": 2340,
+        "precision": 0.24273504273504273,
+        "expected_r_multiple_before_costs": -0.27179487179487183
+      },
+      "validation": {
+        "rows": 391,
+        "precision": 0.2557544757033248,
+        "expected_r_multiple_before_costs": -0.23273657289002547
+      },
+      "test": {
+        "rows": 520,
+        "precision": 0.2519230769230769,
+        "expected_r_multiple_before_costs": -0.24423076923076925
+      },
+      "selection_eligible": false
+    },
+    "regular_direction": {
+      "train": {
+        "rows": 4773,
+        "precision": 0.22459668971296878,
+        "expected_r_multiple_before_costs": -0.3262099308610936
+      },
+      "validation": {
+        "rows": 886,
+        "precision": 0.24040632054176073,
+        "expected_r_multiple_before_costs": -0.2787810383747178
+      },
+      "test": {
+        "rows": 989,
+        "precision": 0.21941354903943378,
+        "expected_r_multiple_before_costs": -0.3417593528816987
+      },
+      "selection_eligible": false
+    },
+    "moderate_trend_direction": {
+      "train": {
+        "rows": 2821,
+        "precision": 0.21836228287841192,
+        "expected_r_multiple_before_costs": -0.3449131513647643
+      },
+      "validation": {
+        "rows": 509,
+        "precision": 0.2220039292730845,
+        "expected_r_multiple_before_costs": -0.3339882121807465
+      },
+      "test": {
+        "rows": 584,
+        "precision": 0.2054794520547945,
+        "expected_r_multiple_before_costs": -0.3835616438356164
+      },
+      "selection_eligible": false
+    }
+  }
+}

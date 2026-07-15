@@ -1,0 +1,1174 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "model_id": "baseline-h1-v1",
+      "model_type": "deterministic_baseline",
+      "model_version": "1.0.0",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "*"
+      ],
+      "feature_names": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "preprocessing": {
+        "numeric": "identity"
+      },
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {},
+      "training_metadata": {
+        "status": "safe deterministic bootstrap; replace with validated imported artifact",
+        "primary_timeframe_only": true
+      },
+      "development_only": true,
+      "enabled": false
+    },
+    {
+      "model_id": "ensemble-h1-v1",
+      "model_type": "sklearn_classifier",
+      "model_version": "20260714185823",
+      "artifact": "ensemble-h1-v1.joblib",
+      "sha256": "f10ba85936589e02d72b0a3852dac35dc0511dd786e7d8868f5585ff4f339a7d",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "body_pct",
+        "range_pct",
+        "close_vs_ema20",
+        "ema20_vs_ema50",
+        "rsi",
+        "atr_pct",
+        "vol_ratio",
+        "ret1",
+        "ret3",
+        "hour_sin",
+        "hour_cos"
+      ],
+      "preprocessing": {
+        "implemented_inside_artifact": true
+      },
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "numpy": "2.5.1",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.0",
+        "joblib": "1.5.3"
+      },
+      "training_metadata": {
+        "selected_candidate": "hist_gradient_boosting",
+        "rows": 81154,
+        "train_rows": 56797,
+        "validation_rows": 12177,
+        "test_rows": 12180,
+        "validation_metrics": {
+          "logistic": {
+            "log_loss": 0.6901932407522452,
+            "brier": 0.2484999049931746,
+            "balanced_accuracy": 0.5046838205033595,
+            "precision": 0.5230769230769231,
+            "roc_auc": 0.5537597946421006,
+            "signals": 455,
+            "mean_net_signal_return": 0.0016278831134501996
+          },
+          "random_forest": {
+            "log_loss": 0.6933329598921366,
+            "brier": 0.25005357826952906,
+            "balanced_accuracy": 0.5049100850755878,
+            "precision": 0.4767005891805035,
+            "roc_auc": 0.5286456214195248,
+            "signals": 1867,
+            "mean_net_signal_return": 0.0008936910718067827
+          },
+          "hist_gradient_boosting": {
+            "log_loss": 0.6859920502044302,
+            "brier": 0.246492175953263,
+            "balanced_accuracy": 0.5044182256330074,
+            "precision": 0.6289308176100629,
+            "roc_auc": 0.5455521667139951,
+            "signals": 159,
+            "mean_net_signal_return": 0.007295272062232867
+          },
+          "soft_voting_ensemble": {
+            "log_loss": 0.6871142163520081,
+            "brier": 0.2470204047181002,
+            "balanced_accuracy": 0.5010951275867814,
+            "precision": 0.4813664596273292,
+            "roc_auc": 0.5429949373301964,
+            "signals": 322,
+            "mean_net_signal_return": -0.0007017953909302628
+          }
+        },
+        "final_test_metrics": {
+          "log_loss": 0.6846916792756536,
+          "brier": 0.24579367372424338,
+          "balanced_accuracy": 0.5006976867155054,
+          "precision": 0.46774193548387094,
+          "roc_auc": 0.5260001628283242,
+          "signals": 124,
+          "mean_net_signal_return": -0.00036869695132237917
+        },
+        "production_eligibility_rule": "at least 100 test signals, positive mean net signal return, balanced accuracy >= 0.51, ROC AUC >= 0.52",
+        "production_eligible": false,
+        "cost_bps": 10.0,
+        "label_horizon_bars": 3,
+        "selection_rule": "ensemble only when validation log-loss improves by configured minimum without material balanced-accuracy loss",
+        "trained_at_utc": "2026-07-14T18:58:23.379959+00:00"
+      },
+      "enabled": false
+    },
+    {
+      "model_id": "catboost-h1-backfill-v1",
+      "model_type": "catboost_classifier",
+      "model_version": "20260714190931",
+      "artifact": "catboost-h1-backfill-v1.cbm",
+      "sha256": "a4c1fdaa87bfc8cc8a36046e13797a9291ba400951c745d10a2fcf855c843454",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "symbol",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "ema20",
+        "ema50",
+        "ema200",
+        "ema_fast",
+        "ema_slow",
+        "rsi",
+        "macd_hist",
+        "di_plus",
+        "di_minus",
+        "adx",
+        "atr",
+        "atr_pct",
+        "bb_width",
+        "vwap",
+        "dist_vwap",
+        "ret1",
+        "ret3",
+        "ret5",
+        "dist_ema20",
+        "dist_ema50",
+        "dist_ema200",
+        "dist_ema_fast",
+        "dist_ema_slow",
+        "vol_ratio",
+        "recent_high",
+        "recent_low",
+        "dist_recent_high",
+        "dist_recent_low",
+        "fib382",
+        "dist_fib382",
+        "fib500",
+        "dist_fib500",
+        "fib618",
+        "dist_fib618",
+        "supply_top",
+        "supply_bot",
+        "demand_bot",
+        "demand_top",
+        "dist_supply",
+        "dist_demand",
+        "in_supply",
+        "in_demand",
+        "trend_up",
+        "trend_down",
+        "side_hint",
+        "stop_hint",
+        "take_profit_hint",
+        "timeframe",
+        "trigger_mode",
+        "hour_utc",
+        "dow_utc",
+        "month_utc"
+      ],
+      "preprocessing": {
+        "categorical": [
+          "symbol",
+          "timeframe",
+          "side_hint",
+          "trigger_mode"
+        ],
+        "numeric_missing": 0
+      },
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "catboost": "1.2.10",
+        "pandas": "2.3.3",
+        "numpy": "2.5.1"
+      },
+      "training_metadata": {
+        "method": "independent adaptation of tv-ml-trading-bot backfill feature + conservative next-bar barrier labeling",
+        "max_hold_bars": 8,
+        "stop_atr_multiple": 2,
+        "reward_risk": 2,
+        "rows": 35640,
+        "train_rows": 24794,
+        "validation_rows": 5246,
+        "test_rows": 5600,
+        "validation_threshold_table": {
+          "0.50": {
+            "signals": 1290,
+            "precision": 0.34651162790697676,
+            "expected_r_multiple": 0.03953488372093039
+          },
+          "0.55": {
+            "signals": 401,
+            "precision": 0.3740648379052369,
+            "expected_r_multiple": 0.12219451371571077
+          },
+          "0.60": {
+            "signals": 46,
+            "precision": 0.45652173913043476,
+            "expected_r_multiple": 0.3695652173913042
+          },
+          "0.65": {
+            "signals": 2,
+            "precision": 0.5,
+            "expected_r_multiple": 0.5
+          },
+          "0.70": {
+            "signals": 0,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          },
+          "0.75": {
+            "signals": 0,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          },
+          "0.80": {
+            "signals": 0,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          }
+        },
+        "final_test_metrics": {
+          "log_loss": 0.6562618858886021,
+          "roc_auc": 0.5395911406159023,
+          "balanced_accuracy": 0.5121942609309597,
+          "selected_probability_threshold": 0.55,
+          "precision": 0.2544757033248082,
+          "signals": 782,
+          "expected_r_multiple_before_costs": -0.23657289002557547,
+          "wins": 1255,
+          "losses": 4345
+        },
+        "production_eligible": false,
+        "current_bar_excluded_from_label": true
+      },
+      "enabled": false
+    },
+    {
+      "model_id": "catboost-h1-mtf-backfill-v2",
+      "model_type": "catboost_classifier",
+      "model_version": "20260714192058",
+      "artifact": "catboost-h1-mtf-backfill-v2.cbm",
+      "sha256": "2f0fea3966c5bcc55deba39b4570e35f1b17de55de2d0cf87253666d23ef02dd",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "symbol",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "ema20",
+        "ema50",
+        "ema200",
+        "ema_fast",
+        "ema_slow",
+        "rsi",
+        "macd_hist",
+        "di_plus",
+        "di_minus",
+        "adx",
+        "atr",
+        "atr_pct",
+        "bb_width",
+        "vwap",
+        "dist_vwap",
+        "ret1",
+        "ret3",
+        "ret5",
+        "dist_ema20",
+        "dist_ema50",
+        "dist_ema200",
+        "dist_ema_fast",
+        "dist_ema_slow",
+        "vol_ratio",
+        "recent_high",
+        "recent_low",
+        "dist_recent_high",
+        "dist_recent_low",
+        "fib382",
+        "dist_fib382",
+        "fib500",
+        "dist_fib500",
+        "fib618",
+        "dist_fib618",
+        "supply_top",
+        "supply_bot",
+        "demand_bot",
+        "demand_top",
+        "dist_supply",
+        "dist_demand",
+        "in_supply",
+        "in_demand",
+        "trend_up",
+        "trend_down",
+        "side_hint",
+        "stop_hint",
+        "take_profit_hint",
+        "timeframe",
+        "trigger_mode",
+        "hour_utc",
+        "dow_utc",
+        "month_utc",
+        "m15_rsi",
+        "m15_macd_hist",
+        "m15_ret1",
+        "m15_atr_pct",
+        "m15_trend_up",
+        "m15_trend_down",
+        "m15_ret4",
+        "m15_vol_ratio",
+        "d1_rsi",
+        "d1_macd_hist",
+        "d1_ret1",
+        "d1_atr_pct",
+        "d1_trend_up",
+        "d1_trend_down",
+        "d1_ret5",
+        "d1_dist_ema50",
+        "m15_age_minutes",
+        "d1_age_days"
+      ],
+      "preprocessing": {
+        "categorical": [
+          "symbol",
+          "timeframe",
+          "side_hint",
+          "trigger_mode"
+        ],
+        "numeric_missing": 0
+      },
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "catboost": "1.2.10",
+        "pandas": "2.3.3",
+        "numpy": "2.5.1"
+      },
+      "training_metadata": {
+        "method": "independent multi-timeframe adaptation of backfill features with conservative next-bar barrier labeling",
+        "context_timeframes": [
+          "15Min",
+          "1Day"
+        ],
+        "context_availability": {
+          "15Min": "bar timestamp + 15 minutes",
+          "1Day": "bar timestamp + 1 calendar day"
+        },
+        "max_hold_bars": 8,
+        "stop_atr_multiple": 2,
+        "reward_risk": 2,
+        "rows": 35640,
+        "train_rows": 24794,
+        "validation_rows": 5246,
+        "test_rows": 5600,
+        "validation_threshold_table": {
+          "0.50": {
+            "signals": 1270,
+            "precision": 0.33307086614173226,
+            "expected_r_multiple": -0.0007874015748032814
+          },
+          "0.55": {
+            "signals": 443,
+            "precision": 0.37697516930022573,
+            "expected_r_multiple": 0.13092550790067725
+          },
+          "0.60": {
+            "signals": 83,
+            "precision": 0.4457831325301205,
+            "expected_r_multiple": 0.3373493975903614
+          },
+          "0.65": {
+            "signals": 3,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          },
+          "0.70": {
+            "signals": 0,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          },
+          "0.75": {
+            "signals": 0,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          },
+          "0.80": {
+            "signals": 0,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          }
+        },
+        "walk_forward_fixed_threshold": 0.55,
+        "walk_forward_metrics": [
+          {
+            "train_end": "2024-07-05 18:00:00+00:00",
+            "test_end": "2025-03-07 20:00:00+00:00",
+            "train_rows": 19406,
+            "test_rows": 5398,
+            "roc_auc": 0.5246936365885526,
+            "signals": 1061,
+            "precision": 0.27992459943449577,
+            "expected_r_multiple_before_costs": -0.1602262016965127
+          },
+          {
+            "train_end": "2025-03-07 20:00:00+00:00",
+            "test_end": "2025-11-10 19:00:00+00:00",
+            "train_rows": 24794,
+            "test_rows": 5251,
+            "roc_auc": 0.5610907527032591,
+            "signals": 586,
+            "precision": 0.36006825938566556,
+            "expected_r_multiple_before_costs": 0.08020477815699678
+          },
+          {
+            "train_end": "2025-11-10 19:00:00+00:00",
+            "test_end": "2026-07-13 19:00:00+00:00",
+            "train_rows": 30040,
+            "test_rows": 5600,
+            "roc_auc": 0.5122526694144022,
+            "signals": 967,
+            "precision": 0.2295760082730093,
+            "expected_r_multiple_before_costs": -0.31127197518097205
+          }
+        ],
+        "stable_walk_forward": false,
+        "final_test_metrics": {
+          "log_loss": 0.6520549567896067,
+          "roc_auc": 0.5272292647591452,
+          "balanced_accuracy": 0.5122116826136192,
+          "selected_probability_threshold": 0.55,
+          "precision": 0.25523560209424084,
+          "signals": 764,
+          "expected_r_multiple_before_costs": -0.23429319371727741,
+          "wins": 1255,
+          "losses": 4345,
+          "diagnostics": {
+            "symbol": {
+              "AAPL": {
+                "rows": 392,
+                "signals": 50,
+                "precision": 0.36,
+                "expected_r_multiple_before_costs": 0.08000000000000007
+              },
+              "AMD": {
+                "rows": 489,
+                "signals": 71,
+                "precision": 0.323943661971831,
+                "expected_r_multiple_before_costs": -0.028169014084507005
+              },
+              "AMZN": {
+                "rows": 457,
+                "signals": 68,
+                "precision": 0.20588235294117646,
+                "expected_r_multiple_before_costs": -0.38235294117647056
+              },
+              "AVGO": {
+                "rows": 482,
+                "signals": 103,
+                "precision": 0.3106796116504854,
+                "expected_r_multiple_before_costs": -0.06796116504854377
+              },
+              "BABA": {
+                "rows": 534,
+                "signals": 96,
+                "precision": 0.20833333333333334,
+                "expected_r_multiple_before_costs": -0.375
+              },
+              "GOOG": {
+                "rows": 456,
+                "signals": 76,
+                "precision": 0.27631578947368424,
+                "expected_r_multiple_before_costs": -0.17105263157894735
+              },
+              "META": {
+                "rows": 511,
+                "signals": 71,
+                "precision": 0.18309859154929578,
+                "expected_r_multiple_before_costs": -0.45070422535211263
+              },
+              "MSFT": {
+                "rows": 473,
+                "signals": 70,
+                "precision": 0.2571428571428571,
+                "expected_r_multiple_before_costs": -0.22857142857142865
+              },
+              "NVDA": {
+                "rows": 423,
+                "signals": 78,
+                "precision": 0.15384615384615385,
+                "expected_r_multiple_before_costs": -0.5384615384615384
+              },
+              "QQQ": {
+                "rows": 454,
+                "signals": 2,
+                "precision": 0.5,
+                "expected_r_multiple_before_costs": 0.5
+              },
+              "SPY": {
+                "rows": 443,
+                "signals": 6,
+                "precision": 0.6666666666666666,
+                "expected_r_multiple_before_costs": 1.0
+              },
+              "TSLA": {
+                "rows": 486,
+                "signals": 73,
+                "precision": 0.2602739726027397,
+                "expected_r_multiple_before_costs": -0.2191780821917808
+              }
+            },
+            "side_hint": {
+              "buy": {
+                "rows": 4650,
+                "signals": 595,
+                "precision": 0.24705882352941178,
+                "expected_r_multiple_before_costs": -0.2588235294117647
+              },
+              "sell": {
+                "rows": 950,
+                "signals": 169,
+                "precision": 0.28402366863905326,
+                "expected_r_multiple_before_costs": -0.14792899408284022
+              }
+            },
+            "year": {
+              "2025": {
+                "rows": 1005,
+                "signals": 172,
+                "precision": 0.20348837209302326,
+                "expected_r_multiple_before_costs": -0.38953488372093026
+              },
+              "2026": {
+                "rows": 4595,
+                "signals": 592,
+                "precision": 0.2702702702702703,
+                "expected_r_multiple_before_costs": -0.18918918918918914
+              }
+            },
+            "regime": {
+              "high_vol": {
+                "rows": 1326,
+                "signals": 218,
+                "precision": 0.23394495412844038,
+                "expected_r_multiple_before_costs": -0.2981651376146789
+              },
+              "range": {
+                "rows": 1491,
+                "signals": 234,
+                "precision": 0.31196581196581197,
+                "expected_r_multiple_before_costs": -0.0641025641025641
+              },
+              "trend": {
+                "rows": 2783,
+                "signals": 312,
+                "precision": 0.22756410256410256,
+                "expected_r_multiple_before_costs": -0.3173076923076923
+              }
+            }
+          }
+        },
+        "production_eligible": false,
+        "current_bar_excluded_from_label": true
+      },
+      "enabled": false
+    },
+    {
+      "model_id": "breakout-confidence-v1",
+      "model_type": "calibrated_breakout_confidence_classifier",
+      "model_version": "20260714204549",
+      "artifact": "breakout-confidence-v1.joblib",
+      "sha256": "e6d5330416aab3860da832ea240beae0930b12760710d9c70420a6e68b7b4f84",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "breakout_pct",
+        "vol_ratio",
+        "adx",
+        "atr_pct",
+        "rsi",
+        "macd_hist_pct",
+        "di_spread",
+        "ret1",
+        "ret3",
+        "ret5",
+        "ret20",
+        "dist_ema20",
+        "dist_ema50",
+        "dist_ema200",
+        "dist_vwap",
+        "bb_width",
+        "hour_sin",
+        "hour_cos",
+        "dow",
+        "relative_strength20",
+        "symbol_AAPL",
+        "symbol_AMD",
+        "symbol_AMZN",
+        "symbol_AVGO",
+        "symbol_BABA",
+        "symbol_GOOG",
+        "symbol_META",
+        "symbol_MSFT",
+        "symbol_NVDA",
+        "symbol_QQQ",
+        "symbol_SPY",
+        "symbol_TSLA"
+      ],
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "scikit-learn": "1.9.0",
+        "catboost": "1.2.10",
+        "xgboost": "3.3.0",
+        "pandas": "2.3.3",
+        "numpy": "2.5.1"
+      },
+      "training_metadata": {
+        "purpose": "confidence gate for deterministic breakout candidates only",
+        "rows": 1574,
+        "train_rows": 1134,
+        "validation_rows": 236,
+        "test_rows": 204,
+        "candidate_features_from_signal_bar_only": true,
+        "entry_at_next_bar_open": true,
+        "validation_models": {
+          "logistic": {
+            "log_loss": 0.6990249758000948,
+            "brier": 0.2527767289347932,
+            "roc_auc": 0.5308899769585254
+          },
+          "random_forest": {
+            "log_loss": 0.695784629844747,
+            "brier": 0.25131492689381424,
+            "roc_auc": 0.484375
+          },
+          "catboost": {
+            "log_loss": 0.6891668852050469,
+            "brier": 0.24801521190768205,
+            "roc_auc": 0.5465149769585254
+          },
+          "xgboost": {
+            "log_loss": 0.6907988525601115,
+            "brier": 0.24882954654166195,
+            "roc_auc": 0.5245535714285714
+          }
+        },
+        "selected_model": "catboost",
+        "validation_threshold_table": {
+          "0.50": {
+            "signals": 87,
+            "mean_net_return": 0.0028697890157694957,
+            "win_rate": 0.5287356321839081,
+            "profit_factor": 1.2031978104732253
+          },
+          "0.55": {
+            "signals": 1,
+            "mean_net_return": 0.03673285928308756,
+            "win_rate": 1.0,
+            "profit_factor": null
+          },
+          "0.60": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "0.65": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "0.70": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          }
+        },
+        "final_test": {
+          "probability": {
+            "log_loss": 0.6988353869752111,
+            "brier": 0.25283050298902987,
+            "roc_auc": 0.45499999999999996
+          },
+          "all_breakouts": {
+            "signals": 204,
+            "mean_net_return": 0.002654590952942726,
+            "win_rate": 0.49019607843137253,
+            "profit_factor": 1.2478569670131068
+          },
+          "confidence_gated": {
+            "signals": 66,
+            "mean_net_return": -0.00032470904932095353,
+            "win_rate": 0.45454545454545453,
+            "profit_factor": 0.9733882104302211
+          },
+          "threshold": 0.5
+        },
+        "production_eligible": false,
+        "test_period_previously_seen_for_strategy_research": true
+      },
+      "enabled": false
+    },
+    {
+      "model_id": "breakout-confidence-v2",
+      "model_type": "calibrated_breakout_confidence_classifier",
+      "model_version": "20260714205301",
+      "artifact": "breakout-confidence-v2.joblib",
+      "sha256": "d57fe259d586bd744889b9b649533b83153c5a031e3226a5a8d60e9013c4cfbc",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "breakout_pct",
+        "breakout_atr",
+        "vol_ratio",
+        "volume_acceleration",
+        "adx",
+        "adx_change3",
+        "atr_pct",
+        "atr_percentile",
+        "rsi",
+        "macd_hist_pct",
+        "di_spread",
+        "ret1",
+        "ret3",
+        "ret5",
+        "ret20",
+        "gap_pct",
+        "body_pct",
+        "range_pct",
+        "close_location",
+        "dist_ema20",
+        "dist_ema50",
+        "dist_ema200",
+        "dist_vwap",
+        "bb_width",
+        "hour_sin",
+        "hour_cos",
+        "dow",
+        "spy_ret20",
+        "qqq_ret20",
+        "relative_strength20",
+        "market_breadth",
+        "market_trend_breadth",
+        "m15_rsi",
+        "m15_macd_hist_pct",
+        "m15_ret4",
+        "m15_vol_ratio",
+        "m15_atr_pct",
+        "m15_trend_up",
+        "d1_rsi",
+        "d1_macd_hist_pct",
+        "d1_ret5",
+        "d1_atr_pct",
+        "d1_trend_up",
+        "d1_dist_ema50",
+        "symbol_AAPL",
+        "symbol_AMD",
+        "symbol_AMZN",
+        "symbol_AVGO",
+        "symbol_BABA",
+        "symbol_GOOG",
+        "symbol_META",
+        "symbol_MSFT",
+        "symbol_NVDA",
+        "symbol_QQQ",
+        "symbol_SPY",
+        "symbol_TSLA"
+      ],
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "scikit-learn": "1.9.0",
+        "catboost": "1.2.10",
+        "xgboost": "3.3.0",
+        "pandas": "2.3.3",
+        "numpy": "2.5.1"
+      },
+      "training_metadata": {
+        "purpose": "confidence gate for deterministic breakout candidates only",
+        "rows": 1574,
+        "train_rows": 1134,
+        "validation_rows": 236,
+        "test_rows": 204,
+        "candidate_features_from_signal_bar_only": true,
+        "entry_at_next_bar_open": true,
+        "validation_models": {
+          "logistic": {
+            "log_loss": 0.693525503089512,
+            "brier": 0.25019873589623515,
+            "roc_auc": 0.5090005760368663
+          },
+          "random_forest": {
+            "log_loss": 0.7041333672094711,
+            "brier": 0.25540785937915683,
+            "roc_auc": 0.4695420506912442
+          },
+          "catboost": {
+            "log_loss": 0.7036535071911002,
+            "brier": 0.255189761876053,
+            "roc_auc": 0.46277361751152074
+          },
+          "xgboost": {
+            "log_loss": 0.70080610573447,
+            "brier": 0.2537957112539489,
+            "roc_auc": 0.4674539170506913
+          }
+        },
+        "selected_model": "logistic",
+        "validation_threshold_table": {
+          "0.50": {
+            "signals": 83,
+            "mean_net_return": -0.005205395025521036,
+            "win_rate": 0.46987951807228917,
+            "profit_factor": 0.6758335138672347
+          },
+          "0.55": {
+            "signals": 16,
+            "mean_net_return": -0.003722733116795142,
+            "win_rate": 0.5,
+            "profit_factor": 0.8000878163331793
+          },
+          "0.60": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "0.65": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "0.70": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          }
+        },
+        "final_test": {
+          "probability": {
+            "log_loss": 0.6957545410227374,
+            "brier": 0.2512901320747323,
+            "roc_auc": 0.5046153846153846
+          },
+          "all_breakouts": {
+            "signals": 204,
+            "mean_net_return": 0.002654590952942726,
+            "win_rate": 0.49019607843137253,
+            "profit_factor": 1.2478569670131068
+          },
+          "confidence_gated": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "threshold": 0.6
+        },
+        "production_eligible": false,
+        "test_period_previously_seen_for_strategy_research": true
+      },
+      "enabled": false
+    },
+    {
+      "model_id": "breakout-hourly-catboost-v1",
+      "model_type": "calibrated_breakout_confidence_classifier",
+      "model_version": "20260714210508",
+      "artifact": "breakout-hourly-catboost-v1.joblib",
+      "sha256": "8d0c706f12703adceb2208591741ba1db04dd44d46904d146e4b2dcf35383867",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "breakout_pct",
+        "breakout_atr",
+        "vol_ratio",
+        "volume_acceleration",
+        "adx",
+        "adx_change3",
+        "atr_pct",
+        "atr_percentile",
+        "rsi",
+        "macd_hist_pct",
+        "di_spread",
+        "ret1",
+        "ret3",
+        "ret5",
+        "ret20",
+        "gap_pct",
+        "body_pct",
+        "range_pct",
+        "close_location",
+        "dist_ema20",
+        "dist_ema50",
+        "dist_ema200",
+        "dist_vwap",
+        "bb_width",
+        "hour_sin",
+        "hour_cos",
+        "dow",
+        "spy_ret20",
+        "qqq_ret20",
+        "relative_strength20",
+        "market_breadth",
+        "market_trend_breadth",
+        "symbol_AAPL",
+        "symbol_AMD",
+        "symbol_AMZN",
+        "symbol_AVGO",
+        "symbol_BABA",
+        "symbol_GOOG",
+        "symbol_META",
+        "symbol_MSFT",
+        "symbol_NVDA",
+        "symbol_QQQ",
+        "symbol_SPY",
+        "symbol_TSLA"
+      ],
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "scikit-learn": "1.9.0",
+        "catboost": "1.2.10",
+        "xgboost": "3.3.0",
+        "pandas": "2.3.3",
+        "numpy": "2.5.1"
+      },
+      "training_metadata": {
+        "purpose": "confidence gate for deterministic breakout candidates only",
+        "raw_feature_names": [
+          "breakout_pct",
+          "breakout_atr",
+          "vol_ratio",
+          "volume_acceleration",
+          "adx",
+          "adx_change3",
+          "atr_pct",
+          "atr_percentile",
+          "rsi",
+          "macd_hist_pct",
+          "di_spread",
+          "ret1",
+          "ret3",
+          "ret5",
+          "ret20",
+          "gap_pct",
+          "body_pct",
+          "range_pct",
+          "close_location",
+          "dist_ema20",
+          "dist_ema50",
+          "dist_ema200",
+          "dist_vwap",
+          "bb_width",
+          "hour_sin",
+          "hour_cos",
+          "dow",
+          "spy_ret20",
+          "qqq_ret20",
+          "relative_strength20",
+          "market_breadth",
+          "market_trend_breadth"
+        ],
+        "rows": 1574,
+        "train_rows": 1134,
+        "validation_rows": 236,
+        "test_rows": 204,
+        "candidate_features_from_signal_bar_only": true,
+        "entry_at_next_bar_open": true,
+        "validation_models": {
+          "catboost": {
+            "log_loss": 0.7007353775642137,
+            "brier": 0.25375620718759057,
+            "roc_auc": 0.4682459677419355
+          }
+        },
+        "selected_model": "catboost",
+        "validation_threshold_table": {
+          "0.50": {
+            "signals": 85,
+            "mean_net_return": -0.004983016754209936,
+            "win_rate": 0.4235294117647059,
+            "profit_factor": 0.6930049046913438
+          },
+          "0.55": {
+            "signals": 13,
+            "mean_net_return": -0.0129280512616183,
+            "win_rate": 0.38461538461538464,
+            "profit_factor": 0.3667333809207786
+          },
+          "0.60": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "0.65": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "0.70": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          }
+        },
+        "final_test": {
+          "probability": {
+            "log_loss": 0.6990280040720107,
+            "brier": 0.2529138243657974,
+            "roc_auc": 0.4890384615384616
+          },
+          "all_breakouts": {
+            "signals": 204,
+            "mean_net_return": 0.002654590952942726,
+            "win_rate": 0.49019607843137253,
+            "profit_factor": 1.2478569670131068
+          },
+          "confidence_gated": {
+            "signals": 0,
+            "mean_net_return": null,
+            "win_rate": null,
+            "profit_factor": null
+          },
+          "threshold": 0.6
+        },
+        "production_eligible": false,
+        "test_period_previously_seen_for_strategy_research": true
+      },
+      "enabled": false
+    }
+  ]
+}

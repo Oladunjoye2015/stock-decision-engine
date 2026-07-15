@@ -1,0 +1,1261 @@
+{
+  "selection_protocol": "48 predeclared configurations; positive mean net R in train and validation, >=1000 rows each, train-validation difference <=0.15R; final read only for selected configuration",
+  "cost_bps": 10,
+  "train_end": "2025-03-04 17:00:00+00:00",
+  "validation_end": "2025-11-05 16:00:00+00:00",
+  "selected_configuration": {
+    "configuration": "stop_2.5_reward_2_hold_16",
+    "stop_atr": 2.5,
+    "reward_risk": 2,
+    "hold_bars": 16,
+    "train": {
+      "rows": 56845,
+      "resolved_rows": 31547,
+      "timeout_rate": 0.4450347436010203,
+      "win_rate_resolved": 0.2679811075538086,
+      "mean_gross_r": 0.0950807063397389,
+      "mean_net_r": 0.044950342242837275
+    },
+    "validation": {
+      "rows": 12201,
+      "resolved_rows": 6556,
+      "timeout_rate": 0.46266699450864684,
+      "win_rate_resolved": 0.2968273337400854,
+      "mean_gross_r": 0.16059048732498157,
+      "mean_net_r": 0.10547001890199834
+    },
+    "selection_eligible": true
+  },
+  "selected_final_test": {
+    "overall": {
+      "rows": 12000,
+      "resolved_rows": 7177,
+      "timeout_rate": 0.40191666666666664,
+      "win_rate_resolved": 0.2435558032604152,
+      "mean_gross_r": 0.01316311763096033,
+      "mean_net_r": -0.03832407110617821
+    },
+    "by_symbol": {
+      "AAPL": {
+        "rows": 999,
+        "resolved_rows": 497,
+        "timeout_rate": 0.5025025025025025,
+        "win_rate_resolved": 0.2857142857142857,
+        "mean_gross_r": 0.14470290665398483,
+        "mean_net_r": 0.08577921224422849
+      },
+      "AMD": {
+        "rows": 1001,
+        "resolved_rows": 616,
+        "timeout_rate": 0.38461538461538464,
+        "win_rate_resolved": 0.3538961038961039,
+        "mean_gross_r": 0.21339716587765326,
+        "mean_net_r": 0.18680288512517265
+      },
+      "AMZN": {
+        "rows": 999,
+        "resolved_rows": 603,
+        "timeout_rate": 0.3963963963963964,
+        "win_rate_resolved": 0.17412935323383086,
+        "mean_gross_r": -0.10566887500361405,
+        "mean_net_r": -0.15361524831873474
+      },
+      "AVGO": {
+        "rows": 999,
+        "resolved_rows": 598,
+        "timeout_rate": 0.4014014014014014,
+        "win_rate_resolved": 0.26588628762541805,
+        "mean_gross_r": 0.03715250511989092,
+        "mean_net_r": 0.004535569211216557
+      },
+      "BABA": {
+        "rows": 1000,
+        "resolved_rows": 695,
+        "timeout_rate": 0.305,
+        "win_rate_resolved": 0.2805755395683453,
+        "mean_gross_r": -0.012794653973991417,
+        "mean_net_r": -0.056222464725553506
+      },
+      "GOOG": {
+        "rows": 1000,
+        "resolved_rows": 611,
+        "timeout_rate": 0.389,
+        "win_rate_resolved": 0.3191489361702128,
+        "mean_gross_r": 0.14614407009274696,
+        "mean_net_r": 0.09529405453167111
+      },
+      "META": {
+        "rows": 1000,
+        "resolved_rows": 646,
+        "timeout_rate": 0.354,
+        "win_rate_resolved": 0.22910216718266255,
+        "mean_gross_r": -0.05968850148467851,
+        "mean_net_r": -0.10537572227777178
+      },
+      "MSFT": {
+        "rows": 1000,
+        "resolved_rows": 576,
+        "timeout_rate": 0.424,
+        "win_rate_resolved": 0.2204861111111111,
+        "mean_gross_r": -0.008696300594243339,
+        "mean_net_r": -0.06356769228510413
+      },
+      "NVDA": {
+        "rows": 1001,
+        "resolved_rows": 550,
+        "timeout_rate": 0.45054945054945056,
+        "win_rate_resolved": 0.19454545454545455,
+        "mean_gross_r": -0.03887249014605062,
+        "mean_net_r": -0.0774795807833458
+      },
+      "QQQ": {
+        "rows": 1001,
+        "resolved_rows": 598,
+        "timeout_rate": 0.4025974025974026,
+        "win_rate_resolved": 0.205685618729097,
+        "mean_gross_r": -0.002216034039075017,
+        "mean_net_r": -0.07954395307874738
+      },
+      "SPY": {
+        "rows": 1001,
+        "resolved_rows": 571,
+        "timeout_rate": 0.42957042957042957,
+        "win_rate_resolved": 0.18213660245183888,
+        "mean_gross_r": -0.03563280494051484,
+        "mean_net_r": -0.14367591817622374
+      },
+      "TSLA": {
+        "rows": 999,
+        "resolved_rows": 616,
+        "timeout_rate": 0.3833833833833834,
+        "win_rate_resolved": 0.20292207792207792,
+        "mean_gross_r": -0.12005011540597196,
+        "mean_net_r": -0.15292232096185823
+      }
+    },
+    "by_side": {
+      "buy": {
+        "rows": 9961,
+        "resolved_rows": 5962,
+        "timeout_rate": 0.4014657162935448,
+        "win_rate_resolved": 0.24857430392485744,
+        "mean_gross_r": 0.02582033872549278,
+        "mean_net_r": -0.026984189209027742
+      },
+      "sell": {
+        "rows": 2039,
+        "resolved_rows": 1215,
+        "timeout_rate": 0.4041196665031878,
+        "win_rate_resolved": 0.2189300411522634,
+        "mean_gross_r": -0.04867041808391846,
+        "mean_net_r": -0.09372209149730909
+      }
+    }
+  },
+  "candidates": [
+    {
+      "configuration": "stop_1_reward_1_hold_4",
+      "stop_atr": 1,
+      "reward_risk": 1,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 44578,
+        "timeout_rate": 0.2157973436537954,
+        "win_rate_resolved": 0.5062811252187177,
+        "mean_gross_r": 0.0218175106521405,
+        "mean_net_r": -0.10350839959011356
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 9302,
+        "timeout_rate": 0.23760347512498975,
+        "win_rate_resolved": 0.5106428725005375,
+        "mean_gross_r": 0.027687831626412595,
+        "mean_net_r": -0.11011333943104548
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1_hold_8",
+      "stop_atr": 1,
+      "reward_risk": 1,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 54547,
+        "timeout_rate": 0.040425719060603396,
+        "win_rate_resolved": 0.5118154985608742,
+        "mean_gross_r": 0.024960664410139596,
+        "mean_net_r": -0.10036524583211445
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11685,
+        "timeout_rate": 0.04229161544135727,
+        "win_rate_resolved": 0.5145057766367137,
+        "mean_gross_r": 0.030324935492732942,
+        "mean_net_r": -0.10747623556472514
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1_hold_12",
+      "stop_atr": 1,
+      "reward_risk": 1,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 56263,
+        "timeout_rate": 0.010238367490544463,
+        "win_rate_resolved": 0.5124504558946377,
+        "mean_gross_r": 0.02505873612527429,
+        "mean_net_r": -0.10026717411697977
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 12077,
+        "timeout_rate": 0.010163101385132366,
+        "win_rate_resolved": 0.5130413182081642,
+        "mean_gross_r": 0.026062214172504428,
+        "mean_net_r": -0.11173895688495364
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1_hold_16",
+      "stop_atr": 1,
+      "reward_risk": 1,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 56520,
+        "timeout_rate": 0.005717301433723282,
+        "win_rate_resolved": 0.5121726822363765,
+        "mean_gross_r": 0.024495797289018004,
+        "mean_net_r": -0.10083011295323606
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 12156,
+        "timeout_rate": 0.003688222276862552,
+        "win_rate_resolved": 0.5115992102665351,
+        "mean_gross_r": 0.023080736833656804,
+        "mean_net_r": -0.11472043422380128
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1.5_hold_4",
+      "stop_atr": 1,
+      "reward_risk": 1.5,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 38106,
+        "timeout_rate": 0.3296508048201249,
+        "win_rate_resolved": 0.393533826693959,
+        "mean_gross_r": 0.07455726276102644,
+        "mean_net_r": -0.05076864748122763
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 7947,
+        "timeout_rate": 0.3486599459060733,
+        "win_rate_resolved": 0.4002768340254184,
+        "mean_gross_r": 0.0817574429514142,
+        "mean_net_r": -0.05604372810604388
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1.5_hold_8",
+      "stop_atr": 1,
+      "reward_risk": 1.5,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 51443,
+        "timeout_rate": 0.09503034567684053,
+        "win_rate_resolved": 0.4259471648232024,
+        "mean_gross_r": 0.0863417348896496,
+        "mean_net_r": -0.038984175352604455
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 10949,
+        "timeout_rate": 0.10261453979182034,
+        "win_rate_resolved": 0.4277102931774591,
+        "mean_gross_r": 0.09450670169890572,
+        "mean_net_r": -0.04329446935855234
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1.5_hold_12",
+      "stop_atr": 1,
+      "reward_risk": 1.5,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 55182,
+        "timeout_rate": 0.02925499164394406,
+        "win_rate_resolved": 0.43242361639665106,
+        "mean_gross_r": 0.08667505804670068,
+        "mean_net_r": -0.038650852195553385
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11774,
+        "timeout_rate": 0.03499713138267355,
+        "win_rate_resolved": 0.4342619330728724,
+        "mean_gross_r": 0.09376072384786173,
+        "mean_net_r": -0.04404044720959636
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_1.5_hold_16",
+      "stop_atr": 1,
+      "reward_risk": 1.5,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 56093,
+        "timeout_rate": 0.013228955932799718,
+        "win_rate_resolved": 0.43353003048508726,
+        "mean_gross_r": 0.08568354035318394,
+        "mean_net_r": -0.03964236988907013
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 12023,
+        "timeout_rate": 0.014588968117367429,
+        "win_rate_resolved": 0.4345005406304583,
+        "mean_gross_r": 0.08907076140633974,
+        "mean_net_r": -0.04873040965111833
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_2_hold_4",
+      "stop_atr": 1,
+      "reward_risk": 2,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 33640,
+        "timeout_rate": 0.40821532236784236,
+        "win_rate_resolved": 0.30416171224732463,
+        "mean_gross_r": 0.11806324293033438,
+        "mean_net_r": -0.007262667311919666
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 7068,
+        "timeout_rate": 0.4207032210474551,
+        "win_rate_resolved": 0.3174872665534805,
+        "mean_gross_r": 0.1337175160959325,
+        "mean_net_r": -0.004083654961525575
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1_reward_2_hold_8",
+      "stop_atr": 1,
+      "reward_risk": 2,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 47828,
+        "timeout_rate": 0.1586243293165626,
+        "win_rate_resolved": 0.3570293551894288,
+        "mean_gross_r": 0.14471933821646535,
+        "mean_net_r": 0.01939342797421131
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 10205,
+        "timeout_rate": 0.16359314810261455,
+        "win_rate_resolved": 0.36099951004409603,
+        "mean_gross_r": 0.1579707803967491,
+        "mean_net_r": 0.020169609339291024
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1_reward_2_hold_12",
+      "stop_atr": 1,
+      "reward_risk": 2,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 53369,
+        "timeout_rate": 0.061148737795760404,
+        "win_rate_resolved": 0.3739811501058667,
+        "mean_gross_r": 0.14681046817313417,
+        "mean_net_r": 0.021484557930880114
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11365,
+        "timeout_rate": 0.06851897385460208,
+        "win_rate_resolved": 0.37782666080070393,
+        "mean_gross_r": 0.16093201495995657,
+        "mean_net_r": 0.023130843902498498
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1_reward_2_hold_16",
+      "stop_atr": 1,
+      "reward_risk": 2,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 55183,
+        "timeout_rate": 0.02923739994722491,
+        "win_rate_resolved": 0.37846800645126216,
+        "mean_gross_r": 0.14634420642954954,
+        "mean_net_r": 0.021018296187295487
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11788,
+        "timeout_rate": 0.03384968445209409,
+        "win_rate_resolved": 0.3801323379708178,
+        "mean_gross_r": 0.15405669873434108,
+        "mean_net_r": 0.016255527676883007
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_1_hold_4",
+      "stop_atr": 1.5,
+      "reward_risk": 1,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 31263,
+        "timeout_rate": 0.4500307854692585,
+        "win_rate_resolved": 0.5040463167322394,
+        "mean_gross_r": 0.024249262006671674,
+        "mean_net_r": -0.059301344821497695
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 6541,
+        "timeout_rate": 0.4638964019342677,
+        "win_rate_resolved": 0.5146002140345513,
+        "mean_gross_r": 0.033046828760319426,
+        "mean_net_r": -0.058820618611319285
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1.5_reward_1_hold_8",
+      "stop_atr": 1.5,
+      "reward_risk": 1,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 47096,
+        "timeout_rate": 0.17150145131497932,
+        "win_rate_resolved": 0.5158824528622389,
+        "mean_gross_r": 0.03284754943655708,
+        "mean_net_r": -0.050703057391612294
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 9970,
+        "timeout_rate": 0.1828538644373412,
+        "win_rate_resolved": 0.5205616850551655,
+        "mean_gross_r": 0.041277706599733545,
+        "mean_net_r": -0.05058974077190517
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1.5_reward_1_hold_12",
+      "stop_atr": 1.5,
+      "reward_risk": 1,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 53199,
+        "timeout_rate": 0.06413932623801566,
+        "win_rate_resolved": 0.5160059399612774,
+        "mean_gross_r": 0.032050769887089436,
+        "mean_net_r": -0.05149983694107993
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11308,
+        "timeout_rate": 0.07319072207196131,
+        "win_rate_resolved": 0.5205164485320127,
+        "mean_gross_r": 0.040799631148970596,
+        "mean_net_r": -0.051067816222668136
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1.5_reward_1_hold_16",
+      "stop_atr": 1.5,
+      "reward_risk": 1,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 55019,
+        "timeout_rate": 0.03212243820916527,
+        "win_rate_resolved": 0.5155855250004544,
+        "mean_gross_r": 0.030869007588955777,
+        "mean_net_r": -0.05268159923921359
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11769,
+        "timeout_rate": 0.035406933857880504,
+        "win_rate_resolved": 0.5175460956750786,
+        "mean_gross_r": 0.034056882961779125,
+        "mean_net_r": -0.05781056440985959
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1.5_reward_1.5_hold_4",
+      "stop_atr": 1.5,
+      "reward_risk": 1.5,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 24552,
+        "timeout_rate": 0.5680886621514645,
+        "win_rate_resolved": 0.3587487781036168,
+        "mean_gross_r": 0.06467416285140216,
+        "mean_net_r": -0.0188764439767672
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 5229,
+        "timeout_rate": 0.5714285714285714,
+        "win_rate_resolved": 0.3832472748135399,
+        "mean_gross_r": 0.08212455557590118,
+        "mean_net_r": -0.009742891795737538
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_1.5_reward_1.5_hold_8",
+      "stop_atr": 1.5,
+      "reward_risk": 1.5,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 40461,
+        "timeout_rate": 0.28822235904653004,
+        "win_rate_resolved": 0.4059217518103853,
+        "mean_gross_r": 0.08875454772239033,
+        "mean_net_r": 0.005203940894220978
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 8634,
+        "timeout_rate": 0.2923530858126383,
+        "win_rate_resolved": 0.4178827889738244,
+        "mean_gross_r": 0.10767210611187082,
+        "mean_net_r": 0.015804658740232107
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_1.5_hold_12",
+      "stop_atr": 1.5,
+      "reward_risk": 1.5,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 48789,
+        "timeout_rate": 0.14171870876946083,
+        "win_rate_resolved": 0.42366107114308554,
+        "mean_gross_r": 0.09146411002851197,
+        "mean_net_r": 0.007913503200342594
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 10390,
+        "timeout_rate": 0.14843045651995737,
+        "win_rate_resolved": 0.43532242540904714,
+        "mean_gross_r": 0.11744089418929997,
+        "mean_net_r": 0.02557344681766123
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_1.5_hold_16",
+      "stop_atr": 1.5,
+      "reward_risk": 1.5,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 52276,
+        "timeout_rate": 0.08037646230978977,
+        "win_rate_resolved": 0.42989134593312417,
+        "mean_gross_r": 0.0908649640816573,
+        "mean_net_r": 0.007314357253487913
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 11157,
+        "timeout_rate": 0.08556675682321122,
+        "win_rate_resolved": 0.43864838218159,
+        "mean_gross_r": 0.11347678008061735,
+        "mean_net_r": 0.02160933270897861
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_2_hold_4",
+      "stop_atr": 1.5,
+      "reward_risk": 2,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 20729,
+        "timeout_rate": 0.6353417187087694,
+        "win_rate_resolved": 0.2383134738771769,
+        "mean_gross_r": 0.08835238585679109,
+        "mean_net_r": 0.0048017790286217134
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 4462,
+        "timeout_rate": 0.6342922711253176,
+        "win_rate_resolved": 0.27610936799641417,
+        "mean_gross_r": 0.11640979641667126,
+        "mean_net_r": 0.024542349045032535
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_2_hold_8",
+      "stop_atr": 1.5,
+      "reward_risk": 2,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 35150,
+        "timeout_rate": 0.38165186032192805,
+        "win_rate_resolved": 0.305149359886202,
+        "mean_gross_r": 0.12831581358375937,
+        "mean_net_r": 0.04476520675559001
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 7520,
+        "timeout_rate": 0.3836570772887468,
+        "win_rate_resolved": 0.3238031914893617,
+        "mean_gross_r": 0.16162050027209257,
+        "mean_net_r": 0.06975305290045386
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_2_hold_12",
+      "stop_atr": 1.5,
+      "reward_risk": 2,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 44261,
+        "timeout_rate": 0.2213739115137655,
+        "win_rate_resolved": 0.3434174555477734,
+        "mean_gross_r": 0.14003757124807192,
+        "mean_net_r": 0.056486964419902544
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 9326,
+        "timeout_rate": 0.2356364232439964,
+        "win_rate_resolved": 0.3549217242118808,
+        "mean_gross_r": 0.17764193671469639,
+        "mean_net_r": 0.08577448934305767
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_1.5_reward_2_hold_16",
+      "stop_atr": 1.5,
+      "reward_risk": 2,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 48962,
+        "timeout_rate": 0.1386753452370481,
+        "win_rate_resolved": 0.36093296842449246,
+        "mean_gross_r": 0.1434931118002125,
+        "mean_net_r": 0.0599425049720431
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 10380,
+        "timeout_rate": 0.1492500614703713,
+        "win_rate_resolved": 0.37003853564547207,
+        "mean_gross_r": 0.17532843889092015,
+        "mean_net_r": 0.0834609915192814
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2_reward_1_hold_4",
+      "stop_atr": 2,
+      "reward_risk": 1,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 21461,
+        "timeout_rate": 0.6224645967103527,
+        "win_rate_resolved": 0.5052886631564233,
+        "mean_gross_r": 0.02285674157968514,
+        "mean_net_r": -0.039806213541441884
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 4531,
+        "timeout_rate": 0.6286369969674617,
+        "win_rate_resolved": 0.5303465018759655,
+        "mean_gross_r": 0.039035328173025866,
+        "mean_net_r": -0.02986525735570317
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2_reward_1_hold_8",
+      "stop_atr": 2,
+      "reward_risk": 1,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 37640,
+        "timeout_rate": 0.33784853549124816,
+        "win_rate_resolved": 0.516259298618491,
+        "mean_gross_r": 0.033601921246807775,
+        "mean_net_r": -0.029061033874319252
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 7987,
+        "timeout_rate": 0.3453815261044177,
+        "win_rate_resolved": 0.5364968073118818,
+        "mean_gross_r": 0.057323253522217205,
+        "mean_net_r": -0.011577332006511828
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2_reward_1_hold_12",
+      "stop_atr": 2,
+      "reward_risk": 1,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 46835,
+        "timeout_rate": 0.1760928841586771,
+        "win_rate_resolved": 0.5173054339703214,
+        "mean_gross_r": 0.03480403129484026,
+        "mean_net_r": -0.027858923826286776
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 9965,
+        "timeout_rate": 0.18326366691254814,
+        "win_rate_resolved": 0.5350727546412444,
+        "mean_gross_r": 0.06548563330923012,
+        "mean_net_r": -0.0034149522194989053
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2_reward_1_hold_16",
+      "stop_atr": 2,
+      "reward_risk": 1,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 50947,
+        "timeout_rate": 0.10375582724953822,
+        "win_rate_resolved": 0.5180874241859187,
+        "mean_gross_r": 0.0352743825103614,
+        "mean_net_r": -0.027388572610765632
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 10844,
+        "timeout_rate": 0.1112203917711663,
+        "win_rate_resolved": 0.532736997417927,
+        "mean_gross_r": 0.06083212786767229,
+        "mean_net_r": -0.008068457661056752
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2_reward_1.5_hold_4",
+      "stop_atr": 2,
+      "reward_risk": 1.5,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 15664,
+        "timeout_rate": 0.7244436625912569,
+        "win_rate_resolved": 0.3181818181818182,
+        "mean_gross_r": 0.04871217251081358,
+        "mean_net_r": -0.013950782610313454
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 3383,
+        "timeout_rate": 0.7227276452749775,
+        "win_rate_resolved": 0.3689033402305646,
+        "mean_gross_r": 0.07568848325727255,
+        "mean_net_r": 0.006787897728543495
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2_reward_1.5_hold_8",
+      "stop_atr": 2,
+      "reward_risk": 1.5,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 29740,
+        "timeout_rate": 0.47682293957252175,
+        "win_rate_resolved": 0.3713517148621385,
+        "mean_gross_r": 0.07542319773595092,
+        "mean_net_r": 0.012760242614823896
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 6304,
+        "timeout_rate": 0.4833210392590771,
+        "win_rate_resolved": 0.40196700507614214,
+        "mean_gross_r": 0.11702773051891624,
+        "mean_net_r": 0.04812714499018719
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2_reward_1.5_hold_12",
+      "stop_atr": 2,
+      "reward_risk": 1.5,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 39827,
+        "timeout_rate": 0.29937549476647024,
+        "win_rate_resolved": 0.40221457805006655,
+        "mean_gross_r": 0.08576809191737221,
+        "mean_net_r": 0.023105136796245197
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 8326,
+        "timeout_rate": 0.31759691828538644,
+        "win_rate_resolved": 0.42145087677155896,
+        "mean_gross_r": 0.1329148165583238,
+        "mean_net_r": 0.06401423102959475
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2_reward_1.5_hold_16",
+      "stop_atr": 2,
+      "reward_risk": 1.5,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 45456,
+        "timeout_rate": 0.20035183393438297,
+        "win_rate_resolved": 0.4174366420274551,
+        "mean_gross_r": 0.08936862533385824,
+        "mean_net_r": 0.02670567021273122
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 9528,
+        "timeout_rate": 0.2190804032456356,
+        "win_rate_resolved": 0.43440386230058775,
+        "mean_gross_r": 0.13166984788013986,
+        "mean_net_r": 0.06276926235141084
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2_reward_2_hold_4",
+      "stop_atr": 2,
+      "reward_risk": 2,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 12960,
+        "timeout_rate": 0.7720116105198347,
+        "win_rate_resolved": 0.17554012345679013,
+        "mean_gross_r": 0.06068636481207349,
+        "mean_net_r": -0.0019765903090535413
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 2764,
+        "timeout_rate": 0.7734611917055979,
+        "win_rate_resolved": 0.2275687409551375,
+        "mean_gross_r": 0.09337941385831802,
+        "mean_net_r": 0.024478828329588982
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2_reward_2_hold_8",
+      "stop_atr": 2,
+      "reward_risk": 2,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 24775,
+        "timeout_rate": 0.5641657137830943,
+        "win_rate_resolved": 0.24008072653884965,
+        "mean_gross_r": 0.09748449257266872,
+        "mean_net_r": 0.03482153745154171
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 5209,
+        "timeout_rate": 0.5730677813293993,
+        "win_rate_resolved": 0.2722211556920714,
+        "mean_gross_r": 0.1436792906691396,
+        "mean_net_r": 0.07477870514041057
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2_reward_2_hold_12",
+      "stop_atr": 2,
+      "reward_risk": 2,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 33881,
+        "timeout_rate": 0.40397572345852756,
+        "win_rate_resolved": 0.28561730763554793,
+        "mean_gross_r": 0.11127843330810129,
+        "mean_net_r": 0.048615478186974266
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 7056,
+        "timeout_rate": 0.42168674698795183,
+        "win_rate_resolved": 0.3096655328798186,
+        "mean_gross_r": 0.168062718977758,
+        "mean_net_r": 0.09916213344902894
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2_reward_2_hold_16",
+      "stop_atr": 2,
+      "reward_risk": 2,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 39820,
+        "timeout_rate": 0.2994986366435043,
+        "win_rate_resolved": 0.3146911099949774,
+        "mean_gross_r": 0.11303186820731596,
+        "mean_net_r": 0.05036891308618895
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 8323,
+        "timeout_rate": 0.3178427997705106,
+        "win_rate_resolved": 0.3365373062597621,
+        "mean_gross_r": 0.1740969923200356,
+        "mean_net_r": 0.10519640679130653
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2.5_reward_1_hold_4",
+      "stop_atr": 2.5,
+      "reward_risk": 1,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 14522,
+        "timeout_rate": 0.7445333802445245,
+        "win_rate_resolved": 0.5059220493045035,
+        "mean_gross_r": 0.02036706161078542,
+        "mean_net_r": -0.029763302486116198
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 3180,
+        "timeout_rate": 0.7393656257683796,
+        "win_rate_resolved": 0.5462264150943397,
+        "mean_gross_r": 0.039796791040043925,
+        "mean_net_r": -0.01532367738293931
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2.5_reward_1_hold_8",
+      "stop_atr": 2.5,
+      "reward_risk": 1,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 29057,
+        "timeout_rate": 0.48883806843170025,
+        "win_rate_resolved": 0.5161234814330454,
+        "mean_gross_r": 0.032566082666856726,
+        "mean_net_r": -0.01756428143004489
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 6203,
+        "timeout_rate": 0.49159904925825754,
+        "win_rate_resolved": 0.5445752055457037,
+        "mean_gross_r": 0.06538425536007801,
+        "mean_net_r": 0.010263786937094782
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2.5_reward_1_hold_12",
+      "stop_atr": 2.5,
+      "reward_risk": 1,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 39242,
+        "timeout_rate": 0.30966663734717215,
+        "win_rate_resolved": 0.5197492482544213,
+        "mean_gross_r": 0.0372614712822417,
+        "mean_net_r": -0.01286889281465992
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 8335,
+        "timeout_rate": 0.31685927383001394,
+        "win_rate_resolved": 0.5439712057588483,
+        "mean_gross_r": 0.07746971506544066,
+        "mean_net_r": 0.02234924664245743
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2.5_reward_1_hold_16",
+      "stop_atr": 2.5,
+      "reward_risk": 1,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 45108,
+        "timeout_rate": 0.20647374439264668,
+        "win_rate_resolved": 0.5215039460849517,
+        "mean_gross_r": 0.03958798453886602,
+        "mean_net_r": -0.0105423795580356
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 9511,
+        "timeout_rate": 0.22047373166133924,
+        "win_rate_resolved": 0.541373146882557,
+        "mean_gross_r": 0.07429704522465888,
+        "mean_net_r": 0.019176576801675647
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2.5_reward_1.5_hold_4",
+      "stop_atr": 2.5,
+      "reward_risk": 1.5,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 9972,
+        "timeout_rate": 0.8245756003166506,
+        "win_rate_resolved": 0.2786803048535901,
+        "mean_gross_r": 0.03694177798284414,
+        "mean_net_r": -0.013188586114057481
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 2175,
+        "timeout_rate": 0.8217359232849767,
+        "win_rate_resolved": 0.33655172413793105,
+        "mean_gross_r": 0.06389161109063735,
+        "mean_net_r": 0.008771142667654124
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2.5_reward_1.5_hold_8",
+      "stop_atr": 2.5,
+      "reward_risk": 1.5,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 21316,
+        "timeout_rate": 0.6250153927346292,
+        "win_rate_resolved": 0.3312066053668606,
+        "mean_gross_r": 0.061957520791846854,
+        "mean_net_r": 0.011827156694945232
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 4519,
+        "timeout_rate": 0.6296205229079583,
+        "win_rate_resolved": 0.36645275503429964,
+        "mean_gross_r": 0.10279565811302314,
+        "mean_net_r": 0.047675189690039914
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2.5_reward_1.5_hold_12",
+      "stop_atr": 2.5,
+      "reward_risk": 1.5,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 30832,
+        "timeout_rate": 0.45761280675521154,
+        "win_rate_resolved": 0.3700051894135963,
+        "mean_gross_r": 0.0733662457133009,
+        "mean_net_r": 0.02323588161639927
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 6448,
+        "timeout_rate": 0.47151872797311695,
+        "win_rate_resolved": 0.3945409429280397,
+        "mean_gross_r": 0.12095444592006963,
+        "mean_net_r": 0.0658339774970864
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2.5_reward_1.5_hold_16",
+      "stop_atr": 2.5,
+      "reward_risk": 1.5,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 37299,
+        "timeout_rate": 0.34384730407247777,
+        "win_rate_resolved": 0.39102925011394407,
+        "mean_gross_r": 0.07725778401353603,
+        "mean_net_r": 0.027127419916634393
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 7778,
+        "timeout_rate": 0.3625112695680682,
+        "win_rate_resolved": 0.412831061969658,
+        "mean_gross_r": 0.12493076863610558,
+        "mean_net_r": 0.06981030021312234
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2.5_reward_2_hold_4",
+      "stop_atr": 2.5,
+      "reward_risk": 2,
+      "hold_bars": 4,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 8337,
+        "timeout_rate": 0.8533380244524584,
+        "win_rate_resolved": 0.13685978169605373,
+        "mean_gross_r": 0.04321544191957851,
+        "mean_net_r": -0.00691492217732311
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 1782,
+        "timeout_rate": 0.8539463978362429,
+        "win_rate_resolved": 0.19023569023569023,
+        "mean_gross_r": 0.0738775450120189,
+        "mean_net_r": 0.018757076589035672
+      },
+      "selection_eligible": false
+    },
+    {
+      "configuration": "stop_2.5_reward_2_hold_8",
+      "stop_atr": 2.5,
+      "reward_risk": 2,
+      "hold_bars": 8,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 17542,
+        "timeout_rate": 0.6914064561526959,
+        "win_rate_resolved": 0.18458556607000343,
+        "mean_gross_r": 0.07512397782942612,
+        "mean_net_r": 0.024993613732524487
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 3697,
+        "timeout_rate": 0.6969920498319809,
+        "win_rate_resolved": 0.22477684609142548,
+        "mean_gross_r": 0.12098301336557103,
+        "mean_net_r": 0.0658625449425878
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2.5_reward_2_hold_12",
+      "stop_atr": 2.5,
+      "reward_risk": 2,
+      "hold_bars": 12,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 25457,
+        "timeout_rate": 0.5521681766206351,
+        "win_rate_resolved": 0.23089916329496799,
+        "mean_gross_r": 0.09196701132110376,
+        "mean_net_r": 0.04183664722420214
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 5291,
+        "timeout_rate": 0.5663470207360053,
+        "win_rate_resolved": 0.2594972594972595,
+        "mean_gross_r": 0.14805334795087474,
+        "mean_net_r": 0.0929328795278915
+      },
+      "selection_eligible": true
+    },
+    {
+      "configuration": "stop_2.5_reward_2_hold_16",
+      "stop_atr": 2.5,
+      "reward_risk": 2,
+      "hold_bars": 16,
+      "train": {
+        "rows": 56845,
+        "resolved_rows": 31547,
+        "timeout_rate": 0.4450347436010203,
+        "win_rate_resolved": 0.2679811075538086,
+        "mean_gross_r": 0.0950807063397389,
+        "mean_net_r": 0.044950342242837275
+      },
+      "validation": {
+        "rows": 12201,
+        "resolved_rows": 6556,
+        "timeout_rate": 0.46266699450864684,
+        "win_rate_resolved": 0.2968273337400854,
+        "mean_gross_r": 0.16059048732498157,
+        "mean_net_r": 0.10547001890199834
+      },
+      "selection_eligible": true
+    }
+  ]
+}

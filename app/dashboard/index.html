@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Stock Decision Engine</title>
+  <link rel="stylesheet" href="/dashboard/styles.css">
+</head>
+<body>
+  <header>
+    <div><p class="eyebrow">RAILWAY CONTROL ROOM</p><h1>Stock Decision Engine</h1></div>
+    <div class="header-actions"><span id="clock"></span><button id="refresh">Refresh data</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div><span class="status-dot" id="system-dot"></span><span id="system-label">Connecting…</span></div>
+      <p id="system-detail">Reading the decision engine and PostgreSQL state.</p>
+      <div class="guardrail">Paper research only <strong>Execution and automatic model promotion are disabled</strong></div>
+    </section>
+
+    <section class="metric-grid">
+      <article><span>Runtime</span><strong id="runtime">—</strong><small id="mode">—</small></article>
+      <article><span>Last refresh</span><strong id="last-refresh">—</strong><small id="refresh-feed">—</small></article>
+      <article><span>Data quality</span><strong id="quality">—</strong><small id="quality-detail">Waiting for refresh</small></article>
+      <article><span>Daily risk</span><strong id="risk">—</strong><small id="risk-detail">—</small></article>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">FROZEN STRATEGY</p><h2>Hourly breakout shadow</h2></div><span class="pill" id="breakout-state">Waiting</span></div>
+        <div class="strategy-stats">
+          <div><strong id="breakout-completed">—</strong><span>completed</span></div>
+          <div><strong id="breakout-pending">—</strong><span>pending</span></div>
+          <div><strong id="profit-factor">—</strong><span>profit factor</span></div>
+        </div>
+        <div class="progress-label"><span>Forward sample</span><span id="sample-label">0 / 100</span></div>
+        <div class="progress"><i id="sample-progress"></i></div>
+        <div id="sessions" class="session-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">RESEARCH GATE</p><h2>CatBoost ML filter</h2></div><span class="pill warning">Research only</span></div>
+        <div class="strategy-stats">
+          <div><strong id="ml-scored">—</strong><span>scored</span></div>
+          <div><strong id="ml-allowed">—</strong><span>allowed</span></div>
+          <div><strong id="ml-rejected">—</strong><span>rejected</span></div>
+        </div>
+        <div class="confidence"><span>Confidence threshold</span><strong id="ml-threshold">—</strong></div>
+        <p class="note">The model failed validation and cannot authorize execution. This panel compares its filter decisions against the unfiltered breakout.</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><div><p class="eyebrow">MARKET DATA</p><h2>Candle coverage</h2></div><span id="storage" class="pill">—</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Timeframe</th><th>Rows</th><th>Symbols</th><th>First candle</th><th>Latest candle</th><th>Checks</th></tr></thead><tbody id="candle-table"><tr><td colspan="6">Waiting for data…</td></tr></tbody></table></div>
+    </section>
+
+    <section class="two-column bottom">
+      <article class="panel"><div class="panel-head"><div><p class="eyebrow">LATEST ACTIVITY</p><h2>Recent decisions</h2></div></div><div id="decisions" class="activity"><p class="empty">No decisions yet.</p></div></article>
+      <article class="panel"><div class="panel-head"><div><p class="eyebrow">PAPER WORKFLOW</p><h2>Recent tickets</h2></div></div><div id="tickets" class="activity"><p class="empty">No tickets yet.</p></div></article>
+    </section>
+  </main>
+  <footer><span>Read-only operations dashboard</span><span id="updated">Not updated</span></footer>
+  <script src="/dashboard/app.js" defer></script>
+</body>
+</html>

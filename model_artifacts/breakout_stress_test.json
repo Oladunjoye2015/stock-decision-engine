@@ -1,0 +1,2315 @@
+{
+  "time_definition": "morning entry before 12:00 America/New_York; afternoon entry at or after 12:00; all entries restricted to hours 09-15",
+  "selection_warning": "All results are research sensitivity checks on seen history and cannot promote a strategy.",
+  "variants": {
+    "breakout_base": {
+      "initial_equity": 100000,
+      "final_equity": 134865.8125543129,
+      "total_return": 0.3486581255431289,
+      "maximum_drawdown": -0.18253110160635222,
+      "annualized_sharpe": 0.5545906624347273,
+      "closed_trades": 927,
+      "win_rate": 0.43042071197411,
+      "mean_trade_return": 0.001289563873759592,
+      "profit_factor": 1.0996104746912776,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.10697457922780018,
+          "maximum_drawdown": -0.1825311016063521,
+          "closed_trades": 183,
+          "win_rate": 0.39344262295081966,
+          "profit_factor": 0.8659283005217272
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.23619447590495635,
+          "maximum_drawdown": -0.09711339320934109,
+          "closed_trades": 251,
+          "win_rate": 0.4541832669322709,
+          "profit_factor": 1.248754182954221
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.1173090526803513,
+          "maximum_drawdown": -0.1437519296243005,
+          "closed_trades": 255,
+          "win_rate": 0.42745098039215684,
+          "profit_factor": 1.1273891448654376
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.09339714505075758,
+          "maximum_drawdown": -0.11813849288976652,
+          "closed_trades": 239,
+          "win_rate": 0.4351464435146444,
+          "profit_factor": 1.121862625196364
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 76,
+          "win_rate": 0.4868421052631579,
+          "mean_trade_return": 0.0026504734098444726,
+          "net_pnl": 7681.296292367608,
+          "profit_factor": 1.4288762903012495
+        },
+        "AMD": {
+          "trades": 84,
+          "win_rate": 0.4642857142857143,
+          "mean_trade_return": 0.006951687542524959,
+          "net_pnl": 19022.388359037912,
+          "profit_factor": 1.5077478955455768
+        },
+        "AMZN": {
+          "trades": 72,
+          "win_rate": 0.3611111111111111,
+          "mean_trade_return": -0.0029609142304845215,
+          "net_pnl": -9506.69032749009,
+          "profit_factor": 0.6784075100266902
+        },
+        "AVGO": {
+          "trades": 92,
+          "win_rate": 0.4782608695652174,
+          "mean_trade_return": 0.004788989935603909,
+          "net_pnl": 17094.508069005507,
+          "profit_factor": 1.4953736924280678
+        },
+        "BABA": {
+          "trades": 107,
+          "win_rate": 0.40186915887850466,
+          "mean_trade_return": 0.001429287453818718,
+          "net_pnl": 3908.8168041862814,
+          "profit_factor": 1.0816226744774153
+        },
+        "GOOG": {
+          "trades": 75,
+          "win_rate": 0.37333333333333335,
+          "mean_trade_return": -0.0031279433429897154,
+          "net_pnl": -9353.063450589283,
+          "profit_factor": 0.669280983366549
+        },
+        "META": {
+          "trades": 85,
+          "win_rate": 0.4235294117647059,
+          "mean_trade_return": -0.002493062462447306,
+          "net_pnl": -11377.682378375946,
+          "profit_factor": 0.6784556004191442
+        },
+        "MSFT": {
+          "trades": 69,
+          "win_rate": 0.3333333333333333,
+          "mean_trade_return": -0.0016494677349879025,
+          "net_pnl": -4146.014748243359,
+          "profit_factor": 0.8090406345777715
+        },
+        "NVDA": {
+          "trades": 83,
+          "win_rate": 0.43373493975903615,
+          "mean_trade_return": -9.904054614505759e-05,
+          "net_pnl": 2108.913980321815,
+          "profit_factor": 1.0570044047509441
+        },
+        "QQQ": {
+          "trades": 51,
+          "win_rate": 0.5098039215686274,
+          "mean_trade_return": 0.001142601033406439,
+          "net_pnl": 2569.1700811872147,
+          "profit_factor": 1.238839143411904
+        },
+        "SPY": {
+          "trades": 49,
+          "win_rate": 0.46938775510204084,
+          "mean_trade_return": -0.0007874799494671038,
+          "net_pnl": -660.7771248778329,
+          "profit_factor": 0.920357073294132
+        },
+        "TSLA": {
+          "trades": 84,
+          "win_rate": 0.4523809523809524,
+          "mean_trade_return": 0.0068876968465738445,
+          "net_pnl": 17524.94699778299,
+          "profit_factor": 1.4247205890879366
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 152,
+          "win_rate": 0.3684210526315789,
+          "mean_trade_return": -0.002135026145970026,
+          "net_pnl": -14698.900204225052,
+          "profit_factor": 0.7780147094838898
+        },
+        "2023": {
+          "trades": 216,
+          "win_rate": 0.49074074074074076,
+          "mean_trade_return": 0.004389098298554282,
+          "net_pnl": 29030.480674510658,
+          "profit_factor": 1.48656666090111
+        },
+        "2024": {
+          "trades": 247,
+          "win_rate": 0.41700404858299595,
+          "mean_trade_return": 0.0010724927391773352,
+          "net_pnl": 10055.546130374963,
+          "profit_factor": 1.1040780297495862
+        },
+        "2025": {
+          "trades": 202,
+          "win_rate": 0.4207920792079208,
+          "mean_trade_return": 0.0005534634431171375,
+          "net_pnl": 3386.972050855782,
+          "profit_factor": 1.042198121203094
+        },
+        "2026": {
+          "trades": 110,
+          "win_rate": 0.44545454545454544,
+          "mean_trade_return": 0.0017745375508036111,
+          "net_pnl": 7091.713902796469,
+          "profit_factor": 1.150048101743354
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 175,
+          "win_rate": 0.4114285714285714,
+          "mean_trade_return": 0.0013645272394491512,
+          "net_pnl": 7555.7335025314205,
+          "profit_factor": 1.1120186767507638
+        },
+        "morning": {
+          "trades": 752,
+          "win_rate": 0.4348404255319149,
+          "mean_trade_return": 0.001272118941584495,
+          "net_pnl": 27310.0790517814,
+          "profit_factor": 1.0966485935157633
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 309,
+          "win_rate": 0.4045307443365696,
+          "mean_trade_return": -0.0006735517542331612,
+          "net_pnl": -9856.119271145184,
+          "profit_factor": 0.8757828893506218
+        },
+        "medium": {
+          "trades": 309,
+          "win_rate": 0.42071197411003236,
+          "mean_trade_return": 0.0009517544674129396,
+          "net_pnl": 9448.063830888617,
+          "profit_factor": 1.080535487727016
+        },
+        "high": {
+          "trades": 309,
+          "win_rate": 0.46601941747572817,
+          "mean_trade_return": 0.0035904889080989972,
+          "net_pnl": 35273.86799456939,
+          "profit_factor": 1.2300068044755956
+        }
+      }
+    },
+    "breakout_morning": {
+      "initial_equity": 100000,
+      "final_equity": 121433.17830742427,
+      "total_return": 0.2143317830742426,
+      "maximum_drawdown": -0.14232291067585923,
+      "annualized_sharpe": 0.4137549204547507,
+      "closed_trades": 839,
+      "win_rate": 0.433849821215733,
+      "mean_trade_return": 0.001087321423066188,
+      "profit_factor": 1.0744898036387582,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.08096872867280092,
+          "maximum_drawdown": -0.14232291067585912,
+          "closed_trades": 160,
+          "win_rate": 0.4125,
+          "profit_factor": 0.8840689979155587
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.02000347789575163,
+          "maximum_drawdown": -0.10211529980813383,
+          "closed_trades": 226,
+          "win_rate": 0.42035398230088494,
+          "profit_factor": 1.0048421075796459
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.19839394533236088,
+          "maximum_drawdown": -0.10058242978470844,
+          "closed_trades": 233,
+          "win_rate": 0.45064377682403434,
+          "profit_factor": 1.2497980856923738
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.08095051862236269,
+          "maximum_drawdown": -0.11265390049120017,
+          "closed_trades": 221,
+          "win_rate": 0.4434389140271493,
+          "profit_factor": 1.1149817784784883
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 70,
+          "win_rate": 0.5,
+          "mean_trade_return": 0.004044327438490233,
+          "net_pnl": 8540.098487189069,
+          "profit_factor": 1.6188244336079847
+        },
+        "AMD": {
+          "trades": 79,
+          "win_rate": 0.43037974683544306,
+          "mean_trade_return": 0.002983713352747959,
+          "net_pnl": 7138.36338881466,
+          "profit_factor": 1.1980219030120096
+        },
+        "AMZN": {
+          "trades": 66,
+          "win_rate": 0.3787878787878788,
+          "mean_trade_return": -0.0031002604698636945,
+          "net_pnl": -7431.994113150425,
+          "profit_factor": 0.6858007049148708
+        },
+        "AVGO": {
+          "trades": 80,
+          "win_rate": 0.4375,
+          "mean_trade_return": 0.0012328368433716318,
+          "net_pnl": 4477.131815796398,
+          "profit_factor": 1.1501933606732497
+        },
+        "BABA": {
+          "trades": 100,
+          "win_rate": 0.4,
+          "mean_trade_return": 0.0009979457283805216,
+          "net_pnl": 381.8346111080509,
+          "profit_factor": 1.008993611505194
+        },
+        "GOOG": {
+          "trades": 65,
+          "win_rate": 0.4,
+          "mean_trade_return": -0.0022622514459598652,
+          "net_pnl": -5119.39296953229,
+          "profit_factor": 0.7544308954046903
+        },
+        "META": {
+          "trades": 75,
+          "win_rate": 0.4666666666666667,
+          "mean_trade_return": -0.001720299291721165,
+          "net_pnl": -6514.954448342262,
+          "profit_factor": 0.7422992473412974
+        },
+        "MSFT": {
+          "trades": 62,
+          "win_rate": 0.3387096774193548,
+          "mean_trade_return": -0.0015257106929725925,
+          "net_pnl": -3176.064625098773,
+          "profit_factor": 0.8158473466263615
+        },
+        "NVDA": {
+          "trades": 78,
+          "win_rate": 0.44871794871794873,
+          "mean_trade_return": 0.00015832425391494918,
+          "net_pnl": 1936.4691260992104,
+          "profit_factor": 1.0624159644030775
+        },
+        "QQQ": {
+          "trades": 48,
+          "win_rate": 0.5,
+          "mean_trade_return": 0.0016845421397565716,
+          "net_pnl": 2529.7119682868147,
+          "profit_factor": 1.289519183116586
+        },
+        "SPY": {
+          "trades": 40,
+          "win_rate": 0.45,
+          "mean_trade_return": 0.00039262200555061354,
+          "net_pnl": 612.6523970167135,
+          "profit_factor": 1.1174360634875429
+        },
+        "TSLA": {
+          "trades": 76,
+          "win_rate": 0.47368421052631576,
+          "mean_trade_return": 0.008702535897229224,
+          "net_pnl": 18059.322669236994,
+          "profit_factor": 1.5373153335493357
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 133,
+          "win_rate": 0.39849624060150374,
+          "mean_trade_return": -0.00117634998945131,
+          "net_pnl": -10688.386910373887,
+          "profit_factor": 0.811128517782301
+        },
+        "2023": {
+          "trades": 190,
+          "win_rate": 0.45263157894736844,
+          "mean_trade_return": 0.0023001850877818544,
+          "net_pnl": 12106.34720188825,
+          "profit_factor": 1.2280455379795834
+        },
+        "2024": {
+          "trades": 231,
+          "win_rate": 0.42857142857142855,
+          "mean_trade_return": 0.0006078530641338384,
+          "net_pnl": 6024.151450067533,
+          "profit_factor": 1.0779689852308636
+        },
+        "2025": {
+          "trades": 184,
+          "win_rate": 0.43478260869565216,
+          "mean_trade_return": 0.0018909400343055508,
+          "net_pnl": 8816.454457793792,
+          "profit_factor": 1.1452734046443613
+        },
+        "2026": {
+          "trades": 101,
+          "win_rate": 0.45544554455445546,
+          "mean_trade_return": 0.0014191587301372825,
+          "net_pnl": 5174.612108048474,
+          "profit_factor": 1.1290339769602298
+        }
+      },
+      "by_session": {
+        "morning": {
+          "trades": 839,
+          "win_rate": 0.433849821215733,
+          "mean_trade_return": 0.001087321423066188,
+          "net_pnl": 21433.17830742417,
+          "profit_factor": 1.0744898036387582
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 280,
+          "win_rate": 0.40714285714285714,
+          "mean_trade_return": -0.0007162286686587324,
+          "net_pnl": -7859.503910825791,
+          "profit_factor": 0.8764727176201171
+        },
+        "medium": {
+          "trades": 279,
+          "win_rate": 0.4229390681003584,
+          "mean_trade_return": 0.0002963176289013861,
+          "net_pnl": 2630.5668370529456,
+          "profit_factor": 1.0273281446504479
+        },
+        "high": {
+          "trades": 280,
+          "win_rate": 0.4714285714285714,
+          "mean_trade_return": 0.003679050295405322,
+          "net_pnl": 26662.11538119701,
+          "profit_factor": 1.2085439989255893
+        }
+      }
+    },
+    "breakout_afternoon": {
+      "initial_equity": 100000,
+      "final_equity": 148683.07003376013,
+      "total_return": 0.48683070033760134,
+      "maximum_drawdown": -0.17025736301682326,
+      "annualized_sharpe": 0.9663308588588774,
+      "closed_trades": 423,
+      "win_rate": 0.4302600472813239,
+      "mean_trade_return": 0.0028771226498123153,
+      "profit_factor": 1.2515128855724231,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": 0.05055948841515723,
+          "maximum_drawdown": -0.09623611655553443,
+          "closed_trades": 87,
+          "win_rate": 0.39080459770114945,
+          "profit_factor": 1.137320579451188
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.29368876345252715,
+          "maximum_drawdown": -0.07576719341780114,
+          "closed_trades": 118,
+          "win_rate": 0.5084745762711864,
+          "profit_factor": 1.7565081493389494
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.13389380404696039,
+          "maximum_drawdown": -0.11068808426361676,
+          "closed_trades": 122,
+          "win_rate": 0.4180327868852459,
+          "profit_factor": 1.2864247726274023
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": -0.0351969179803997,
+          "maximum_drawdown": -0.0961595559908287,
+          "closed_trades": 96,
+          "win_rate": 0.3854166666666667,
+          "profit_factor": 0.8965356285923847
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 38,
+          "win_rate": 0.5,
+          "mean_trade_return": 0.004416032522540931,
+          "net_pnl": 7615.903166133944,
+          "profit_factor": 1.6579875137148623
+        },
+        "AMD": {
+          "trades": 46,
+          "win_rate": 0.45652173913043476,
+          "mean_trade_return": 0.005834230244345047,
+          "net_pnl": 8765.832680954836,
+          "profit_factor": 1.3261478831880493
+        },
+        "AMZN": {
+          "trades": 33,
+          "win_rate": 0.45454545454545453,
+          "mean_trade_return": 0.005563518958891744,
+          "net_pnl": 5827.056718293735,
+          "profit_factor": 1.4233069165091303
+        },
+        "AVGO": {
+          "trades": 47,
+          "win_rate": 0.5319148936170213,
+          "mean_trade_return": 0.009155579684905834,
+          "net_pnl": 18237.964115860243,
+          "profit_factor": 2.0515783216119527
+        },
+        "BABA": {
+          "trades": 47,
+          "win_rate": 0.44680851063829785,
+          "mean_trade_return": 0.005129003884060299,
+          "net_pnl": 12815.023597914469,
+          "profit_factor": 1.572271622305819
+        },
+        "GOOG": {
+          "trades": 32,
+          "win_rate": 0.4375,
+          "mean_trade_return": 0.0004757768496778496,
+          "net_pnl": 870.7189721687323,
+          "profit_factor": 1.065637826210983
+        },
+        "META": {
+          "trades": 44,
+          "win_rate": 0.38636363636363635,
+          "mean_trade_return": -5.614764668750287e-05,
+          "net_pnl": -2439.343345599398,
+          "profit_factor": 0.8916251981093665
+        },
+        "MSFT": {
+          "trades": 27,
+          "win_rate": 0.3333333333333333,
+          "mean_trade_return": -0.0022360474109945536,
+          "net_pnl": -2915.5005221912907,
+          "profit_factor": 0.7145460526797717
+        },
+        "NVDA": {
+          "trades": 35,
+          "win_rate": 0.4,
+          "mean_trade_return": -0.000938743126941488,
+          "net_pnl": 808.8581316076786,
+          "profit_factor": 1.0422333677983584
+        },
+        "QQQ": {
+          "trades": 27,
+          "win_rate": 0.3333333333333333,
+          "mean_trade_return": -0.0018618739805240853,
+          "net_pnl": -1882.8333821544425,
+          "profit_factor": 0.7851862890195368
+        },
+        "SPY": {
+          "trades": 14,
+          "win_rate": 0.42857142857142855,
+          "mean_trade_return": -0.0039897742413719005,
+          "net_pnl": -2211.017373326198,
+          "profit_factor": 0.49509883522488374
+        },
+        "TSLA": {
+          "trades": 33,
+          "win_rate": 0.36363636363636365,
+          "mean_trade_return": 0.0034081776983959713,
+          "net_pnl": 3190.4072740978363,
+          "profit_factor": 1.1367884706438323
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 67,
+          "win_rate": 0.373134328358209,
+          "mean_trade_return": 0.0028947907847606657,
+          "net_pnl": 3256.0265705846555,
+          "profit_factor": 1.1122022987543208
+        },
+        "2023": {
+          "trades": 115,
+          "win_rate": 0.5217391304347826,
+          "mean_trade_return": 0.007545637657274954,
+          "net_pnl": 32989.378618838644,
+          "profit_factor": 1.9459647006236165
+        },
+        "2024": {
+          "trades": 103,
+          "win_rate": 0.44660194174757284,
+          "mean_trade_return": 0.005061928287699559,
+          "net_pnl": 27525.93059938176,
+          "profit_factor": 1.6042347978640932
+        },
+        "2025": {
+          "trades": 94,
+          "win_rate": 0.3404255319148936,
+          "mean_trade_return": -0.0033875130815450784,
+          "net_pnl": -13303.954381638288,
+          "profit_factor": 0.771438673770386
+        },
+        "2026": {
+          "trades": 44,
+          "win_rate": 0.4318181818181818,
+          "mean_trade_return": -0.001082473096881637,
+          "net_pnl": -1784.3113734066287,
+          "profit_factor": 0.9311222859945582
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 423,
+          "win_rate": 0.4302600472813239,
+          "mean_trade_return": 0.0028771226498123153,
+          "net_pnl": 48683.07003376014,
+          "profit_factor": 1.2515128855724231
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 141,
+          "win_rate": 0.40425531914893614,
+          "mean_trade_return": 0.0009880022901913572,
+          "net_pnl": 6134.756475659175,
+          "profit_factor": 1.1384774252800078
+        },
+        "medium": {
+          "trades": 141,
+          "win_rate": 0.425531914893617,
+          "mean_trade_return": 0.0018763957639344648,
+          "net_pnl": 9713.245314623058,
+          "profit_factor": 1.150411645362932
+        },
+        "high": {
+          "trades": 141,
+          "win_rate": 0.46099290780141844,
+          "mean_trade_return": 0.005766969895311125,
+          "net_pnl": 32835.0682434779,
+          "profit_factor": 1.3877469252578747
+        }
+      }
+    },
+    "breakout_lookback15": {
+      "initial_equity": 100000,
+      "final_equity": 120470.99779560373,
+      "total_return": 0.2047099779560373,
+      "maximum_drawdown": -0.2622633893164824,
+      "annualized_sharpe": 0.3620823635234188,
+      "closed_trades": 1008,
+      "win_rate": 0.41865079365079366,
+      "mean_trade_return": 0.000705318022321279,
+      "profit_factor": 1.058075168583808,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.2210932156400368,
+          "maximum_drawdown": -0.2622633893164824,
+          "closed_trades": 210,
+          "win_rate": 0.3619047619047619,
+          "profit_factor": 0.7473678143886947
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.23910916973098972,
+          "maximum_drawdown": -0.09657417138148627,
+          "closed_trades": 268,
+          "win_rate": 0.44029850746268656,
+          "profit_factor": 1.2354554052172464
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.1633607376530366,
+          "maximum_drawdown": -0.15554118492031443,
+          "closed_trades": 270,
+          "win_rate": 0.42962962962962964,
+          "profit_factor": 1.1628846452017036
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.07293409742550372,
+          "maximum_drawdown": -0.14862464932568642,
+          "closed_trades": 260,
+          "win_rate": 0.4307692307692308,
+          "profit_factor": 1.083672988172997
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 84,
+          "win_rate": 0.44047619047619047,
+          "mean_trade_return": 0.0011647101363387394,
+          "net_pnl": 3661.791455016093,
+          "profit_factor": 1.1821169782204144
+        },
+        "AMD": {
+          "trades": 98,
+          "win_rate": 0.47959183673469385,
+          "mean_trade_return": 0.007360809590957555,
+          "net_pnl": 20347.527395609934,
+          "profit_factor": 1.5297754233202112
+        },
+        "AMZN": {
+          "trades": 83,
+          "win_rate": 0.3132530120481928,
+          "mean_trade_return": -0.0050649467840899595,
+          "net_pnl": -15649.076871838013,
+          "profit_factor": 0.5251432741531694
+        },
+        "AVGO": {
+          "trades": 96,
+          "win_rate": 0.4583333333333333,
+          "mean_trade_return": 0.00390936044266926,
+          "net_pnl": 13700.64757432136,
+          "profit_factor": 1.4005288483075427
+        },
+        "BABA": {
+          "trades": 113,
+          "win_rate": 0.4247787610619469,
+          "mean_trade_return": 0.0018361657802042387,
+          "net_pnl": 8152.535067949152,
+          "profit_factor": 1.1970611031428973
+        },
+        "GOOG": {
+          "trades": 84,
+          "win_rate": 0.36904761904761907,
+          "mean_trade_return": -0.003551808796921578,
+          "net_pnl": -10463.184437297119,
+          "profit_factor": 0.6435049888347133
+        },
+        "META": {
+          "trades": 93,
+          "win_rate": 0.3870967741935484,
+          "mean_trade_return": -0.0032830453807138967,
+          "net_pnl": -13930.6128327481,
+          "profit_factor": 0.6253163351324621
+        },
+        "MSFT": {
+          "trades": 74,
+          "win_rate": 0.35135135135135137,
+          "mean_trade_return": -0.0017636914294797156,
+          "net_pnl": -4797.031023015549,
+          "profit_factor": 0.7688964006950015
+        },
+        "NVDA": {
+          "trades": 87,
+          "win_rate": 0.4367816091954023,
+          "mean_trade_return": 0.0003017087344440555,
+          "net_pnl": 5122.331120839552,
+          "profit_factor": 1.146769544664264
+        },
+        "QQQ": {
+          "trades": 52,
+          "win_rate": 0.4423076923076923,
+          "mean_trade_return": -0.0006483253775899004,
+          "net_pnl": -910.3683818310295,
+          "profit_factor": 0.9210085770433833
+        },
+        "SPY": {
+          "trades": 49,
+          "win_rate": 0.46938775510204084,
+          "mean_trade_return": -0.0015949049790811632,
+          "net_pnl": -1712.6013490997004,
+          "profit_factor": 0.7828013805419191
+        },
+        "TSLA": {
+          "trades": 95,
+          "win_rate": 0.45263157894736844,
+          "mean_trade_return": 0.005780776330484381,
+          "net_pnl": 16949.040077697253,
+          "profit_factor": 1.3865481399931925
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 177,
+          "win_rate": 0.3389830508474576,
+          "mean_trade_return": -0.004652393070774036,
+          "net_pnl": -24897.212609913462,
+          "profit_factor": 0.6628701808022996
+        },
+        "2023": {
+          "trades": 229,
+          "win_rate": 0.4585152838427948,
+          "mean_trade_return": 0.0035610392557083484,
+          "net_pnl": 21377.52574047762,
+          "profit_factor": 1.3643073649614375
+        },
+        "2024": {
+          "trades": 262,
+          "win_rate": 0.4351145038167939,
+          "mean_trade_return": 0.002058291671433571,
+          "net_pnl": 18844.181244196832,
+          "profit_factor": 1.2137619348424278
+        },
+        "2025": {
+          "trades": 221,
+          "win_rate": 0.4117647058823529,
+          "mean_trade_return": 0.00015345458394607986,
+          "net_pnl": 1371.6821699086422,
+          "profit_factor": 1.0165113538538344
+        },
+        "2026": {
+          "trades": 119,
+          "win_rate": 0.4369747899159664,
+          "mean_trade_return": 0.001224960247915653,
+          "net_pnl": 3774.821250934192,
+          "profit_factor": 1.0774625949674022
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 185,
+          "win_rate": 0.42702702702702705,
+          "mean_trade_return": 0.001935193463188071,
+          "net_pnl": 11522.430514153628,
+          "profit_factor": 1.1811356749424384
+        },
+        "morning": {
+          "trades": 823,
+          "win_rate": 0.41676792223572295,
+          "mean_trade_return": 0.00042885756477528073,
+          "net_pnl": 8948.567281450205,
+          "profit_factor": 1.030976843258045
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 336,
+          "win_rate": 0.37797619047619047,
+          "mean_trade_return": -0.00181362718150543,
+          "net_pnl": -22744.35850752156,
+          "profit_factor": 0.7273205268945027
+        },
+        "medium": {
+          "trades": 336,
+          "win_rate": 0.40773809523809523,
+          "mean_trade_return": 0.0002879965772942187,
+          "net_pnl": 2343.100536104479,
+          "profit_factor": 1.0194540380111714
+        },
+        "high": {
+          "trades": 336,
+          "win_rate": 0.47023809523809523,
+          "mean_trade_return": 0.003641584671175048,
+          "net_pnl": 40872.255767020906,
+          "profit_factor": 1.2749786644402625
+        }
+      }
+    },
+    "breakout_lookback30": {
+      "initial_equity": 100000,
+      "final_equity": 141530.19670438458,
+      "total_return": 0.4153019670438458,
+      "maximum_drawdown": -0.1954315851514875,
+      "annualized_sharpe": 0.6674764642735027,
+      "closed_trades": 839,
+      "win_rate": 0.4374255065554231,
+      "mean_trade_return": 0.0014600271475477416,
+      "profit_factor": 1.131277263358017,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.11616830026035974,
+          "maximum_drawdown": -0.1954315851514875,
+          "closed_trades": 154,
+          "win_rate": 0.38961038961038963,
+          "profit_factor": 0.8197616446732614
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.24203996688595386,
+          "maximum_drawdown": -0.07375937670223365,
+          "closed_trades": 240,
+          "win_rate": 0.4583333333333333,
+          "profit_factor": 1.28183407704176
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.21885441775050385,
+          "maximum_drawdown": -0.1010169925630231,
+          "closed_trades": 238,
+          "win_rate": 0.44537815126050423,
+          "profit_factor": 1.2620501829596642
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.05777215284587145,
+          "maximum_drawdown": -0.1261507635206962,
+          "closed_trades": 208,
+          "win_rate": 0.4375,
+          "profit_factor": 1.0854489874988213
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 78,
+          "win_rate": 0.4358974358974359,
+          "mean_trade_return": 0.0019322740941562912,
+          "net_pnl": 5931.616980497758,
+          "profit_factor": 1.2929585603987144
+        },
+        "AMD": {
+          "trades": 74,
+          "win_rate": 0.4864864864864865,
+          "mean_trade_return": 0.00826950673260133,
+          "net_pnl": 18529.77852713302,
+          "profit_factor": 1.5465830743564577
+        },
+        "AMZN": {
+          "trades": 65,
+          "win_rate": 0.4,
+          "mean_trade_return": -0.002173618158704806,
+          "net_pnl": -6992.457786843587,
+          "profit_factor": 0.7313200973692605
+        },
+        "AVGO": {
+          "trades": 79,
+          "win_rate": 0.46835443037974683,
+          "mean_trade_return": 0.0029325801923151544,
+          "net_pnl": 10970.14605893714,
+          "profit_factor": 1.343714173061498
+        },
+        "BABA": {
+          "trades": 93,
+          "win_rate": 0.44086021505376344,
+          "mean_trade_return": 0.0029072274351306833,
+          "net_pnl": 10578.735514473854,
+          "profit_factor": 1.264365717794676
+        },
+        "GOOG": {
+          "trades": 65,
+          "win_rate": 0.4,
+          "mean_trade_return": -0.0027908772022768426,
+          "net_pnl": -7555.992143021023,
+          "profit_factor": 0.6879439680021328
+        },
+        "META": {
+          "trades": 84,
+          "win_rate": 0.4642857142857143,
+          "mean_trade_return": -0.0008902726945439212,
+          "net_pnl": -4934.904938918295,
+          "profit_factor": 0.846308312581866
+        },
+        "MSFT": {
+          "trades": 65,
+          "win_rate": 0.36923076923076925,
+          "mean_trade_return": 0.00040696058584131117,
+          "net_pnl": 847.6660848539663,
+          "profit_factor": 1.0468854787643576
+        },
+        "NVDA": {
+          "trades": 81,
+          "win_rate": 0.38271604938271603,
+          "mean_trade_return": -0.002712794321453894,
+          "net_pnl": -4946.402096837462,
+          "profit_factor": 0.8737101888070041
+        },
+        "QQQ": {
+          "trades": 42,
+          "win_rate": 0.5238095238095238,
+          "mean_trade_return": 0.0021377819553020545,
+          "net_pnl": 2988.0997261424545,
+          "profit_factor": 1.3911727077446374
+        },
+        "SPY": {
+          "trades": 40,
+          "win_rate": 0.475,
+          "mean_trade_return": 0.0011621102674901184,
+          "net_pnl": 2070.5840338683715,
+          "profit_factor": 1.41030260740235
+        },
+        "TSLA": {
+          "trades": 73,
+          "win_rate": 0.4383561643835616,
+          "mean_trade_return": 0.00568142008927536,
+          "net_pnl": 14043.326744098033,
+          "profit_factor": 1.3696137580887178
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 124,
+          "win_rate": 0.3629032258064516,
+          "mean_trade_return": -0.0035453885285872955,
+          "net_pnl": -14819.672263534241,
+          "profit_factor": 0.7242551490138154
+        },
+        "2023": {
+          "trades": 204,
+          "win_rate": 0.49019607843137253,
+          "mean_trade_return": 0.004175689384284495,
+          "net_pnl": 25455.332570575498,
+          "profit_factor": 1.4696039641518839
+        },
+        "2024": {
+          "trades": 235,
+          "win_rate": 0.43829787234042555,
+          "mean_trade_return": 0.002525230031921875,
+          "net_pnl": 22736.289381327493,
+          "profit_factor": 1.2626075125563279
+        },
+        "2025": {
+          "trades": 187,
+          "win_rate": 0.42780748663101603,
+          "mean_trade_return": 0.0007260230585132904,
+          "net_pnl": 5185.0453189546415,
+          "profit_factor": 1.067208862717927
+        },
+        "2026": {
+          "trades": 89,
+          "win_rate": 0.43820224719101125,
+          "mean_trade_return": 0.000938819668536148,
+          "net_pnl": 2973.20169706084,
+          "profit_factor": 1.0665480567624934
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 156,
+          "win_rate": 0.4423076923076923,
+          "mean_trade_return": 0.0030495061728314987,
+          "net_pnl": 15243.922054769939,
+          "profit_factor": 1.269923225849975
+        },
+        "morning": {
+          "trades": 683,
+          "win_rate": 0.4363103953147877,
+          "mean_trade_return": 0.0010969836220070888,
+          "net_pnl": 26286.27464961429,
+          "profit_factor": 1.1011478163350252
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 280,
+          "win_rate": 0.4035714285714286,
+          "mean_trade_return": -0.0005630692357154597,
+          "net_pnl": -7847.462779327474,
+          "profit_factor": 0.8891302876519791
+        },
+        "medium": {
+          "trades": 279,
+          "win_rate": 0.4444444444444444,
+          "mean_trade_return": 0.001950015982431692,
+          "net_pnl": 21315.877219761365,
+          "profit_factor": 1.2061740108566883
+        },
+        "high": {
+          "trades": 280,
+          "win_rate": 0.4642857142857143,
+          "mean_trade_return": 0.0029948846560515787,
+          "net_pnl": 28061.782263950336,
+          "profit_factor": 1.1973595455469805
+        }
+      }
+    },
+    "breakout_volume10": {
+      "initial_equity": 100000,
+      "final_equity": 108774.08105550404,
+      "total_return": 0.08774081055504035,
+      "maximum_drawdown": -0.2631952602134763,
+      "annualized_sharpe": 0.213377473273654,
+      "closed_trades": 995,
+      "win_rate": 0.414070351758794,
+      "mean_trade_return": 0.0005808444439794913,
+      "profit_factor": 1.0262087083989915,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.23419494104057348,
+          "maximum_drawdown": -0.26319526021347617,
+          "closed_trades": 199,
+          "win_rate": 0.35678391959798994,
+          "profit_factor": 0.715976612126014
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.23284015572087968,
+          "maximum_drawdown": -0.10106981975771967,
+          "closed_trades": 262,
+          "win_rate": 0.4580152671755725,
+          "profit_factor": 1.2277288368774897
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.11109159926875889,
+          "maximum_drawdown": -0.15066423306146715,
+          "closed_trades": 272,
+          "win_rate": 0.40441176470588236,
+          "profit_factor": 1.1121387769565423
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.036932666609792886,
+          "maximum_drawdown": -0.15943174935545879,
+          "closed_trades": 263,
+          "win_rate": 0.4220532319391635,
+          "profit_factor": 1.043841271961509
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 81,
+          "win_rate": 0.4567901234567901,
+          "mean_trade_return": 0.0013572024498232737,
+          "net_pnl": 3909.399123153241,
+          "profit_factor": 1.2225642016543983
+        },
+        "AMD": {
+          "trades": 95,
+          "win_rate": 0.42105263157894735,
+          "mean_trade_return": 0.003393938425760735,
+          "net_pnl": 7654.842014402263,
+          "profit_factor": 1.1831141408073804
+        },
+        "AMZN": {
+          "trades": 82,
+          "win_rate": 0.34146341463414637,
+          "mean_trade_return": -0.0037236041886108107,
+          "net_pnl": -11253.053394698105,
+          "profit_factor": 0.61660358432454
+        },
+        "AVGO": {
+          "trades": 103,
+          "win_rate": 0.47572815533980584,
+          "mean_trade_return": 0.004595504778396768,
+          "net_pnl": 14882.394456940354,
+          "profit_factor": 1.4206732497767345
+        },
+        "BABA": {
+          "trades": 106,
+          "win_rate": 0.41509433962264153,
+          "mean_trade_return": 0.002158221158212193,
+          "net_pnl": 5411.988214962157,
+          "profit_factor": 1.1351706399186317
+        },
+        "GOOG": {
+          "trades": 84,
+          "win_rate": 0.35714285714285715,
+          "mean_trade_return": -0.0029201996191759675,
+          "net_pnl": -9422.91414139335,
+          "profit_factor": 0.6572581360110493
+        },
+        "META": {
+          "trades": 89,
+          "win_rate": 0.39325842696629215,
+          "mean_trade_return": -0.0031127502465532883,
+          "net_pnl": -12181.120570780307,
+          "profit_factor": 0.6362990128781875
+        },
+        "MSFT": {
+          "trades": 78,
+          "win_rate": 0.3333333333333333,
+          "mean_trade_return": -0.0034029420848742343,
+          "net_pnl": -8178.753671168689,
+          "profit_factor": 0.6244630946744036
+        },
+        "NVDA": {
+          "trades": 83,
+          "win_rate": 0.43373493975903615,
+          "mean_trade_return": 0.0006654669000167774,
+          "net_pnl": 3597.736800052525,
+          "profit_factor": 1.111774541754297
+        },
+        "QQQ": {
+          "trades": 56,
+          "win_rate": 0.44642857142857145,
+          "mean_trade_return": -0.0001318475156925367,
+          "net_pnl": -56.623660734587304,
+          "profit_factor": 0.9949119082125784
+        },
+        "SPY": {
+          "trades": 53,
+          "win_rate": 0.4339622641509434,
+          "mean_trade_return": -0.0012011342848929844,
+          "net_pnl": -1514.3384554639515,
+          "profit_factor": 0.8177857863459196
+        },
+        "TSLA": {
+          "trades": 85,
+          "win_rate": 0.4588235294117647,
+          "mean_trade_return": 0.0064985956382152665,
+          "net_pnl": 15924.524340232385,
+          "profit_factor": 1.4392838701643489
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 164,
+          "win_rate": 0.34146341463414637,
+          "mean_trade_return": -0.004285836367087055,
+          "net_pnl": -25075.55013807212,
+          "profit_factor": 0.6417547105155343
+        },
+        "2023": {
+          "trades": 228,
+          "win_rate": 0.4780701754385965,
+          "mean_trade_return": 0.003949205607113688,
+          "net_pnl": 24016.75574286779,
+          "profit_factor": 1.4216493003000596
+        },
+        "2024": {
+          "trades": 261,
+          "win_rate": 0.4061302681992337,
+          "mean_trade_return": 0.0012342256492631405,
+          "net_pnl": 9900.584488234785,
+          "profit_factor": 1.1129595053185215
+        },
+        "2025": {
+          "trades": 223,
+          "win_rate": 0.4080717488789238,
+          "mean_trade_return": 1.3378807166563646e-05,
+          "net_pnl": -1252.3037293891705,
+          "profit_factor": 0.9835512887435944
+        },
+        "2026": {
+          "trades": 119,
+          "win_rate": 0.42016806722689076,
+          "mean_trade_return": 0.0004645557906229117,
+          "net_pnl": 1184.5946918626514,
+          "profit_factor": 1.026897110870982
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 223,
+          "win_rate": 0.40358744394618834,
+          "mean_trade_return": 0.0007384035763875787,
+          "net_pnl": 4694.123624652955,
+          "profit_factor": 1.0608476485650318
+        },
+        "morning": {
+          "trades": 772,
+          "win_rate": 0.4170984455958549,
+          "mean_trade_return": 0.0005353318966647199,
+          "net_pnl": 4079.95743085098,
+          "profit_factor": 1.015836389484106
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 332,
+          "win_rate": 0.3855421686746988,
+          "mean_trade_return": -0.0010909029563099346,
+          "net_pnl": -13901.085910811098,
+          "profit_factor": 0.8147841598072357
+        },
+        "medium": {
+          "trades": 331,
+          "win_rate": 0.4108761329305136,
+          "mean_trade_return": 0.00045805916297194315,
+          "net_pnl": 3424.4916829216686,
+          "profit_factor": 1.0309424977507626
+        },
+        "high": {
+          "trades": 332,
+          "win_rate": 0.4457831325301205,
+          "mean_trade_return": 0.0023750072900927074,
+          "net_pnl": 19250.675283393357,
+          "profit_factor": 1.1291548563748037
+        }
+      }
+    },
+    "breakout_volume14": {
+      "initial_equity": 100000,
+      "final_equity": 129304.11996392769,
+      "total_return": 0.293041199639277,
+      "maximum_drawdown": -0.1996677611635722,
+      "annualized_sharpe": 0.508212948257819,
+      "closed_trades": 844,
+      "win_rate": 0.4253554502369668,
+      "mean_trade_return": 0.0011440993680146398,
+      "profit_factor": 1.097356075581174,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.15016940335605122,
+          "maximum_drawdown": -0.1996677611635722,
+          "closed_trades": 166,
+          "win_rate": 0.37349397590361444,
+          "profit_factor": 0.7805796846559275
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.1875891041915445,
+          "maximum_drawdown": -0.08473248656354693,
+          "closed_trades": 227,
+          "win_rate": 0.44493392070484583,
+          "profit_factor": 1.2327543051038579
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.15753651820831105,
+          "maximum_drawdown": -0.13859338802073617,
+          "closed_trades": 235,
+          "win_rate": 0.4297872340425532,
+          "profit_factor": 1.1841306804317795
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.10682534210551431,
+          "maximum_drawdown": -0.11045066599189246,
+          "closed_trades": 216,
+          "win_rate": 0.4398148148148148,
+          "profit_factor": 1.1518907875083417
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 66,
+          "win_rate": 0.5303030303030303,
+          "mean_trade_return": 0.0047476136862362305,
+          "net_pnl": 11678.411066389928,
+          "profit_factor": 1.8860845408478073
+        },
+        "AMD": {
+          "trades": 77,
+          "win_rate": 0.45454545454545453,
+          "mean_trade_return": 0.006595329158502739,
+          "net_pnl": 15565.976831491927,
+          "profit_factor": 1.4644944120785552
+        },
+        "AMZN": {
+          "trades": 63,
+          "win_rate": 0.38095238095238093,
+          "mean_trade_return": -0.001573240011541561,
+          "net_pnl": -4486.151803361262,
+          "profit_factor": 0.7973025520690167
+        },
+        "AVGO": {
+          "trades": 83,
+          "win_rate": 0.4819277108433735,
+          "mean_trade_return": 0.005211041021424892,
+          "net_pnl": 15151.206900164838,
+          "profit_factor": 1.5553982731677396
+        },
+        "BABA": {
+          "trades": 106,
+          "win_rate": 0.39622641509433965,
+          "mean_trade_return": -3.7940568771908436e-05,
+          "net_pnl": 244.32612117064087,
+          "profit_factor": 1.0052531619361067
+        },
+        "GOOG": {
+          "trades": 66,
+          "win_rate": 0.3484848484848485,
+          "mean_trade_return": -0.003319887285569865,
+          "net_pnl": -7907.4314092205395,
+          "profit_factor": 0.6733156343070704
+        },
+        "META": {
+          "trades": 78,
+          "win_rate": 0.41025641025641024,
+          "mean_trade_return": -0.0026774304756456316,
+          "net_pnl": -8974.854413516061,
+          "profit_factor": 0.704274994917119
+        },
+        "MSFT": {
+          "trades": 65,
+          "win_rate": 0.3076923076923077,
+          "mean_trade_return": -0.002628501752628857,
+          "net_pnl": -5960.40816178464,
+          "profit_factor": 0.7098898693139021
+        },
+        "NVDA": {
+          "trades": 72,
+          "win_rate": 0.4305555555555556,
+          "mean_trade_return": -0.0008514935860724046,
+          "net_pnl": 1272.9807722377682,
+          "profit_factor": 1.0421592113221223
+        },
+        "QQQ": {
+          "trades": 50,
+          "win_rate": 0.48,
+          "mean_trade_return": 0.0006608207827788681,
+          "net_pnl": 1372.9837630253808,
+          "profit_factor": 1.1426348830252668
+        },
+        "SPY": {
+          "trades": 44,
+          "win_rate": 0.4772727272727273,
+          "mean_trade_return": -0.0009946908641166748,
+          "net_pnl": -898.444645935235,
+          "profit_factor": 0.8753090817004169
+        },
+        "TSLA": {
+          "trades": 74,
+          "win_rate": 0.43243243243243246,
+          "mean_trade_return": 0.006566136260742946,
+          "net_pnl": 12245.524943265144,
+          "profit_factor": 1.3377091396149485
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 138,
+          "win_rate": 0.34782608695652173,
+          "mean_trade_return": -0.00339230053948136,
+          "net_pnl": -17432.072882497992,
+          "profit_factor": 0.6979453080721258
+        },
+        "2023": {
+          "trades": 196,
+          "win_rate": 0.47959183673469385,
+          "mean_trade_return": 0.00394127467956385,
+          "net_pnl": 21677.459352272173,
+          "profit_factor": 1.409896447466656
+        },
+        "2024": {
+          "trades": 230,
+          "win_rate": 0.41304347826086957,
+          "mean_trade_return": 0.001377084034490925,
+          "net_pnl": 12244.173732168027,
+          "profit_factor": 1.1517469716744342
+        },
+        "2025": {
+          "trades": 186,
+          "win_rate": 0.42473118279569894,
+          "mean_trade_return": 0.0008115442085619757,
+          "net_pnl": 5795.2810935737525,
+          "profit_factor": 1.0830578828729422
+        },
+        "2026": {
+          "trades": 94,
+          "win_rate": 0.4574468085106383,
+          "mean_trade_return": 0.0020594782248173267,
+          "net_pnl": 7019.278668411934,
+          "profit_factor": 1.1757436242792032
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 133,
+          "win_rate": 0.42105263157894735,
+          "mean_trade_return": 0.002851013586038799,
+          "net_pnl": 13571.145242292763,
+          "profit_factor": 1.296991858467826
+        },
+        "morning": {
+          "trades": 711,
+          "win_rate": 0.42616033755274263,
+          "mean_trade_return": 0.0008248031781451416,
+          "net_pnl": 15732.974721635133,
+          "profit_factor": 1.0616244615361514
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 281,
+          "win_rate": 0.398576512455516,
+          "mean_trade_return": -0.0008564653110588308,
+          "net_pnl": -9331.899154655905,
+          "profit_factor": 0.8612434969213537
+        },
+        "medium": {
+          "trades": 281,
+          "win_rate": 0.4092526690391459,
+          "mean_trade_return": 0.0003640419670265717,
+          "net_pnl": 3267.014853493001,
+          "profit_factor": 1.0318450921875635
+        },
+        "high": {
+          "trades": 282,
+          "win_rate": 0.46808510638297873,
+          "mean_trade_return": 0.003914861086090144,
+          "net_pnl": 35369.00426509079,
+          "profit_factor": 1.2696737836496306
+        }
+      }
+    },
+    "breakout_adx15": {
+      "initial_equity": 100000,
+      "final_equity": 108291.27404261674,
+      "total_return": 0.08291274042616736,
+      "maximum_drawdown": -0.25881787488984087,
+      "annualized_sharpe": 0.20588215787803923,
+      "closed_trades": 1038,
+      "win_rate": 0.4123314065510597,
+      "mean_trade_return": 0.00043889401894510075,
+      "profit_factor": 1.0225868794470103,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.2055464778340701,
+          "maximum_drawdown": -0.258817874889841,
+          "closed_trades": 209,
+          "win_rate": 0.35406698564593303,
+          "profit_factor": 0.7670742386357823
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.22055402071164298,
+          "maximum_drawdown": -0.12034451308660177,
+          "closed_trades": 284,
+          "win_rate": 0.4471830985915493,
+          "profit_factor": 1.1998577571618214
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.1440363818530226,
+          "maximum_drawdown": -0.12143667606422892,
+          "closed_trades": 270,
+          "win_rate": 0.42592592592592593,
+          "profit_factor": 1.147082655468947
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": -0.02382399799071211,
+          "maximum_drawdown": -0.15059333096980565,
+          "closed_trades": 275,
+          "win_rate": 0.4072727272727273,
+          "profit_factor": 0.9740742974870422
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 77,
+          "win_rate": 0.4675324675324675,
+          "mean_trade_return": 0.0023108670584688555,
+          "net_pnl": 6801.229420742682,
+          "profit_factor": 1.3725020273110953
+        },
+        "AMD": {
+          "trades": 102,
+          "win_rate": 0.4411764705882353,
+          "mean_trade_return": 0.0035651889362359125,
+          "net_pnl": 10186.938503083364,
+          "profit_factor": 1.2316142835243906
+        },
+        "AMZN": {
+          "trades": 84,
+          "win_rate": 0.2976190476190476,
+          "mean_trade_return": -0.006244943990658908,
+          "net_pnl": -18514.611640539802,
+          "profit_factor": 0.46038226373749996
+        },
+        "AVGO": {
+          "trades": 112,
+          "win_rate": 0.4375,
+          "mean_trade_return": 0.0023778974895947414,
+          "net_pnl": 8810.289454353202,
+          "profit_factor": 1.2224685760334484
+        },
+        "BABA": {
+          "trades": 110,
+          "win_rate": 0.4090909090909091,
+          "mean_trade_return": 0.001956008473435967,
+          "net_pnl": 7261.9687102931075,
+          "profit_factor": 1.1710666160774528
+        },
+        "GOOG": {
+          "trades": 86,
+          "win_rate": 0.4069767441860465,
+          "mean_trade_return": -0.0014278417597915352,
+          "net_pnl": -5040.393876711526,
+          "profit_factor": 0.8230547365529655
+        },
+        "META": {
+          "trades": 94,
+          "win_rate": 0.40425531914893614,
+          "mean_trade_return": -0.0015315168000511032,
+          "net_pnl": -7781.079491753078,
+          "profit_factor": 0.7736805922238378
+        },
+        "MSFT": {
+          "trades": 73,
+          "win_rate": 0.2328767123287671,
+          "mean_trade_return": -0.005727676519786696,
+          "net_pnl": -14133.500914169446,
+          "profit_factor": 0.42166384055241635
+        },
+        "NVDA": {
+          "trades": 96,
+          "win_rate": 0.4895833333333333,
+          "mean_trade_return": 0.0044758790919633175,
+          "net_pnl": 15947.54511265851,
+          "profit_factor": 1.4470701389747256
+        },
+        "QQQ": {
+          "trades": 55,
+          "win_rate": 0.4727272727272727,
+          "mean_trade_return": 0.0001183687885682814,
+          "net_pnl": 480.87445182060765,
+          "profit_factor": 1.0411222199130783
+        },
+        "SPY": {
+          "trades": 61,
+          "win_rate": 0.5081967213114754,
+          "mean_trade_return": 0.0007433418211648013,
+          "net_pnl": 2105.591955914065,
+          "profit_factor": 1.2635396172273987
+        },
+        "TSLA": {
+          "trades": 88,
+          "win_rate": 0.38636363636363635,
+          "mean_trade_return": 0.0018228935246607755,
+          "net_pnl": 2166.42235692499,
+          "profit_factor": 1.0472816899423065
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 177,
+          "win_rate": 0.3389830508474576,
+          "mean_trade_return": -0.00374353370721309,
+          "net_pnl": -21668.839504278516,
+          "profit_factor": 0.7177229037514001
+        },
+        "2023": {
+          "trades": 241,
+          "win_rate": 0.47717842323651455,
+          "mean_trade_return": 0.0038359920724083925,
+          "net_pnl": 25209.516805514017,
+          "profit_factor": 1.3937713010417028
+        },
+        "2024": {
+          "trades": 266,
+          "win_rate": 0.39473684210526316,
+          "mean_trade_return": 8.710992131642457e-05,
+          "net_pnl": 472.5621418926221,
+          "profit_factor": 1.0049950443592282
+        },
+        "2025": {
+          "trades": 230,
+          "win_rate": 0.43043478260869567,
+          "mean_trade_return": 0.0010312466186399051,
+          "net_pnl": 7877.749763062201,
+          "profit_factor": 1.096769900951045
+        },
+        "2026": {
+          "trades": 124,
+          "win_rate": 0.3951612903225806,
+          "mean_trade_return": -0.0005375370400486956,
+          "net_pnl": -3599.7151635736514,
+          "profit_factor": 0.9284141537209419
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 188,
+          "win_rate": 0.43617021276595747,
+          "mean_trade_return": 0.002684566876319601,
+          "net_pnl": 14433.719360017567,
+          "profit_factor": 1.221470148586511
+        },
+        "morning": {
+          "trades": 850,
+          "win_rate": 0.40705882352941175,
+          "mean_trade_return": -5.779597774478863e-05,
+          "net_pnl": -6142.445317400898,
+          "profit_factor": 0.9796548044649319
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 346,
+          "win_rate": 0.3786127167630058,
+          "mean_trade_return": -0.0012975525343237207,
+          "net_pnl": -16286.669424559273,
+          "profit_factor": 0.7999017911542158
+        },
+        "medium": {
+          "trades": 346,
+          "win_rate": 0.407514450867052,
+          "mean_trade_return": -0.00010146987787238443,
+          "net_pnl": -2828.0260518579917,
+          "profit_factor": 0.9772222392727464
+        },
+        "high": {
+          "trades": 346,
+          "win_rate": 0.4508670520231214,
+          "mean_trade_return": 0.0027157044690314072,
+          "net_pnl": 27405.969519033933,
+          "profit_factor": 1.16966180975322
+        }
+      }
+    },
+    "breakout_adx25": {
+      "initial_equity": 100000,
+      "final_equity": 117947.03299493235,
+      "total_return": 0.17947032994932344,
+      "maximum_drawdown": -0.1491268684752851,
+      "annualized_sharpe": 0.36700216942140473,
+      "closed_trades": 760,
+      "win_rate": 0.42105263157894735,
+      "mean_trade_return": 0.000982239312890136,
+      "profit_factor": 1.0666176771867417,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.05942101563464097,
+          "maximum_drawdown": -0.14912686847528522,
+          "closed_trades": 150,
+          "win_rate": 0.38,
+          "profit_factor": 0.9046767011169683
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.06512540389121901,
+          "maximum_drawdown": -0.11245292317461464,
+          "closed_trades": 213,
+          "win_rate": 0.40375586854460094,
+          "profit_factor": 1.0719214234444
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.06370072386233594,
+          "maximum_drawdown": -0.0932583985226183,
+          "closed_trades": 213,
+          "win_rate": 0.43661971830985913,
+          "profit_factor": 1.0835473551312467
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.106806119752896,
+          "maximum_drawdown": -0.10193166632921935,
+          "closed_trades": 185,
+          "win_rate": 0.4540540540540541,
+          "profit_factor": 1.190126630108641
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 59,
+          "win_rate": 0.3898305084745763,
+          "mean_trade_return": 0.00032991050748144775,
+          "net_pnl": 969.3802537609946,
+          "profit_factor": 1.0678502324851902
+        },
+        "AMD": {
+          "trades": 79,
+          "win_rate": 0.45569620253164556,
+          "mean_trade_return": 0.005651153569138401,
+          "net_pnl": 13221.309416967866,
+          "profit_factor": 1.3723730593743046
+        },
+        "AMZN": {
+          "trades": 58,
+          "win_rate": 0.39655172413793105,
+          "mean_trade_return": -0.0004697126826498136,
+          "net_pnl": -1840.890846519941,
+          "profit_factor": 0.9121013129433514
+        },
+        "AVGO": {
+          "trades": 66,
+          "win_rate": 0.45454545454545453,
+          "mean_trade_return": 0.0035868777362864242,
+          "net_pnl": 7969.663387086869,
+          "profit_factor": 1.3303112674612438
+        },
+        "BABA": {
+          "trades": 90,
+          "win_rate": 0.4,
+          "mean_trade_return": 0.0011313802793581987,
+          "net_pnl": 980.8103466441455,
+          "profit_factor": 1.0261425244549836
+        },
+        "GOOG": {
+          "trades": 61,
+          "win_rate": 0.4098360655737705,
+          "mean_trade_return": -0.0007039185585156582,
+          "net_pnl": -1662.8340572290745,
+          "profit_factor": 0.9141469987465481
+        },
+        "META": {
+          "trades": 68,
+          "win_rate": 0.4411764705882353,
+          "mean_trade_return": -0.001103478785431652,
+          "net_pnl": -4830.288443665683,
+          "profit_factor": 0.7957203923039584
+        },
+        "MSFT": {
+          "trades": 58,
+          "win_rate": 0.3103448275862069,
+          "mean_trade_return": -0.0026720176148505937,
+          "net_pnl": -5136.255239032661,
+          "profit_factor": 0.7089381508219059
+        },
+        "NVDA": {
+          "trades": 69,
+          "win_rate": 0.4492753623188406,
+          "mean_trade_return": 0.0010030587811391948,
+          "net_pnl": 1890.3309139593587,
+          "profit_factor": 1.0722763349345177
+        },
+        "QQQ": {
+          "trades": 41,
+          "win_rate": 0.4634146341463415,
+          "mean_trade_return": -0.0006603676641804279,
+          "net_pnl": -229.15522870740773,
+          "profit_factor": 0.9721659409168366
+        },
+        "SPY": {
+          "trades": 39,
+          "win_rate": 0.46153846153846156,
+          "mean_trade_return": -0.0011621071180175264,
+          "net_pnl": -1149.9817175506678,
+          "profit_factor": 0.7992231167795578
+        },
+        "TSLA": {
+          "trades": 72,
+          "win_rate": 0.4305555555555556,
+          "mean_trade_return": 0.0034086112892406976,
+          "net_pnl": 7764.944209218569,
+          "profit_factor": 1.214224708933435
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 124,
+          "win_rate": 0.3629032258064516,
+          "mean_trade_return": -0.001755644746149503,
+          "net_pnl": -10607.650806121721,
+          "profit_factor": 0.8037055330916558
+        },
+        "2023": {
+          "trades": 183,
+          "win_rate": 0.4371584699453552,
+          "mean_trade_return": 0.0034400469314506714,
+          "net_pnl": 18797.42298509115,
+          "profit_factor": 1.3404102334798402
+        },
+        "2024": {
+          "trades": 213,
+          "win_rate": 0.40375586854460094,
+          "mean_trade_return": 3.610171696860281e-05,
+          "net_pnl": -362.24821688125485,
+          "profit_factor": 0.995417910796754
+        },
+        "2025": {
+          "trades": 155,
+          "win_rate": 0.4129032258064516,
+          "mean_trade_return": -1.7078547853353844e-05,
+          "net_pnl": -501.7385384802509,
+          "profit_factor": 0.990527389973331
+        },
+        "2026": {
+          "trades": 85,
+          "win_rate": 0.5294117647058824,
+          "mean_trade_return": 0.003878008789017958,
+          "net_pnl": 10621.247571324448,
+          "profit_factor": 1.3777203374513427
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 145,
+          "win_rate": 0.4,
+          "mean_trade_return": 5.045292136482664e-05,
+          "net_pnl": 1669.6159377904169,
+          "profit_factor": 1.029921088441843
+        },
+        "morning": {
+          "trades": 615,
+          "win_rate": 0.42601626016260163,
+          "mean_trade_return": 0.0012019287873148027,
+          "net_pnl": 16277.417057141956,
+          "profit_factor": 1.0762041291923503
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 254,
+          "win_rate": 0.3464566929133858,
+          "mean_trade_return": -0.002283509865938137,
+          "net_pnl": -20514.67422574718,
+          "profit_factor": 0.6819197215338625
+        },
+        "medium": {
+          "trades": 253,
+          "win_rate": 0.43873517786561267,
+          "mean_trade_return": 0.0009708078032633093,
+          "net_pnl": 7914.189569570023,
+          "profit_factor": 1.087703175782372
+        },
+        "high": {
+          "trades": 253,
+          "win_rate": 0.4782608695652174,
+          "mean_trade_return": 0.004272328100866297,
+          "net_pnl": 30547.517651109534,
+          "profit_factor": 1.266395386389192
+        }
+      }
+    }
+  },
+  "higher_slippage": {
+    "10_bps_each_side": {
+      "initial_equity": 100000,
+      "final_equity": 107217.69922582063,
+      "total_return": 0.07217699225820629,
+      "maximum_drawdown": -0.20083233823536317,
+      "annualized_sharpe": 0.19267641845609088,
+      "closed_trades": 931,
+      "win_rate": 0.4092373791621912,
+      "mean_trade_return": 0.0005121838958261822,
+      "profit_factor": 1.0218792459788062,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.1326271244256757,
+          "maximum_drawdown": -0.20083233823536317,
+          "closed_trades": 182,
+          "win_rate": 0.3791208791208791,
+          "profit_factor": 0.8318238197672433
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.14759482164033977,
+          "maximum_drawdown": -0.1053241021137814,
+          "closed_trades": 256,
+          "win_rate": 0.4296875,
+          "profit_factor": 1.142839403936814
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.068532611073848,
+          "maximum_drawdown": -0.1468455402092127,
+          "closed_trades": 256,
+          "win_rate": 0.40625,
+          "profit_factor": 1.0736881012642512
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.008055133665725522,
+          "maximum_drawdown": -0.1436398026497573,
+          "closed_trades": 238,
+          "win_rate": 0.4117647058823529,
+          "profit_factor": 1.0102995563723958
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 77,
+          "win_rate": 0.45454545454545453,
+          "mean_trade_return": 0.0012159955455027765,
+          "net_pnl": 3158.4505311296057,
+          "profit_factor": 1.173410928354201
+        },
+        "AMD": {
+          "trades": 86,
+          "win_rate": 0.46511627906976744,
+          "mean_trade_return": 0.006375760358642161,
+          "net_pnl": 16251.228040168617,
+          "profit_factor": 1.4552059121170156
+        },
+        "AMZN": {
+          "trades": 69,
+          "win_rate": 0.3333333333333333,
+          "mean_trade_return": -0.003156058942140255,
+          "net_pnl": -8346.435586631114,
+          "profit_factor": 0.6814706923630043
+        },
+        "AVGO": {
+          "trades": 95,
+          "win_rate": 0.43157894736842106,
+          "mean_trade_return": 0.003362734460209886,
+          "net_pnl": 10850.622317537543,
+          "profit_factor": 1.3152039276508483
+        },
+        "BABA": {
+          "trades": 108,
+          "win_rate": 0.39814814814814814,
+          "mean_trade_return": 0.000419675596688168,
+          "net_pnl": 113.03470889201844,
+          "profit_factor": 1.0024809386687712
+        },
+        "GOOG": {
+          "trades": 72,
+          "win_rate": 0.3611111111111111,
+          "mean_trade_return": -0.0035068310612638215,
+          "net_pnl": -9194.146347664131,
+          "profit_factor": 0.625305340147069
+        },
+        "META": {
+          "trades": 85,
+          "win_rate": 0.38823529411764707,
+          "mean_trade_return": -0.0034721091574957735,
+          "net_pnl": -12313.679973273429,
+          "profit_factor": 0.6285922005749547
+        },
+        "MSFT": {
+          "trades": 70,
+          "win_rate": 0.32857142857142857,
+          "mean_trade_return": -0.0024477383319344618,
+          "net_pnl": -5864.492615595682,
+          "profit_factor": 0.7204234631662825
+        },
+        "NVDA": {
+          "trades": 84,
+          "win_rate": 0.42857142857142855,
+          "mean_trade_return": -0.0002687983392660253,
+          "net_pnl": 1359.9633669429477,
+          "profit_factor": 1.0400863624181307
+        },
+        "QQQ": {
+          "trades": 50,
+          "win_rate": 0.48,
+          "mean_trade_return": 8.391225746280817e-05,
+          "net_pnl": 550.2185047996668,
+          "profit_factor": 1.052296908310946
+        },
+        "SPY": {
+          "trades": 51,
+          "win_rate": 0.39215686274509803,
+          "mean_trade_return": -0.001945951406801769,
+          "net_pnl": -2710.2791675239023,
+          "profit_factor": 0.6784757016232289
+        },
+        "TSLA": {
+          "trades": 84,
+          "win_rate": 0.44047619047619047,
+          "mean_trade_return": 0.006243681612122576,
+          "net_pnl": 13363.215447038367,
+          "profit_factor": 1.3494517354407687
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 152,
+          "win_rate": 0.3618421052631579,
+          "mean_trade_return": -0.002781122495026679,
+          "net_pnl": -17253.417312646896,
+          "profit_factor": 0.7415934836623592
+        },
+        "2023": {
+          "trades": 220,
+          "win_rate": 0.4590909090909091,
+          "mean_trade_return": 0.00348520340857607,
+          "net_pnl": 21873.923094491598,
+          "profit_factor": 1.358040776866173
+        },
+        "2024": {
+          "trades": 248,
+          "win_rate": 0.4032258064516129,
+          "mean_trade_return": 0.0005176171232237442,
+          "net_pnl": 4335.4704712588045,
+          "profit_factor": 1.0485727517768377
+        },
+        "2025": {
+          "trades": 200,
+          "win_rate": 0.395,
+          "mean_trade_return": -0.00020531106103960917,
+          "net_pnl": -2411.790083305406,
+          "profit_factor": 0.9658320454601548
+        },
+        "2026": {
+          "trades": 111,
+          "win_rate": 0.4144144144144144,
+          "mean_trade_return": 0.00041011028846782524,
+          "net_pnl": 673.5130560224129,
+          "profit_factor": 1.0159666581804443
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 176,
+          "win_rate": 0.39204545454545453,
+          "mean_trade_return": 0.0007971240227874412,
+          "net_pnl": 4762.419573104679,
+          "profit_factor": 1.0755102105229593
+        },
+        "morning": {
+          "trades": 755,
+          "win_rate": 0.41324503311258276,
+          "mean_trade_return": 0.0004457607668921668,
+          "net_pnl": 2455.279652715837,
+          "profit_factor": 1.0092020745435895
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 310,
+          "win_rate": 0.36774193548387096,
+          "mean_trade_return": -0.00183469088098724,
+          "net_pnl": -20313.960883451095,
+          "profit_factor": 0.7323149718812568
+        },
+        "medium": {
+          "trades": 311,
+          "win_rate": 0.3954983922829582,
+          "mean_trade_return": -1.9870925205853412e-06,
+          "net_pnl": -1111.6803408466094,
+          "profit_factor": 0.990055191246434
+        },
+        "high": {
+          "trades": 310,
+          "win_rate": 0.4645161290322581,
+          "mean_trade_return": 0.003374888277077813,
+          "net_pnl": 28643.340450118216,
+          "profit_factor": 1.201408157853291
+        }
+      }
+    },
+    "15_bps_each_side": {
+      "initial_equity": 100000,
+      "final_equity": 81799.77981686042,
+      "total_return": -0.18200220183139582,
+      "maximum_drawdown": -0.25579186907531115,
+      "annualized_sharpe": -0.23709304043523932,
+      "closed_trades": 925,
+      "win_rate": 0.39675675675675676,
+      "mean_trade_return": -0.0003928344239726226,
+      "profit_factor": 0.93982793261443,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.1921343426532498,
+          "maximum_drawdown": -0.247142467390837,
+          "closed_trades": 181,
+          "win_rate": 0.3701657458563536,
+          "profit_factor": 0.7527583181453074
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.1213013342586815,
+          "maximum_drawdown": -0.11793154927967542,
+          "closed_trades": 251,
+          "win_rate": 0.41434262948207173,
+          "profit_factor": 1.114239868988985
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": -0.01950941983909793,
+          "maximum_drawdown": -0.15170088598511255,
+          "closed_trades": 260,
+          "win_rate": 0.39615384615384613,
+          "profit_factor": 0.9793951629394023
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": -0.07902631008095506,
+          "maximum_drawdown": -0.18451979270693275,
+          "closed_trades": 234,
+          "win_rate": 0.3974358974358974,
+          "profit_factor": 0.8974558874414759
+        }
+      ],
+      "by_symbol": {
+        "AAPL": {
+          "trades": 74,
+          "win_rate": 0.43243243243243246,
+          "mean_trade_return": 0.0007299406399570973,
+          "net_pnl": 1598.7559118031716,
+          "profit_factor": 1.1004794617871654
+        },
+        "AMD": {
+          "trades": 82,
+          "win_rate": 0.4634146341463415,
+          "mean_trade_return": 0.005450903878550895,
+          "net_pnl": 11628.17544141988,
+          "profit_factor": 1.3719030575235334
+        },
+        "AMZN": {
+          "trades": 69,
+          "win_rate": 0.3333333333333333,
+          "mean_trade_return": -0.0038153921450919687,
+          "net_pnl": -8363.300987515144,
+          "profit_factor": 0.6436101064643496
+        },
+        "AVGO": {
+          "trades": 97,
+          "win_rate": 0.41237113402061853,
+          "mean_trade_return": 0.0010916121244991357,
+          "net_pnl": 3344.8347898832453,
+          "profit_factor": 1.0992669704440499
+        },
+        "BABA": {
+          "trades": 110,
+          "win_rate": 0.38181818181818183,
+          "mean_trade_return": -0.0009711311397420521,
+          "net_pnl": -4371.073332354898,
+          "profit_factor": 0.8997689822318201
+        },
+        "GOOG": {
+          "trades": 71,
+          "win_rate": 0.352112676056338,
+          "mean_trade_return": -0.003687459421861362,
+          "net_pnl": -8547.208470948077,
+          "profit_factor": 0.6140756606308148
+        },
+        "META": {
+          "trades": 87,
+          "win_rate": 0.3448275862068966,
+          "mean_trade_return": -0.004175239135661674,
+          "net_pnl": -12542.126619813478,
+          "profit_factor": 0.5910912415075052
+        },
+        "MSFT": {
+          "trades": 67,
+          "win_rate": 0.3283582089552239,
+          "mean_trade_return": -0.0032482892908053994,
+          "net_pnl": -6698.632190494997,
+          "profit_factor": 0.6376259214755816
+        },
+        "NVDA": {
+          "trades": 84,
+          "win_rate": 0.42857142857142855,
+          "mean_trade_return": -0.0012794876982077546,
+          "net_pnl": -1253.6581481718927,
+          "profit_factor": 0.9594211869677896
+        },
+        "QQQ": {
+          "trades": 52,
+          "win_rate": 0.46153846153846156,
+          "mean_trade_return": -0.0010710468873551537,
+          "net_pnl": -1036.9891373906305,
+          "profit_factor": 0.9011828981225513
+        },
+        "SPY": {
+          "trades": 49,
+          "win_rate": 0.3673469387755102,
+          "mean_trade_return": -0.002853455924403819,
+          "net_pnl": -3844.431054887038,
+          "profit_factor": 0.5224990186254713
+        },
+        "TSLA": {
+          "trades": 83,
+          "win_rate": 0.4457831325301205,
+          "mean_trade_return": 0.006572531217593633,
+          "net_pnl": 11885.433615330068,
+          "profit_factor": 1.351899891961525
+        }
+      },
+      "by_year": {
+        "2022": {
+          "trades": 151,
+          "win_rate": 0.3509933774834437,
+          "mean_trade_return": -0.004134402611178522,
+          "net_pnl": -22411.539373821495,
+          "profit_factor": 0.6656504983535533
+        },
+        "2023": {
+          "trades": 215,
+          "win_rate": 0.4511627906976744,
+          "mean_trade_return": 0.0033832685764791917,
+          "net_pnl": 19339.016134880505,
+          "profit_factor": 1.3456262027983719
+        },
+        "2024": {
+          "trades": 252,
+          "win_rate": 0.3888888888888889,
+          "mean_trade_return": -0.0005524531102747222,
+          "net_pnl": -4503.517356323127,
+          "profit_factor": 0.9472097571759772
+        },
+        "2025": {
+          "trades": 200,
+          "win_rate": 0.375,
+          "mean_trade_return": -0.0014531423601857702,
+          "net_pnl": -8897.971872653034,
+          "profit_factor": 0.8550652639699655
+        },
+        "2026": {
+          "trades": 107,
+          "win_rate": 0.411214953271028,
+          "mean_trade_return": -0.00034236575704075844,
+          "net_pnl": -1726.2077152226336,
+          "profit_factor": 0.9473446478462504
+        }
+      },
+      "by_session": {
+        "afternoon": {
+          "trades": 173,
+          "win_rate": 0.3815028901734104,
+          "mean_trade_return": -0.0005817155950986328,
+          "net_pnl": -1605.938765978839,
+          "profit_factor": 0.9720882171123927
+        },
+        "morning": {
+          "trades": 752,
+          "win_rate": 0.4002659574468085,
+          "mean_trade_return": -0.00034938170774283565,
+          "net_pnl": -16594.281417160946,
+          "profit_factor": 0.9322498093086804
+        }
+      },
+      "by_volatility_regime": {
+        "low": {
+          "trades": 308,
+          "win_rate": 0.3474025974025974,
+          "mean_trade_return": -0.002663715777803272,
+          "net_pnl": -24918.86774987954,
+          "profit_factor": 0.6475257271834256
+        },
+        "medium": {
+          "trades": 308,
+          "win_rate": 0.39285714285714285,
+          "mean_trade_return": -0.0003786365748712199,
+          "net_pnl": -4828.403985829175,
+          "profit_factor": 0.9513472115175873
+        },
+        "high": {
+          "trades": 309,
+          "win_rate": 0.44983818770226536,
+          "mean_trade_return": 0.0018565458978934224,
+          "net_pnl": 11547.051552568928,
+          "profit_factor": 1.0871274903381338
+        }
+      }
+    }
+  }
+}

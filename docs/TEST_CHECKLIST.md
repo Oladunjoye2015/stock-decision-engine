@@ -1,0 +1,3 @@
+# Test checklist
+
+Automated tests cover startup, authentication/idempotency/freshness/timeframes, model compatibility/order, deterministic gate ordering, Finnhub news/noise, sizing/risk, paper/manual P&L, kill switch, revocable approval, policy staleness, 30-second/10-cent/volume rules, SignalStack prerequisite refusal, no outbound configuration test, two-per-minute/30-second limiting, priority queue, duplicate prevention, overflow, bounded retries, cancellation endpoints, backfill labeling, no-lookahead context, research-selection isolation, and the frozen shadow boundary/fail-closed state. Also verify the Alpaca repository's `git status --short` is identical before and after this work.

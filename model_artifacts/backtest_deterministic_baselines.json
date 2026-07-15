@@ -1,0 +1,228 @@
+{
+  "methodology": {
+    "entry": "next hourly bar open",
+    "same_bar_tie": "stop first",
+    "position_sizing": "1% equity risk capped at one-third equity and 3 concurrent positions",
+    "exit": "2 ATR stop, 2R target, or 16 bars",
+    "slippage_bps_each_side": 5,
+    "chronological_slices": "four fixed equal-timestamp periods; strategy rules are unchanged"
+  },
+  "dataset": {
+    "rows": 81286,
+    "symbols": [
+      "AAPL",
+      "AMD",
+      "AMZN",
+      "AVGO",
+      "BABA",
+      "GOOG",
+      "META",
+      "MSFT",
+      "NVDA",
+      "QQQ",
+      "SPY",
+      "TSLA"
+    ],
+    "start": "2022-01-03 15:00:00+00:00",
+    "end": "2026-07-14 19:00:00+00:00"
+  },
+  "equal_weight_buy_hold_return": 0.22963196879748918,
+  "strategies": {
+    "sma_trend": {
+      "initial_equity": 100000,
+      "final_equity": 113750.39741470454,
+      "total_return": 0.1375039741470454,
+      "maximum_drawdown": -0.08513770162424561,
+      "annualized_sharpe": 0.4086340578904167,
+      "closed_trades": 384,
+      "win_rate": 0.421875,
+      "mean_trade_return": 0.0011552183731478914,
+      "profit_factor": 1.1088926157949999,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.04847934354915895,
+          "maximum_drawdown": -0.06018634578457027,
+          "closed_trades": 59,
+          "win_rate": 0.3220338983050847,
+          "profit_factor": 0.837740693271294
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.07629595219975727,
+          "maximum_drawdown": -0.06313542233002678,
+          "closed_trades": 120,
+          "win_rate": 0.44166666666666665,
+          "profit_factor": 1.1554361416012586
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.10787891126009086,
+          "maximum_drawdown": -0.05349259358050695,
+          "closed_trades": 86,
+          "win_rate": 0.5,
+          "profit_factor": 1.4568375126760198
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.0025607529406661556,
+          "maximum_drawdown": -0.07515434866271264,
+          "closed_trades": 121,
+          "win_rate": 0.3884297520661157,
+          "profit_factor": 1.006723691255988
+        }
+      ]
+    },
+    "momentum": {
+      "initial_equity": 100000,
+      "final_equity": 109225.68525503138,
+      "total_return": 0.0922568525503138,
+      "maximum_drawdown": -0.23236810941520158,
+      "annualized_sharpe": 0.22075112317954831,
+      "closed_trades": 710,
+      "win_rate": 0.4154929577464789,
+      "mean_trade_return": 0.00038142303787045513,
+      "profit_factor": 1.033391303198547,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.18281278621349328,
+          "maximum_drawdown": -0.23236810941520158,
+          "closed_trades": 194,
+          "win_rate": 0.37628865979381443,
+          "profit_factor": 0.8081343257208721
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.10510686949169368,
+          "maximum_drawdown": -0.08483263768744687,
+          "closed_trades": 171,
+          "win_rate": 0.4502923976608187,
+          "profit_factor": 1.1291569799717067
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.15448293595405227,
+          "maximum_drawdown": -0.09923638200805385,
+          "closed_trades": 170,
+          "win_rate": 0.4411764705882353,
+          "profit_factor": 1.2281477012942887
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.04763842405151242,
+          "maximum_drawdown": -0.10820226725103743,
+          "closed_trades": 175,
+          "win_rate": 0.4,
+          "profit_factor": 1.0707793964325858
+        }
+      ]
+    },
+    "breakout": {
+      "initial_equity": 100000,
+      "final_equity": 134865.8125543129,
+      "total_return": 0.3486581255431289,
+      "maximum_drawdown": -0.18253110160635222,
+      "annualized_sharpe": 0.5545906624347273,
+      "closed_trades": 927,
+      "win_rate": 0.43042071197411,
+      "mean_trade_return": 0.001289563873759592,
+      "profit_factor": 1.0996104746912776,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": -0.10697457922780018,
+          "maximum_drawdown": -0.1825311016063521,
+          "closed_trades": 183,
+          "win_rate": 0.39344262295081966,
+          "profit_factor": 0.8659283005217272
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.23619447590495635,
+          "maximum_drawdown": -0.09711339320934109,
+          "closed_trades": 251,
+          "win_rate": 0.4541832669322709,
+          "profit_factor": 1.248754182954221
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": 0.1173090526803513,
+          "maximum_drawdown": -0.1437519296243005,
+          "closed_trades": 255,
+          "win_rate": 0.42745098039215684,
+          "profit_factor": 1.1273891448654376
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.09339714505075758,
+          "maximum_drawdown": -0.11813849288976652,
+          "closed_trades": 239,
+          "win_rate": 0.4351464435146444,
+          "profit_factor": 1.121862625196364
+        }
+      ]
+    },
+    "pullback": {
+      "initial_equity": 100000,
+      "final_equity": 125261.18594505257,
+      "total_return": 0.25261185945052556,
+      "maximum_drawdown": -0.21806814552619758,
+      "annualized_sharpe": 0.45836563119892754,
+      "closed_trades": 978,
+      "win_rate": 0.4171779141104294,
+      "mean_trade_return": 0.0008573059727166242,
+      "profit_factor": 1.0775122207772883,
+      "chronological_slices": [
+        {
+          "start": "2022-01-03 15:00:00+00:00",
+          "end": "2023-02-16 20:00:00+00:00",
+          "return": 0.03625912920825347,
+          "maximum_drawdown": -0.12111502197672985,
+          "closed_trades": 131,
+          "win_rate": 0.4122137404580153,
+          "profit_factor": 1.1035712848583372
+        },
+        {
+          "start": "2023-02-16 20:00:00+00:00",
+          "end": "2024-04-05 14:00:00+00:00",
+          "return": 0.2086038583338885,
+          "maximum_drawdown": -0.08152976284983071,
+          "closed_trades": 301,
+          "win_rate": 0.45514950166112955,
+          "profit_factor": 1.224667773991449
+        },
+        {
+          "start": "2024-04-05 14:00:00+00:00",
+          "end": "2025-05-27 16:00:00+00:00",
+          "return": -0.09709009505122124,
+          "maximum_drawdown": -0.20798080590618695,
+          "closed_trades": 262,
+          "win_rate": 0.36259541984732824,
+          "profit_factor": 0.8388741724493957
+        },
+        {
+          "start": "2025-05-27 16:00:00+00:00",
+          "end": "2026-07-14 19:00:00+00:00",
+          "return": 0.1076938792544524,
+          "maximum_drawdown": -0.12025690559819269,
+          "closed_trades": 284,
+          "win_rate": 0.4295774647887324,
+          "profit_factor": 1.159654654800628
+        }
+      ]
+    }
+  }
+}

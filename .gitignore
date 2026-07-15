@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.db
+.pytest_cache/
+.coverage
+htmlcov/
+logs/
+data/
+model_artifacts/artifacts/*.joblib
+model_artifacts/artifacts/*.metadata.json
+.DS_Store
