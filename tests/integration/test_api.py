@@ -53,7 +53,7 @@ def test_news_and_noise_can_block(client, headers, fresh_signal):
 
 
 def test_paper_flow_has_no_external_order(client, headers, fresh_signal):
-    assert client.post("/risk/reconcile", json={"realized_pnl": 0, "open_risk": 0, "trades_count": 0}).status_code == 200
+    assert client.post("/risk/reconcile", headers=headers, json={"realized_pnl": 0, "open_risk": 0, "trades_count": 0}).status_code == 200
     body = {**fresh_signal, "signal_id": "paper-flow", "signal_time_utc": datetime.now(timezone.utc).isoformat()}
     result = client.post("/signals", headers=headers, json=body).json()
     assert result["final_decision"] == "paper_submitted"
@@ -64,7 +64,7 @@ def test_paper_flow_has_no_external_order(client, headers, fresh_signal):
 
 
 def test_kill_switch_blocks_new_proposal(client, headers, fresh_signal):
-    client.post("/risk/kill-switch", json={"reason": "test"})
+    client.post("/risk/kill-switch", headers=headers, json={"reason": "test"})
     body = {**fresh_signal, "signal_id": "killed", "symbol": "MSFT", "signal_time_utc": datetime.now(timezone.utc).isoformat()}
     assert client.post("/signals", headers=headers, json=body).json()["final_decision"] == "blocked"
-    client.post("/risk/kill-switch/reset", json={"reason": "done"})
+    client.post("/risk/kill-switch/reset", headers=headers, json={"reason": "done"})
