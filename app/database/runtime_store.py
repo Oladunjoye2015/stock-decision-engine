@@ -36,18 +36,16 @@ def _json_safe(value):
 
 def load_candles(timeframe: str) -> pd.DataFrame:
     init_database()
-    with SessionLocal() as db:
-        rows = db.execute(
-            select(MarketCandle)
-            .where(MarketCandle.timeframe == timeframe)
-            .order_by(MarketCandle.timestamp_utc, MarketCandle.symbol)
-        ).scalars().all()
-    return pd.DataFrame(
-        [{"timestamp": row.timestamp_utc, "symbol": row.symbol, "data_provider": row.data_provider,
-          "open": row.open, "high": row.high, "low": row.low, "close": row.close, "volume": row.volume}
-         for row in rows],
-        columns=["timestamp", "symbol", "data_provider", "open", "high", "low", "close", "volume"],
+    statement = (
+        select(
+            MarketCandle.timestamp_utc.label("timestamp"), MarketCandle.symbol, MarketCandle.data_provider,
+            MarketCandle.open, MarketCandle.high, MarketCandle.low, MarketCandle.close, MarketCandle.volume,
+        )
+        .where(MarketCandle.timeframe == timeframe)
+        .order_by(MarketCandle.timestamp_utc, MarketCandle.symbol)
     )
+    with engine.connect() as connection:
+        return pd.read_sql(statement, connection)
 
 
 def load_recent_candles(timeframe: str, symbol: str, limit: int = 250) -> pd.DataFrame:

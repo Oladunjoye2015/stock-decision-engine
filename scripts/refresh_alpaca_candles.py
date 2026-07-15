@@ -47,6 +47,10 @@ def merge_bars(existing,new):
     combined=pd.concat(frames,ignore_index=True); combined["timestamp"]=pd.to_datetime(combined.timestamp,utc=True); return combined.drop_duplicates(["symbol","timestamp"],keep="last").sort_values(["timestamp","symbol"]).reset_index(drop=True)
 
 
+def progress(message):
+    print(f"[market-refresh] {message}",flush=True)
+
+
 def fetch_symbol(client,base_url,headers,symbol,timeframe,start,end,feed,adjustment,sleep_seconds):
     params={"start":start.isoformat(),"end":end.isoformat(),"timeframe":timeframe,"adjustment":adjustment,"feed":feed,"limit":10000,"sort":"asc"}; rows=[]; token=None
     while True:
@@ -77,18 +81,22 @@ def refresh(timeframes,symbols,end,sleep_seconds=.25,storage="files"):
     with httpx.Client(timeout=45) as client:
         for timeframe in timeframes:
             config=TIMEFRAMES[timeframe]; path=config["output"]
+            progress(f"starting {timeframe}")
             existing=load_candles(timeframe) if storage=="database" else (pd.read_csv(path) if path.exists() else pd.DataFrame(columns=["timestamp","symbol","data_provider","open","high","low","close","volume"]))
             existing["timestamp"]=pd.to_datetime(existing.timestamp,utc=True)
             latest=existing.timestamp.max() if len(existing) else pd.NaT; start=latest-config["overlap"] if pd.notna(latest) else pd.Timestamp(config["bootstrap"],tz="UTC"); frames=[]; failures=[]
             for symbol in symbols:
-                try: frames.append(fetch_symbol(client,base,headers,symbol,timeframe,start,end,feed,config["adjustment"],sleep_seconds))
+                try:
+                    frame=fetch_symbol(client,base,headers,symbol,timeframe,start,end,feed,config["adjustment"],sleep_seconds); frames.append(frame); progress(f"downloaded {timeframe} {symbol}: {len(frame)} rows")
                 except Exception as exc: failures.append({"symbol":symbol,"error":str(exc)})
             downloaded=validate_bars(pd.concat(frames,ignore_index=True) if frames else pd.DataFrame(),config["regular"])
             if failures: raise RuntimeError(f"{timeframe} refresh aborted; failures={failures}")
             merged=merge_bars(existing,downloaded)
-            if storage=="database": upsert_candles(downloaded,timeframe)
+            if storage=="database":
+                progress(f"upserting {timeframe}: {len(downloaded)} rows"); upsert_candles(downloaded,timeframe)
             else: atomic_csv(merged,path)
             results.append({"timeframe":timeframe,"storage":storage,"output":str(path) if storage=="files" else "market_candles","downloaded_rows":len(downloaded),"total_rows":len(merged),"first":str(merged.timestamp.min()),"last":str(merged.timestamp.max()),"symbols":int(merged.symbol.nunique())})
+            progress(f"completed {timeframe}: {len(merged)} total rows")
     manifest={"generated_at_utc":pd.Timestamp.now(tz="UTC").isoformat(),"feed":feed,"market_data_base_url":base,"storage":storage,"results":results}
     if storage=="database": save_runtime_state("alpaca_refresh_manifest",manifest)
     else: Path("data/alpaca_refresh_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
