@@ -78,7 +78,8 @@ def process_signal(signal: SignalIn, db: Session, settings: Settings):
     details = {}
     if settings.allowed_symbol_set and signal.symbol not in settings.allowed_symbol_set: return _response(_blocked(db, signal, settings, "symbol is not allowed", details))
     if signal.timeframe != settings.primary_signal_timeframe or not settings.allow_60min_signals: return _response(_blocked(db, signal, settings, "only 60Min signals may create decisions", details))
-    fresh = freshness_check(signal.signal_time_utc, settings.signal_max_age_seconds); details["freshness"] = fresh
+    freshness_limit = settings.hourly_scanner_max_age_seconds if signal.external_metadata.get("source") == "railway_hourly_scanner" else settings.signal_max_age_seconds
+    fresh = freshness_check(signal.signal_time_utc, freshness_limit); details["freshness"] = fresh
     if not fresh["passed"]: return _response(_blocked(db, signal, settings, fresh["reason"], details))
     server_context={"complete":False,"reason":"not required for this strategy"}
     if signal.strategy == "breakout-medium-high-vol-shadow-v1":

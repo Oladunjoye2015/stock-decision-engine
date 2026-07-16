@@ -40,6 +40,7 @@ class Settings(BaseSettings):
     require_stop_loss: bool = True
     min_reward_risk: float = 1.5
     signal_max_age_seconds: int = 120
+    hourly_scanner_max_age_seconds: int = 900
     ticket_expiry_seconds: int = 300
 
     technical_gate_enabled: bool = True
@@ -87,6 +88,7 @@ class Settings(BaseSettings):
     demo_signalstack_routing_enabled: bool = False
     deterministic_breakout_demo_enabled: bool = False
     tradingview_webhook_token: str = ""
+    hourly_scanner_enabled: bool = False
 
     ttp_account_program: str = ""
     ttp_account_size_usd: float = 50_000

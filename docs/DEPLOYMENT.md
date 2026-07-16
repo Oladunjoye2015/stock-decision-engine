@@ -1,10 +1,11 @@
 # Railway deployment
 
-Railway is the sole production runtime. Use three services in one Railway project:
+Railway is the sole production runtime. Use four services in one Railway project:
 
 1. `Postgres` — the shared durable store for application records, candles, refresh manifests and shadow results.
 2. `stock-decision-engine` — the always-on FastAPI web service, using `railway.json`.
 3. `market-refresh` — a cron service built from the same repository, using `railway.cron.json` and start command `python3 scripts/refresh_and_evaluate.py --storage database`.
+4. `hourly-scanner` — a market-hours cron service built from the same repository, using `railway.scanner.json` and start command `python3 scripts/scan_hourly_breakouts.py`.
 
 Both application services must reference the same database with `DATABASE_URL=${{Postgres.DATABASE_URL}}`. Set these shared variables so both services receive them:
 
@@ -22,7 +23,11 @@ WEBHOOK_PASSPHRASE=<strong sealed secret>
 
 In the web service, generate a public domain and verify `/health`, `/ready`, `/shadow/status`, and `/dashboard/`. The dashboard is read-only and refreshes its status data every minute. In the cron service, set its Railway config-file path to `/railway.cron.json`, then set the cron schedule. Railway schedules use UTC. To run at 4:30 PM New York throughout daylight-saving changes, create separate seasonal schedules or accept a one-hour seasonal shift; `30 20 * * 1-5` corresponds to 4:30 PM EDT and `30 21 * * 1-5` to 4:30 PM EST.
 
-The cron config uses Railway watch patterns, so changes limited to TradingView, dashboard, API-only code or documentation do not redeploy and start `market-refresh`. Changes to refresh scripts, database code, model/evaluation code, artifacts, dependencies, the Dockerfile or the cron configuration still deploy it.
+The daily cron config uses Railway watch patterns, so changes limited to TradingView, dashboard, API-only code or documentation do not redeploy and start `market-refresh`. Changes to refresh scripts, database code, model/evaluation code, artifacts, dependencies, the Dockerfile or the cron configuration still deploy it.
+
+Create `hourly-scanner` as a separate sibling service in the same project and environment. Set its config-file path to `/railway.scanner.json`, reference the same `DATABASE_URL`, and share the same Alpaca, Finnhub, OpenAI, risk, Trade The Pool and SignalStack demo variables used by the web service. Set `HOURLY_SCANNER_ENABLED=true` only on this service. Use `5 14-21 * * 1-5`; the scanner exits without submitting when there is no newly completed regular-session hourly candle. It accepts only bars no older than `HOURLY_SCANNER_MAX_AGE_SECONDS=900`, uses deterministic signal IDs, and stores its state as `hourly_breakout_scanner_state`. It never replays historical shadow candidates.
+
+Keep `EXECUTION_MODE=paper`, `SIGNALSTACK_WEBHOOK_TYPE=test`, `SIGNALSTACK_LIVE_EXECUTION_ALLOWED=false`, `DETERMINISTIC_BREAKOUT_DEMO_ENABLED=true`, and `DEMO_SIGNALSTACK_ROUTING_ENABLED=true` on the scanner. A candidate still has to pass server candle/benchmark validation, deterministic breakout, Finnhub, timeframe, technical, noise, news, risk, compliance and both AI reviews before the SignalStack test webhook is called. TradingView remains an independent secondary source.
 
 The first cron run bootstraps 15-minute and hourly candles from 2022-01-01 and daily candles from 2018-01-01. Later runs use overlapping incremental windows and upsert by symbol, timeframe and timestamp. A cron run exits after refresh and evaluation; overlapping Railway executions are therefore avoided. No persistent volume is required.
 

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "builder": "DOCKERFILE",
+    "watchPatterns": [
+      "scripts/scan_hourly_breakouts.py",
+      "app/scanning/**",
+      "app/analysis/**",
+      "app/api/signals.py",
+      "app/ai/**",
+      "app/compliance/**",
+      "app/database/**",
+      "app/execution/**",
+      "app/market_data/**",
+      "app/risk/**",
+      "app/config.py",
+      "app/schemas/**",
+      "model_artifacts/**",
+      "requirements.txt",
+      "Dockerfile",
+      "railway.scanner.json"
+    ]
+  },
+  "deploy": {
+    "startCommand": "python3 scripts/scan_hourly_breakouts.py",
+    "restartPolicyType": "NEVER"
+  }
+}

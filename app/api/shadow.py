@@ -6,8 +6,8 @@ from fastapi import APIRouter
 from app.config import get_settings
 
 router=APIRouter(prefix="/shadow",tags=["shadow"])
-STATE_FILES={"breakout":Path("data/breakout_shadow_state.json"),"breakout_ml_filter":Path("data/breakout_ml_shadow_state.json"),"long_trend":Path("data/forward_shadow_state.json"),"refresh":Path("data/alpaca_refresh_manifest.json"),"consolidated":Path("data/shadow_status.json")}
-STATE_KEYS={"breakout":"breakout_shadow_state","breakout_ml_filter":"breakout_ml_shadow_state","long_trend":"forward_shadow_state","refresh":"alpaca_refresh_manifest","consolidated":"shadow_status"}
+STATE_FILES={"breakout":Path("data/breakout_shadow_state.json"),"breakout_ml_filter":Path("data/breakout_ml_shadow_state.json"),"long_trend":Path("data/forward_shadow_state.json"),"refresh":Path("data/alpaca_refresh_manifest.json"),"consolidated":Path("data/shadow_status.json"),"hourly_scanner":Path("data/hourly_breakout_scanner_state.json")}
+STATE_KEYS={"breakout":"breakout_shadow_state","breakout_ml_filter":"breakout_ml_shadow_state","long_trend":"forward_shadow_state","refresh":"alpaca_refresh_manifest","consolidated":"shadow_status","hourly_scanner":"hourly_breakout_scanner_state"}
 
 
 def read_state(path:Path):

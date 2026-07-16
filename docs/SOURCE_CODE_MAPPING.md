@@ -40,6 +40,8 @@ This ledger covers every source element inspected or conceptually reused from `/
 
 The Railway deployment work did not copy source code from `tv-ml-trading-bot` or the Alpaca candle download folder. `app/database/runtime_store.py`, the `MarketCandle` and `RuntimeState` tables, `railway.cron.json`, and the database-storage branches in the refresh/evaluation scripts are new code written for this repository. The existing Alpaca refresh implementation remains the previously documented adaptation; this change only replaces its local CSV/JSON persistence boundary with PostgreSQL when `RUNTIME_STORAGE=database`.
 
+The hourly scanner implementation in `app/scanning/hourly_breakout.py`, `scripts/scan_hourly_breakouts.py`, and `railway.scanner.json` is new code written for this repository. No scanner, scheduler, order-routing code, signal payload, or model implementation was copied from `tv-ml-trading-bot`. It reuses this repository's frozen breakout thresholds and existing decision pipeline through imports; the trained CatBoost comparison remains research-only and is not promoted by the scanner.
+
 The browser dashboard under `app/dashboard/` is also new code written for this repository. It was not copied or adapted from `tv-ml-trading-bot`, the Alpaca candle folder, or any third-party dashboard template.
 
 The three-field SignalStack demo payload schema in `app/execution/signalstack_schemas.py` was implemented from the user-supplied account example `{"symbol":"AAPL","quantity":1,"action":"buy"}`. No source code was copied, and no undocumented stop, target, short, cancel, or modify fields were inferred.

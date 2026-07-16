@@ -19,6 +19,8 @@ An optional OpenAI structured-output review is the final veto after every determ
 
 The Pine trigger is evaluated only on a confirmed hourly close. Daily, four-hour and fifteen-minute context values are also read from completed bars so an open higher-timeframe candle cannot change the evidence after an alert. After updating the script or any private input, delete and recreate the TradingView alert because TradingView alerts retain a snapshot of the script and its inputs.
 
+The Railway `hourly-scanner` is an independent primary source for the demo. It fetches newly completed Alpaca hourly bars and submits deterministic breakout candidates through the same decision pipeline. TradingView alerts use deterministic TradingView IDs and the scanner uses deterministic `railway-hourly-breakout-*` IDs; database uniqueness prevents retries of either source from duplicating its own signal. Neither source can bypass a failed gate, and the scanner never converts the daily shadow report into an order.
+
 ## Important architecture boundary
 
 The route is `TradingView → Railway → SignalStack test webhook`. Set `DETERMINISTIC_BREAKOUT_DEMO_ENABLED=true` and `DEMO_SIGNALSTACK_ROUTING_ENABLED=true` only for the demo. Keep `EXECUTION_MODE=paper`, `SIGNALSTACK_WEBHOOK_TYPE=test`, `SIGNALSTACK_LIVE_EXECUTION_ALLOWED=false`, and `SIGNALSTACK_ENABLED=false`. The disabled CatBoost artifact is recorded as comparison-only and cannot authorize execution. The dedicated token is necessarily present in the TradingView alert configuration; keep the script private, restrict access to the TradingView account with 2FA, and rotate the token if it is exposed.
