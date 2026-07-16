@@ -45,7 +45,7 @@ def test_scanner_submits_only_fresh_latest_candidate(monkeypatch):
         submitted.append(signal); return {"signal_id":signal.signal_id,"final_decision":"blocked"}
     settings=SimpleNamespace(hourly_scanner_enabled=True,runtime_storage="database",hourly_scanner_max_age_seconds=900)
     result=scanner.scan(settings,pd.Timestamp("2026-07-15T15:05:00Z"),Client(),processor)
-    assert result["submitted"]==1 and len(submitted)==1 and saved[0]["last_candidate"]["AAPL"]==timestamp.isoformat()
+    assert result["submitted"]==1 and result["schema_version"]==2 and len(submitted)==1 and saved[0]["last_candidate"]["AAPL"]==timestamp.isoformat()
 
     submitted.clear(); saved.clear()
     stale=scanner.scan(settings,pd.Timestamp("2026-07-15T16:00:01Z"),Client(),processor)

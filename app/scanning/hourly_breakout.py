@@ -15,6 +15,7 @@ from app.market_data.alpaca_candles import AlpacaCandleClient
 from app.schemas.signals import SignalIn
 
 STATE_KEY = "hourly_breakout_scanner_state"
+STATE_SCHEMA_VERSION = 2
 STRATEGY = "breakout-medium-high-vol-shadow-v1"
 
 
@@ -74,6 +75,8 @@ def scan(settings, now=None, client: AlpacaCandleClient | None = None, processor
     now=pd.Timestamp.now(tz="UTC") if now is None else pd.Timestamp(now)
     if now.tzinfo is None: now=now.tz_localize("UTC")
     state=load_runtime_state(STATE_KEY) or {"last_scanned":{},"last_candidate":{}}
+    if state.get("schema_version") != STATE_SCHEMA_VERSION:
+        state={**state,"schema_version":STATE_SCHEMA_VERSION,"last_candidate":{}}
     owns=client is None; transport=httpx.Client(timeout=30) if owns else None; client=client or AlpacaCandleClient(settings,transport)
     allowed=set(getattr(settings,"allowed_symbol_set",set()) or set())
     scan_symbols=sorted(set(ATR_CUTOFFS)&allowed) if allowed else sorted(ATR_CUTOFFS)
@@ -99,6 +102,6 @@ def scan(settings, now=None, client: AlpacaCandleClient | None = None, processor
             print(f"[hourly-scanner] submitted {signal.signal_id}: {result.get('final_decision')}",flush=True)
     finally:
         if transport is not None: transport.close()
-    state.update({"generated_at_utc":now.isoformat(),"enabled":True,"scan_symbols":scan_symbols,"submitted":len(results),"results":results})
+    state.update({"schema_version":STATE_SCHEMA_VERSION,"generated_at_utc":now.isoformat(),"enabled":True,"scan_symbols":scan_symbols,"submitted":len(results),"results":results})
     save_runtime_state(STATE_KEY,state)
     return state
