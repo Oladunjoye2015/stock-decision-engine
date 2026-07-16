@@ -20,8 +20,10 @@ def _frame_with_signal(signal, symbol: str, settings) -> pd.DataFrame:
     except Exception:
         frame=load_recent_candles("1Hour", symbol, 250)
     if symbol == signal.symbol:
-        current = pd.DataFrame([{"timestamp": signal.signal_time_utc, "symbol": signal.symbol,
-            "data_provider": "tradingview_confirmed_bar", "open": signal.open, "high": signal.high,
+        bar_start=signal.external_metadata.get("bar_start_utc")
+        bar_start=pd.Timestamp(bar_start) if bar_start else pd.Timestamp(signal.signal_time_utc)-pd.Timedelta(hours=1)
+        current = pd.DataFrame([{"timestamp": bar_start, "symbol": signal.symbol,
+            "data_provider": f"{signal.external_metadata.get('source','external')}_confirmed_bar", "open": signal.open, "high": signal.high,
             "low": signal.low, "close": signal.close, "volume": signal.volume}])
         frame = pd.concat([frame, current], ignore_index=True).drop_duplicates(["symbol", "timestamp"], keep="last")
     if frame.empty:
