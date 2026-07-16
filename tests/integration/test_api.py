@@ -14,7 +14,7 @@ def test_health_and_compliance(client, headers):
     shadow = client.get("/shadow/status").json()
     assert shadow["execution_enabled"] is False and shadow["automatic_promotion_enabled"] is False
     dashboard = client.get("/dashboard/")
-    assert dashboard.status_code == 200 and "Stock Decision Engine" in dashboard.text
+    assert dashboard.status_code == 200 and "Stock Decision Engine" in dashboard.text and "Railway hourly scanner" in dashboard.text
 
 
 def test_webhook_authentication(client, fresh_signal):

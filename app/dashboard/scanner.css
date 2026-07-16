@@ -1,0 +1,10 @@
+.scanner-panel { margin-bottom: 14px; }
+.scanner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+.scanner-grid div { padding: 14px 16px; border: 1px solid #e0e5dc; border-radius: 12px; background: #f0f3ed; }
+.scanner-grid span { display: block; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.scanner-grid strong { display: block; margin-top: 5px; font: 500 20px Georgia, serif; }
+.scanner-message { margin-bottom: 14px; padding: 13px 15px; border-left: 3px solid var(--green); background: #eef6f0; color: #365246; }
+.scanner-results { min-width: 680px; }
+.result-state { display: inline-block; padding: 4px 8px; border-radius: 999px; background: #e6efe9; color: var(--green); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+@media (max-width: 900px) { .scanner-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .scanner-grid { grid-template-columns: 1fr; } }

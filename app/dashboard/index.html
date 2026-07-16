@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Stock Decision Engine</title>
   <link rel="stylesheet" href="/dashboard/styles.css">
+  <link rel="stylesheet" href="/dashboard/scanner.css">
 </head>
 <body>
   <header>
@@ -48,6 +49,18 @@
         <div class="confidence"><span>Confidence threshold</span><strong id="ml-threshold">—</strong></div>
         <p class="note">The model failed validation and cannot authorize execution. This panel compares its filter decisions against the unfiltered breakout.</p>
       </article>
+    </section>
+
+    <section class="panel scanner-panel">
+      <div class="panel-head"><div><p class="eyebrow">LIVE DISCOVERY</p><h2>Railway hourly scanner</h2></div><span class="pill" id="scanner-state">Waiting</span></div>
+      <div class="scanner-grid">
+        <div><span>Last run</span><strong id="scanner-last-run">—</strong></div>
+        <div><span>Symbols checked</span><strong id="scanner-symbols">—</strong></div>
+        <div><span>Latest hourly bar</span><strong id="scanner-latest-bar">—</strong></div>
+        <div><span>Signals submitted</span><strong id="scanner-submitted">—</strong></div>
+      </div>
+      <p class="scanner-message" id="scanner-message">Waiting for the first scheduled scan.</p>
+      <div class="table-wrap"><table class="scanner-results"><thead><tr><th>Symbol</th><th>Signal time</th><th>Pipeline result</th><th>Reason</th></tr></thead><tbody id="scanner-results"><tr><td colspan="4">No scanner results yet.</td></tr></tbody></table></div>
     </section>
 
     <section class="panel">

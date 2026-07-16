@@ -75,9 +75,11 @@ def scan(settings, now=None, client: AlpacaCandleClient | None = None, processor
     if now.tzinfo is None: now=now.tz_localize("UTC")
     state=load_runtime_state(STATE_KEY) or {"last_scanned":{},"last_candidate":{}}
     owns=client is None; transport=httpx.Client(timeout=30) if owns else None; client=client or AlpacaCandleClient(settings,transport)
+    allowed=set(getattr(settings,"allowed_symbol_set",set()) or set())
+    scan_symbols=sorted(set(ATR_CUTOFFS)&allowed) if allowed else sorted(ATR_CUTOFFS)
     frames=[]; results=[]
     try:
-        for symbol in sorted(ATR_CUTOFFS):
+        for symbol in scan_symbols:
             frame=client.recent_hourly(symbol,now); upsert_candles(frame,"1Hour"); frames.append(frame)
             print(f"[hourly-scanner] refreshed {symbol}: {len(frame)} hourly rows",flush=True)
         strategy=build_strategy_frame(pd.concat(frames,ignore_index=True)) if frames else pd.DataFrame()
@@ -93,10 +95,10 @@ def scan(settings, now=None, client: AlpacaCandleClient | None = None, processor
             context=_context(client,symbol,bar_close)
             signal=_signal(row,context)
             with SessionLocal() as db: result=processor(signal,db,settings)
-            state["last_candidate"][symbol]=bar_start.isoformat(); results.append(result)
+            state["last_candidate"][symbol]=bar_start.isoformat(); results.append({**result,"symbol":signal.symbol,"signal_time_utc":signal.signal_time_utc.isoformat()})
             print(f"[hourly-scanner] submitted {signal.signal_id}: {result.get('final_decision')}",flush=True)
     finally:
         if transport is not None: transport.close()
-    state.update({"generated_at_utc":now.isoformat(),"enabled":True,"submitted":len(results),"results":results})
+    state.update({"generated_at_utc":now.isoformat(),"enabled":True,"scan_symbols":scan_symbols,"submitted":len(results),"results":results})
     save_runtime_state(STATE_KEY,state)
     return state
