@@ -48,6 +48,18 @@ class SignalRecord(TimestampMixin, Base):
     status: Mapped[str] = mapped_column(String(32), default="received")
 
 
+class SignalClaim(TimestampMixin, Base):
+    __tablename__ = "signal_claims"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    canonical_key: Mapped[str] = mapped_column(String(256), unique=True, index=True)
+    primary_signal_id: Mapped[str] = mapped_column(String(128), unique=True, index=True)
+    source: Mapped[str] = mapped_column(String(64))
+    symbol: Mapped[str] = mapped_column(String(24), index=True)
+    strategy: Mapped[str] = mapped_column(String(128))
+    timeframe: Mapped[str] = mapped_column(String(24))
+    canonical_bar_close_utc: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+
+
 class DecisionRecord(TimestampMixin, Base):
     __tablename__ = "signal_decisions"
     id: Mapped[int] = mapped_column(primary_key=True)

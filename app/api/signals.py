@@ -19,7 +19,7 @@ from app.core.security import authenticate_webhook
 from app.core.time_utils import utc_now
 from app.database.engine import get_db
 from app.database.models import (AIReview, DecisionRecord, MarketRegime, ModelPrediction, NewsCheck,
-                                 NoiseCheck, SignalRecord, TimeframeConfirmation, TradeTicket, VolumeRuleCheck)
+                                 NoiseCheck, SignalClaim, SignalRecord, TimeframeConfirmation, TradeTicket, VolumeRuleCheck)
 from app.database.repositories import get_by, list_recent
 from app.market_data.freshness import check as freshness_check
 from app.market_data.finnhub import FinnhubClient, FinnhubError
@@ -35,6 +35,7 @@ from app.execution.signalstack_queue import SignalStackRequestQueue
 from app.execution.signalstack_schemas import SignalStackWebhookPayload
 from app.execution.signalstack_transport import send_and_record_test
 from app.schemas.signals import SignalIn
+from app.core.signal_deduplication import canonical_claim
 
 router = APIRouter(prefix="/signals", tags=["signals"])
 
@@ -72,9 +73,25 @@ def process_signal(signal: SignalIn, db: Session, settings: Settings):
         decision = get_by(db, DecisionRecord, signal_id=signal.signal_id)
         return {"idempotent": True, "signal_id": signal.signal_id, "decision_id": decision.decision_id if decision else None, "final_decision": decision.final_decision if decision else None}
     row = SignalRecord(signal_id=signal.signal_id, symbol=signal.symbol, timeframe=signal.timeframe, signal_time_utc=signal.signal_time_utc, payload=signal.model_dump(mode="json"))
+    claim=canonical_claim(signal)
     db.add(row)
+    if claim:
+        db.add(SignalClaim(canonical_key=claim["canonical_key"],primary_signal_id=signal.signal_id,source=claim["source"],symbol=signal.symbol,
+                           strategy=signal.strategy,timeframe=signal.timeframe,canonical_bar_close_utc=claim["canonical_bar_close_utc"]))
     try: db.commit()
-    except IntegrityError: db.rollback(); return {"idempotent": True, "signal_id": signal.signal_id}
+    except IntegrityError:
+        db.rollback()
+        existing_claim=get_by(db,SignalClaim,canonical_key=claim["canonical_key"]) if claim else None
+        if existing_claim:
+            decision=get_by(db,DecisionRecord,signal_id=existing_claim.primary_signal_id)
+            same_signal=existing_claim.primary_signal_id==signal.signal_id
+            result={"idempotent":same_signal,"cross_source_duplicate":not same_signal,"signal_id":signal.signal_id,
+                    "original_signal_id":existing_claim.primary_signal_id,"original_source":existing_claim.source,
+                    "duplicate_source":claim["source"],"canonical_key":claim["canonical_key"],
+                    "decision_id":decision.decision_id if decision else None,"final_decision":decision.final_decision if decision else "processing"}
+            if not same_signal: record(db,"cross_source_signal_duplicate",signal.signal_id,result)
+            return result
+        return {"idempotent": True, "signal_id": signal.signal_id}
     details = {}
     if settings.allowed_symbol_set and signal.symbol not in settings.allowed_symbol_set: return _response(_blocked(db, signal, settings, "symbol is not allowed", details))
     if signal.timeframe != settings.primary_signal_timeframe or not settings.allow_60min_signals: return _response(_blocked(db, signal, settings, "only 60Min signals may create decisions", details))

@@ -42,6 +42,8 @@ The Railway deployment work did not copy source code from `tv-ml-trading-bot` or
 
 The hourly scanner implementation in `app/scanning/hourly_breakout.py`, `scripts/scan_hourly_breakouts.py`, and `railway.scanner.json` is new code written for this repository. No scanner, scheduler, order-routing code, signal payload, or model implementation was copied from `tv-ml-trading-bot`. It reuses this repository's frozen breakout thresholds and existing decision pipeline through imports; the trained CatBoost comparison remains research-only and is not promoted by the scanner.
 
+The cross-source duplicate guard in `app/core/signal_deduplication.py`, the `SignalClaim` table, and the atomic claim branch in `app/api/signals.py` is new code written for this repository. No idempotency or duplicate-routing implementation was copied from another repository.
+
 The browser dashboard under `app/dashboard/` is also new code written for this repository. It was not copied or adapted from `tv-ml-trading-bot`, the Alpaca candle folder, or any third-party dashboard template.
 
 The three-field SignalStack demo payload schema in `app/execution/signalstack_schemas.py` was implemented from the user-supplied account example `{"symbol":"AAPL","quantity":1,"action":"buy"}`. No source code was copied, and no undocumented stop, target, short, cancel, or modify fields were inferred.

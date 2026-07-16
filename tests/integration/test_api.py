@@ -37,6 +37,20 @@ def test_stale_and_idempotent_signals(client, headers, fresh_signal):
     assert client.post("/signals", headers=headers, json=stale).json()["idempotent"] is True
 
 
+def test_cross_source_breakout_duplicate_links_original(client,headers,fresh_signal):
+    now=datetime.now(timezone.utc).replace(minute=0,second=0,microsecond=0)
+    first={**fresh_signal,"signal_id":"cross-source-scanner","strategy":"breakout-medium-high-vol-shadow-v1","signal_time_utc":now.isoformat(),
+           "external_metadata":{"source":"railway_hourly_scanner","bar_confirmed":True}}
+    second={**first,"signal_id":"cross-source-tradingview","signal_time_utc":(now-timedelta(minutes=30)).isoformat(),
+            "external_metadata":{"source":"tradingview","bar_confirmed":True}}
+    original=client.post("/signals",headers=headers,json=first).json()
+    duplicate=client.post("/signals",headers=headers,json=second).json()
+    assert original["signal_id"]==first["signal_id"]
+    assert duplicate["cross_source_duplicate"] is True
+    assert duplicate["original_signal_id"]==first["signal_id"]
+    assert duplicate["original_source"]=="railway_hourly_scanner" and duplicate["duplicate_source"]=="tradingview"
+
+
 def test_gate_failure_skips_ai(client, headers, fresh_signal):
     body = {**fresh_signal, "signal_id": "bad-tech", "indicators": {"atr": 0, "rsi": 80, "ema20": 90, "ema50": 100}}
     result = client.post("/signals", headers=headers, json=body).json()
