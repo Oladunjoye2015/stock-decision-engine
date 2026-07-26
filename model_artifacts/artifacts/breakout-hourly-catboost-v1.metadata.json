@@ -1,9 +1,9 @@
 {
   "model_id": "breakout-hourly-catboost-v1",
   "model_type": "calibrated_breakout_confidence_classifier",
-  "model_version": "20260714210508",
+  "model_version": "20260726014553",
   "artifact": "breakout-hourly-catboost-v1.joblib",
-  "sha256": "8d0c706f12703adceb2208591741ba1db04dd44d46904d146e4b2dcf35383867",
+  "sha256": "842ad1fa55ad5b98f24123c57813a7d21a010e2a25ba1bfe7ad7b52661f3e2bd",
   "timeframe": "60Min",
   "supported_symbols": [
     "AAPL",
@@ -113,44 +113,59 @@
       "market_breadth",
       "market_trend_breadth"
     ],
-    "rows": 1574,
-    "train_rows": 1134,
-    "validation_rows": 236,
-    "test_rows": 204,
+    "rows": 1578,
+    "train_rows": 1137,
+    "validation_rows": 235,
+    "test_rows": 206,
     "candidate_features_from_signal_bar_only": true,
     "entry_at_next_bar_open": true,
     "validation_models": {
+      "logistic": {
+        "log_loss": 0.6935116819974063,
+        "brier": 0.25010837312066786,
+        "roc_auc": 0.5438328236493375
+      },
+      "random_forest": {
+        "log_loss": 0.7035077136931013,
+        "brier": 0.25510990584299614,
+        "roc_auc": 0.4608999563128004
+      },
       "catboost": {
-        "log_loss": 0.7007353775642137,
-        "brier": 0.25375620718759057,
-        "roc_auc": 0.4682459677419355
+        "log_loss": 0.7029518983706126,
+        "brier": 0.25484330055988946,
+        "roc_auc": 0.46985583224115335
+      },
+      "xgboost": {
+        "log_loss": 0.7003743468689354,
+        "brier": 0.25359128709864626,
+        "roc_auc": 0.46665210426678316
       }
     },
-    "selected_model": "catboost",
+    "selected_model": "logistic",
     "validation_threshold_table": {
       "0.50": {
-        "signals": 85,
-        "mean_net_return": -0.004983016754209936,
-        "win_rate": 0.4235294117647059,
-        "profit_factor": 0.6930049046913438
+        "signals": 123,
+        "mean_net_return": -0.0022667517431271354,
+        "win_rate": 0.4796747967479675,
+        "profit_factor": 0.8508855323131931
       },
       "0.55": {
-        "signals": 13,
-        "mean_net_return": -0.0129280512616183,
-        "win_rate": 0.38461538461538464,
-        "profit_factor": 0.3667333809207786
+        "signals": 50,
+        "mean_net_return": -0.007055856177499908,
+        "win_rate": 0.48,
+        "profit_factor": 0.643594846426562
       },
       "0.60": {
-        "signals": 0,
-        "mean_net_return": null,
-        "win_rate": null,
-        "profit_factor": null
+        "signals": 12,
+        "mean_net_return": -0.024851573396177457,
+        "win_rate": 0.25,
+        "profit_factor": 0.29048935129354614
       },
       "0.65": {
-        "signals": 0,
-        "mean_net_return": null,
-        "win_rate": null,
-        "profit_factor": null
+        "signals": 1,
+        "mean_net_return": -0.020042320220693743,
+        "win_rate": 0.0,
+        "profit_factor": 0.0
       },
       "0.70": {
         "signals": 0,
@@ -159,25 +174,26 @@
         "profit_factor": null
       }
     },
+    "threshold_selection": "coverage_fallback",
     "final_test": {
       "probability": {
-        "log_loss": 0.6990280040720107,
-        "brier": 0.2529138243657974,
-        "roc_auc": 0.4890384615384616
+        "log_loss": 0.695597802381647,
+        "brier": 0.251204252424245,
+        "roc_auc": 0.5089108910891089
       },
       "all_breakouts": {
-        "signals": 204,
-        "mean_net_return": 0.002654590952942726,
-        "win_rate": 0.49019607843137253,
-        "profit_factor": 1.2478569670131068
+        "signals": 206,
+        "mean_net_return": 0.0026282779440540607,
+        "win_rate": 0.49029126213592233,
+        "profit_factor": 1.2441750005523609
       },
       "confidence_gated": {
-        "signals": 0,
-        "mean_net_return": null,
-        "win_rate": null,
-        "profit_factor": null
+        "signals": 85,
+        "mean_net_return": 0.0030256143370382843,
+        "win_rate": 0.5058823529411764,
+        "profit_factor": 1.2610423374123563
       },
-      "threshold": 0.6
+      "threshold": 0.5
     },
     "production_eligible": false,
     "test_period_previously_seen_for_strategy_research": true
