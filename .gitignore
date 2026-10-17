@@ -12,4 +12,6 @@ model_artifacts/artifacts/*.joblib
 model_artifacts/artifacts/*.metadata.json
 !model_artifacts/artifacts/breakout-hourly-catboost-v1.joblib
 !model_artifacts/artifacts/breakout-hourly-catboost-v1.metadata.json
+!model_artifacts/artifacts/ensemble-h1-sip-v2.joblib
+!model_artifacts/artifacts/ensemble-h1-sip-v2.metadata.json
 .DS_Store

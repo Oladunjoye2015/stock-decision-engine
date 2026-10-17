@@ -1006,6 +1006,465 @@
         "test_period_previously_seen_for_strategy_research": true
       },
       "enabled": false
+    },
+    {
+      "model_id": "catboost-h1-mtf-sip-backfill-v3",
+      "model_type": "catboost_classifier",
+      "model_version": "20261017035638",
+      "artifact": "catboost-h1-mtf-sip-backfill-v3.cbm",
+      "sha256": "81dbd1a5db2b04b89a9424826a92083ae518e8998f53c15d7faadab9688dc4fc",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "symbol",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "ema20",
+        "ema50",
+        "ema200",
+        "ema_fast",
+        "ema_slow",
+        "rsi",
+        "macd_hist",
+        "di_plus",
+        "di_minus",
+        "adx",
+        "atr",
+        "atr_pct",
+        "bb_width",
+        "vwap",
+        "dist_vwap",
+        "ret1",
+        "ret3",
+        "ret5",
+        "dist_ema20",
+        "dist_ema50",
+        "dist_ema200",
+        "dist_ema_fast",
+        "dist_ema_slow",
+        "vol_ratio",
+        "recent_high",
+        "recent_low",
+        "dist_recent_high",
+        "dist_recent_low",
+        "fib382",
+        "dist_fib382",
+        "fib500",
+        "dist_fib500",
+        "fib618",
+        "dist_fib618",
+        "supply_top",
+        "supply_bot",
+        "demand_bot",
+        "demand_top",
+        "dist_supply",
+        "dist_demand",
+        "in_supply",
+        "in_demand",
+        "trend_up",
+        "trend_down",
+        "side_hint",
+        "stop_hint",
+        "take_profit_hint",
+        "timeframe",
+        "trigger_mode",
+        "hour_utc",
+        "dow_utc",
+        "month_utc",
+        "m15_rsi",
+        "m15_macd_hist",
+        "m15_ret1",
+        "m15_atr_pct",
+        "m15_trend_up",
+        "m15_trend_down",
+        "m15_ret4",
+        "m15_vol_ratio",
+        "d1_rsi",
+        "d1_macd_hist",
+        "d1_ret1",
+        "d1_atr_pct",
+        "d1_trend_up",
+        "d1_trend_down",
+        "d1_ret5",
+        "d1_dist_ema50",
+        "m15_age_minutes",
+        "d1_age_days"
+      ],
+      "preprocessing": {
+        "categorical": [
+          "symbol",
+          "timeframe",
+          "side_hint",
+          "trigger_mode"
+        ],
+        "numeric_missing": 0
+      },
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "catboost": "1.2.10",
+        "pandas": "2.3.3",
+        "numpy": "2.5.1"
+      },
+      "training_metadata": {
+        "method": "independent multi-timeframe adaptation of backfill features with conservative next-bar barrier labeling",
+        "context_timeframes": [
+          "15Min",
+          "1Day"
+        ],
+        "context_availability": {
+          "15Min": "bar timestamp + 15 minutes",
+          "1Day": "bar timestamp + 1 calendar day"
+        },
+        "max_hold_bars": 8,
+        "stop_atr_multiple": 2,
+        "reward_risk": 2,
+        "rows": 36718,
+        "train_rows": 25499,
+        "validation_rows": 5375,
+        "test_rows": 5844,
+        "validation_threshold_table": {
+          "0.50": {
+            "signals": 1611,
+            "precision": 0.26877715704531346,
+            "expected_r_multiple": -0.1936685288640596
+          },
+          "0.55": {
+            "signals": 951,
+            "precision": 0.27129337539432175,
+            "expected_r_multiple": -0.18611987381703476
+          },
+          "0.60": {
+            "signals": 466,
+            "precision": 0.2811158798283262,
+            "expected_r_multiple": -0.1566523605150214
+          },
+          "0.65": {
+            "signals": 196,
+            "precision": 0.24489795918367346,
+            "expected_r_multiple": -0.26530612244897966
+          },
+          "0.70": {
+            "signals": 84,
+            "precision": 0.25,
+            "expected_r_multiple": -0.25
+          },
+          "0.75": {
+            "signals": 36,
+            "precision": 0.08333333333333333,
+            "expected_r_multiple": -0.75
+          },
+          "0.80": {
+            "signals": 11,
+            "precision": 0.0,
+            "expected_r_multiple": -1.0
+          }
+        },
+        "walk_forward_fixed_threshold": 0.55,
+        "walk_forward_metrics": [
+          {
+            "train_end": "2024-09-04 14:00:00+00:00",
+            "test_end": "2025-05-27 14:00:00+00:00",
+            "train_rows": 19901,
+            "test_rows": 5600,
+            "roc_auc": 0.5484489574838501,
+            "signals": 794,
+            "precision": 0.3047858942065491,
+            "expected_r_multiple_before_costs": -0.08564231738035266
+          },
+          {
+            "train_end": "2025-05-27 14:00:00+00:00",
+            "test_end": "2026-02-10 15:00:00+00:00",
+            "train_rows": 25499,
+            "test_rows": 5380,
+            "roc_auc": 0.5573408663517887,
+            "signals": 968,
+            "precision": 0.26859504132231404,
+            "expected_r_multiple_before_costs": -0.19421487603305787
+          },
+          {
+            "train_end": "2026-02-10 15:00:00+00:00",
+            "test_end": "2026-10-16 16:00:00+00:00",
+            "train_rows": 30874,
+            "test_rows": 5844,
+            "roc_auc": 0.517815740759576,
+            "signals": 656,
+            "precision": 0.24085365853658536,
+            "expected_r_multiple_before_costs": -0.2774390243902439
+          }
+        ],
+        "stable_walk_forward": false,
+        "final_test_metrics": {
+          "log_loss": 0.6203604350910076,
+          "roc_auc": 0.5267807725950487,
+          "balanced_accuracy": 0.5000289672287882,
+          "selected_probability_threshold": 0.6,
+          "precision": 0.23557692307692307,
+          "signals": 208,
+          "expected_r_multiple_before_costs": -0.29326923076923084,
+          "wins": 1375,
+          "losses": 4469,
+          "diagnostics": {
+            "symbol": {
+              "AAPL": {
+                "rows": 395,
+                "signals": 3,
+                "precision": 0.0,
+                "expected_r_multiple_before_costs": -1.0
+              },
+              "AMD": {
+                "rows": 517,
+                "signals": 28,
+                "precision": 0.2857142857142857,
+                "expected_r_multiple_before_costs": -0.1428571428571429
+              },
+              "AMZN": {
+                "rows": 494,
+                "signals": 16,
+                "precision": 0.125,
+                "expected_r_multiple_before_costs": -0.625
+              },
+              "AVGO": {
+                "rows": 510,
+                "signals": 42,
+                "precision": 0.30952380952380953,
+                "expected_r_multiple_before_costs": -0.0714285714285714
+              },
+              "BABA": {
+                "rows": 552,
+                "signals": 26,
+                "precision": 0.34615384615384615,
+                "expected_r_multiple_before_costs": 0.038461538461538325
+              },
+              "GOOG": {
+                "rows": 474,
+                "signals": 10,
+                "precision": 0.2,
+                "expected_r_multiple_before_costs": -0.3999999999999999
+              },
+              "META": {
+                "rows": 475,
+                "signals": 17,
+                "precision": 0.23529411764705882,
+                "expected_r_multiple_before_costs": -0.2941176470588236
+              },
+              "MSFT": {
+                "rows": 482,
+                "signals": 10,
+                "precision": 0.0,
+                "expected_r_multiple_before_costs": -1.0
+              },
+              "NVDA": {
+                "rows": 462,
+                "signals": 22,
+                "precision": 0.18181818181818182,
+                "expected_r_multiple_before_costs": -0.4545454545454546
+              },
+              "QQQ": {
+                "rows": 497,
+                "signals": 0,
+                "precision": 0.0,
+                "expected_r_multiple_before_costs": null
+              },
+              "SPY": {
+                "rows": 490,
+                "signals": 0,
+                "precision": 0.0,
+                "expected_r_multiple_before_costs": null
+              },
+              "TSLA": {
+                "rows": 496,
+                "signals": 34,
+                "precision": 0.20588235294117646,
+                "expected_r_multiple_before_costs": -0.38235294117647056
+              }
+            },
+            "side_hint": {
+              "buy": {
+                "rows": 4988,
+                "signals": 143,
+                "precision": 0.20279720279720279,
+                "expected_r_multiple_before_costs": -0.39160839160839167
+              },
+              "sell": {
+                "rows": 856,
+                "signals": 65,
+                "precision": 0.3076923076923077,
+                "expected_r_multiple_before_costs": -0.07692307692307687
+              }
+            },
+            "year": {
+              "2026": {
+                "rows": 5844,
+                "signals": 208,
+                "precision": 0.23557692307692307,
+                "expected_r_multiple_before_costs": -0.29326923076923084
+              }
+            },
+            "regime": {
+              "high_vol": {
+                "rows": 1298,
+                "signals": 104,
+                "precision": 0.27884615384615385,
+                "expected_r_multiple_before_costs": -0.16346153846153844
+              },
+              "range": {
+                "rows": 1568,
+                "signals": 35,
+                "precision": 0.22857142857142856,
+                "expected_r_multiple_before_costs": -0.3142857142857143
+              },
+              "trend": {
+                "rows": 2978,
+                "signals": 69,
+                "precision": 0.17391304347826086,
+                "expected_r_multiple_before_costs": -0.4782608695652174
+              }
+            }
+          }
+        },
+        "production_eligible": false,
+        "current_bar_excluded_from_label": true
+      },
+      "enabled": false
+    },
+    {
+      "model_id": "ensemble-h1-sip-v2",
+      "model_type": "sklearn_classifier",
+      "model_version": "20261017035736",
+      "artifact": "ensemble-h1-sip-v2.joblib",
+      "sha256": "18611cd6dda62b9b9fe8033a5e92166f849b2fcd8cb3c4341859b0dd53bd1689",
+      "timeframe": "60Min",
+      "supported_symbols": [
+        "AAPL",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "BABA",
+        "GOOG",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SPY",
+        "TSLA"
+      ],
+      "feature_names": [
+        "body_pct",
+        "range_pct",
+        "close_vs_ema20",
+        "ema20_vs_ema50",
+        "rsi",
+        "atr_pct",
+        "vol_ratio",
+        "ret1",
+        "ret3",
+        "hour_sin",
+        "hour_cos"
+      ],
+      "preprocessing": {
+        "implemented_inside_artifact": true
+      },
+      "probability_method": "predict_proba",
+      "class_labels": [
+        0,
+        1
+      ],
+      "dependency_versions": {
+        "numpy": "2.5.1",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.0",
+        "joblib": "1.5.3"
+      },
+      "training_metadata": {
+        "selected_candidate": "hist_gradient_boosting",
+        "rows": 86447,
+        "train_rows": 60503,
+        "validation_rows": 12972,
+        "test_rows": 12972,
+        "validation_metrics": {
+          "logistic": {
+            "log_loss": 0.6889403697534837,
+            "brier": 0.24789389095859252,
+            "balanced_accuracy": 0.5018759909137748,
+            "precision": 0.5023923444976076,
+            "roc_auc": 0.5548703730115461,
+            "signals": 209,
+            "mean_net_signal_return": 0.0031407837054736078
+          },
+          "random_forest": {
+            "log_loss": 0.6892392909307117,
+            "brier": 0.24809340433330523,
+            "balanced_accuracy": 0.510178833774964,
+            "precision": 0.4812953657174763,
+            "roc_auc": 0.5336540047637255,
+            "signals": 1791,
+            "mean_net_signal_return": 0.0010155263215781704
+          },
+          "hist_gradient_boosting": {
+            "log_loss": 0.6825375189602838,
+            "brier": 0.24477296312682523,
+            "balanced_accuracy": 0.4998236517286113,
+            "precision": 0.4186046511627907,
+            "roc_auc": 0.5505302467785729,
+            "signals": 43,
+            "mean_net_signal_return": -0.0006917634135221677
+          },
+          "catboost": {
+            "log_loss": 0.6830624930217305,
+            "brier": 0.2450404391161142,
+            "balanced_accuracy": 0.5015509311301827,
+            "precision": 0.5138888888888888,
+            "roc_auc": 0.5467491122006943,
+            "signals": 144,
+            "mean_net_signal_return": 0.002731648598323726
+          },
+          "soft_voting_ensemble": {
+            "log_loss": 0.6834213876529895,
+            "brier": 0.24519935655236655,
+            "balanced_accuracy": 0.5003729939797585,
+            "precision": 0.464,
+            "roc_auc": 0.5480673025952734,
+            "signals": 125,
+            "mean_net_signal_return": 0.0013386067676591012
+          }
+        },
+        "final_test_metrics": {
+          "log_loss": 0.6802043704654673,
+          "brier": 0.24360804597698002,
+          "balanced_accuracy": 0.5017260338644867,
+          "precision": 0.5733333333333334,
+          "roc_auc": 0.5453278961635435,
+          "signals": 75,
+          "mean_net_signal_return": 0.003878527682019963
+        },
+        "cost_bps": 10.0,
+        "label_horizon_bars": 3,
+        "selection_rule": "ensemble only when validation log-loss improves by configured minimum without material balanced-accuracy loss",
+        "production_eligibility_rule": "at least 100 test signals, positive mean net signal return, balanced accuracy >= 0.51, ROC AUC >= 0.52",
+        "production_eligible": false,
+        "trained_at_utc": "2026-10-17T03:57:36.848693+00:00"
+      },
+      "enabled": false
     }
   ]
 }

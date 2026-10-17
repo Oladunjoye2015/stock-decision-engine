@@ -1,0 +1,119 @@
+{
+  "model_id": "ensemble-h1-sip-v2",
+  "model_type": "sklearn_classifier",
+  "model_version": "20261017035736",
+  "artifact": "ensemble-h1-sip-v2.joblib",
+  "sha256": "18611cd6dda62b9b9fe8033a5e92166f849b2fcd8cb3c4341859b0dd53bd1689",
+  "timeframe": "60Min",
+  "supported_symbols": [
+    "AAPL",
+    "AMD",
+    "AMZN",
+    "AVGO",
+    "BABA",
+    "GOOG",
+    "META",
+    "MSFT",
+    "NVDA",
+    "QQQ",
+    "SPY",
+    "TSLA"
+  ],
+  "feature_names": [
+    "body_pct",
+    "range_pct",
+    "close_vs_ema20",
+    "ema20_vs_ema50",
+    "rsi",
+    "atr_pct",
+    "vol_ratio",
+    "ret1",
+    "ret3",
+    "hour_sin",
+    "hour_cos"
+  ],
+  "preprocessing": {
+    "implemented_inside_artifact": true
+  },
+  "probability_method": "predict_proba",
+  "class_labels": [
+    0,
+    1
+  ],
+  "dependency_versions": {
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.5.3"
+  },
+  "training_metadata": {
+    "selected_candidate": "hist_gradient_boosting",
+    "rows": 86447,
+    "train_rows": 60503,
+    "validation_rows": 12972,
+    "test_rows": 12972,
+    "validation_metrics": {
+      "logistic": {
+        "log_loss": 0.6889403697534837,
+        "brier": 0.24789389095859252,
+        "balanced_accuracy": 0.5018759909137748,
+        "precision": 0.5023923444976076,
+        "roc_auc": 0.5548703730115461,
+        "signals": 209,
+        "mean_net_signal_return": 0.0031407837054736078
+      },
+      "random_forest": {
+        "log_loss": 0.6892392909307117,
+        "brier": 0.24809340433330523,
+        "balanced_accuracy": 0.510178833774964,
+        "precision": 0.4812953657174763,
+        "roc_auc": 0.5336540047637255,
+        "signals": 1791,
+        "mean_net_signal_return": 0.0010155263215781704
+      },
+      "hist_gradient_boosting": {
+        "log_loss": 0.6825375189602838,
+        "brier": 0.24477296312682523,
+        "balanced_accuracy": 0.4998236517286113,
+        "precision": 0.4186046511627907,
+        "roc_auc": 0.5505302467785729,
+        "signals": 43,
+        "mean_net_signal_return": -0.0006917634135221677
+      },
+      "catboost": {
+        "log_loss": 0.6830624930217305,
+        "brier": 0.2450404391161142,
+        "balanced_accuracy": 0.5015509311301827,
+        "precision": 0.5138888888888888,
+        "roc_auc": 0.5467491122006943,
+        "signals": 144,
+        "mean_net_signal_return": 0.002731648598323726
+      },
+      "soft_voting_ensemble": {
+        "log_loss": 0.6834213876529895,
+        "brier": 0.24519935655236655,
+        "balanced_accuracy": 0.5003729939797585,
+        "precision": 0.464,
+        "roc_auc": 0.5480673025952734,
+        "signals": 125,
+        "mean_net_signal_return": 0.0013386067676591012
+      }
+    },
+    "final_test_metrics": {
+      "log_loss": 0.6802043704654673,
+      "brier": 0.24360804597698002,
+      "balanced_accuracy": 0.5017260338644867,
+      "precision": 0.5733333333333334,
+      "roc_auc": 0.5453278961635435,
+      "signals": 75,
+      "mean_net_signal_return": 0.003878527682019963
+    },
+    "cost_bps": 10.0,
+    "label_horizon_bars": 3,
+    "selection_rule": "ensemble only when validation log-loss improves by configured minimum without material balanced-accuracy loss",
+    "production_eligibility_rule": "at least 100 test signals, positive mean net signal return, balanced accuracy >= 0.51, ROC AUC >= 0.52",
+    "production_eligible": false,
+    "trained_at_utc": "2026-10-17T03:57:36.848693+00:00"
+  },
+  "enabled": false
+}
