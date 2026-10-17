@@ -15,13 +15,15 @@ RUNTIME_STORAGE=database
 EXECUTION_MODE=paper
 ALPACA_API_KEY=<sealed secret>
 ALPACA_API_SECRET=<sealed secret>
-ALPACA_DATA_FEED=iex
+ALPACA_DATA_FEED=sip
 FINNHUB_API_KEY=<sealed secret>
 FINNHUB_FAIL_CLOSED=true
 WEBHOOK_PASSPHRASE=<strong sealed secret>
 ```
 
 In the web service, generate a public domain and verify `/health`, `/ready`, `/shadow/status`, and `/dashboard/`. The dashboard is read-only and refreshes its status data every minute. In the cron service, set its Railway config-file path to `/railway.cron.json`, then set the cron schedule. Railway schedules use UTC. To run at 4:30 PM New York throughout daylight-saving changes, create separate seasonal schedules or accept a one-hour seasonal shift; `30 20 * * 1-5` corresponds to 4:30 PM EDT and `30 21 * * 1-5` to 4:30 PM EST.
+
+Set `ALPACA_DATA_FEED=sip` on `stock-decision-engine`, `market-refresh`, and `hourly-scanner`. All three services must use Alpaca credentials entitled to recent SIP data. The application does not silently downgrade to IEX: a missing SIP entitlement causes the relevant request or cron run to fail, making a feed mismatch visible. Alpaca permits historical SIP queries without a subscription only when the requested end time is at least 15 minutes old; the hourly scanner and current market-context checks need a subscription for recent SIP data. Use `delayed_sip` only if delayed operation is an intentional demo constraint, not as an unnoticed fallback.
 
 The daily cron config uses Railway watch patterns, so changes limited to TradingView, dashboard, API-only code or documentation do not redeploy and start `market-refresh`. Changes to refresh scripts, database code, model/evaluation code, artifacts, dependencies, the Dockerfile or the cron configuration still deploy it.
 

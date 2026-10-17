@@ -24,8 +24,9 @@ def test_runtime_alpaca_client_is_market_data_only_and_normalizes_bars():
     def handler(request):
         assert request.url.path=="/v2/stocks/AAPL/bars"
         assert request.headers["apca-api-key-id"]=="key"
+        assert request.url.params["feed"]=="sip"
         return httpx.Response(200,json={"bars":[{"t":"2026-07-15T14:30:00Z","o":100,"h":102,"l":99,"c":101,"v":1000}],"next_page_token":None})
-    settings=Settings(alpaca_api_key="key",alpaca_api_secret="secret")
+    settings=Settings(_env_file=None,alpaca_api_key="key",alpaca_api_secret="secret")
     with httpx.Client(transport=httpx.MockTransport(handler)) as client:
         frame=AlpacaCandleClient(settings,client).recent_hourly("AAPL",pd.Timestamp("2026-07-15T16:00:00Z"))
     assert len(frame)==1 and frame.iloc[0].data_provider=="alpaca_market_data_api"

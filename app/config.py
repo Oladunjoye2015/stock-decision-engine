@@ -120,7 +120,7 @@ class Settings(BaseSettings):
     finnhub_fail_closed: bool = False
     alpaca_api_key: str = ""
     alpaca_api_secret: str = ""
-    alpaca_data_feed: str = "iex"
+    alpaca_data_feed: Literal["iex", "sip", "delayed_sip"] = "sip"
     alpaca_data_base_url: str = "https://data.alpaca.markets"
 
     @field_validator("execution_mode")
