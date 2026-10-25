@@ -8,7 +8,7 @@ pytest>=8,<9
 pytest-asyncio>=0.24,<1
 numpy>=1.26,<3
 pandas>=2.2,<3
-scikit-learn>=1.5,<2
+scikit-learn==1.9.0
 joblib>=1.4,<2
 catboost>=1.2,<2
 xgboost>=2,<4
